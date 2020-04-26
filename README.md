@@ -3,5 +3,5 @@ This is going to be an application of spreading and help people understand inter
 Coming soon!
 
 ## What is GNEMES
-Chinese 梗(GENG) Japanese ネタ（ネタ）English（Memes）
-This app is going to be a bridge to help people in China Japan and the coutry which official language is English understand each other.
+### Chinese 梗(GENG) Japanese ネタ（ネタ）English（Memes）
+#### This app is going to be a bridge to help people in China Japan and the coutry which official language is English understand each other.
