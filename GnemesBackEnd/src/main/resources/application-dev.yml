@@ -45,7 +45,13 @@ logging:
     console: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
 
 
-
+amazonProperties:
+  endpointUrl: https://s3.ap-northeast-1.amazonaws.com
+  accessKey: AKIAQF2OAKBLARIPMFCQ
+  secretKey: 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
+  UserName: user_gnemes
+  bucketName: genemes-pic
+  region: Asia Pacific (Tokyo) ap-northeast-1
 
 
 
