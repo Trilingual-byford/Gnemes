@@ -1,0 +1,4 @@
+--
+-- create table inu (id bigint  not null AUTO_INCREMENT,created_time DATE, dir varchar(255), gender integer, height integer, likes bigint, pic_size bigint, width integer, primary key (id))
+-- create table inu_attribution (inu_id bigint not null, attribution varchar(255))
+-- alter table inu_attribution add constraint FKlyf4slpxp19vay0gan2ei3rdq foreign key (inu_id) references inu(id)

@@ -1,0 +1,16 @@
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306
+#    username: root
+#    password: cbf26266
+##  jpa:
+##    hibernate.ddl-auto: update
+##    generate-ddl: true
+##    show-sql: true
+app.message : This is message from ative app configuration file.
+spring:
+  application:
+    name: Gnemes
+  profiles:
+    active: dev

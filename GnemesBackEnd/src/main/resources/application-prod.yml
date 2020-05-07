@@ -1,0 +1,21 @@
+app.message : This is message from dev app configuration file.
+
+spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+spring.servlet.multipart:
+  max-file-size: 128KB
+  max-request-size: 128KB
+spring:
+  application:
+    name: GnemesDev
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://137.220.184.156/daas?serverTimezone=UTC
+    username: daas
+    password: ccc26266
+    initialization-mode: always
+
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
