@@ -9,7 +9,7 @@ import javax.persistence.*
 data class MemePost(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long,
+        var id: Long?,
         @JsonFormat(pattern = "yyyy-MM-dd")
         var createdTime: Date,
         var dir: String,
@@ -17,8 +17,12 @@ data class MemePost(
         var viewer: Long,
         @ElementCollection
         var tag: List<String>?,
+        //Original Language Sentences
         @ElementCollection
-        var sentences: List<String>?,
+        var oLSentences: List<String>?,
+        //Second Language Sentences
+        @ElementCollection
+        var sLSentences: List<String>?,
         @ElementCollection
         var phrase: List<String>?,
         @OneToMany
