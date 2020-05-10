@@ -8,9 +8,11 @@ spring:
   application:
     name: GnemesDev
   datasource:
-    driverClassName: org.h2.Driver
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/genemes?serverTimezone=UTC
+    username: gnemes
+    password: password
     initialization-mode: always
-    url : jdbc:h2:mem:testdb
 #  jpa:
 #    hibernate.ddl-auto: none
 #    generate-ddl: true
@@ -29,6 +31,8 @@ spring:
       enabled: on
       path: /h2
   jpa:
+    generate-ddl: true
+    show-sql: true
     hibernate:
       ddl-auto: update
       use-new-id-generator-mappings: true
@@ -43,7 +47,6 @@ logging:
   level.root: debug
   pattern:
     console: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
-
 
 amazonProperties:
   endpointUrl: https://s3.ap-northeast-1.amazonaws.com
