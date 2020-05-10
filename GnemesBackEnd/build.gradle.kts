@@ -44,6 +44,8 @@ buildscript {
 }
 
 dependencies {
+	implementation (platform("com.amazonaws:aws-java-sdk-bom:1.11.775"))
+	implementation ("com.amazonaws:aws-java-sdk-s3")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")

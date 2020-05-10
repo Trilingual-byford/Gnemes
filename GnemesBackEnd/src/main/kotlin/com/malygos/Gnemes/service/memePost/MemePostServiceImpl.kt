@@ -15,6 +15,7 @@ class MemePostServiceImpl @Autowired constructor(val memePostRepository: MemeRep
     }
 
     override fun deleteMemePost(id: Long) {
+
         return memePostRepository.deleteById(id)
     }
 

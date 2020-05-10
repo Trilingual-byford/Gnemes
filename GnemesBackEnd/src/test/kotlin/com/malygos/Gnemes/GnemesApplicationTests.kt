@@ -1,6 +1,7 @@
 package com.malygos.Gnemes
 
 import com.malygos.Gnemes.service.storage.s3.AmazonS3ClientService
+import com.malygos.Gnemes.utils.StringUtils
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -18,12 +19,22 @@ class GnemesApplicationTests {
 	fun contextLoads() {
 	}
 	@Test
-	fun S3UploadTest(){
+	fun s3UploadTest(){
 		val imgPath = Paths.get("./src/main/resources/static/animal-meme-test.jpeg")
 		val fileBytes = Files.readAllBytes(imgPath)
 		val mockMultipartFile = MockMultipartFile("animal-meme-test.jpeg","animal-meme-test.jpeg","image/jpeg", fileBytes)
 		mockMultipartFile.originalFilename
-		val result = amazonS3ClientService.uploadFileToS3Bucket(mockMultipartFile, true)
+		amazonS3ClientService.uploadFileToS3Bucket(mockMultipartFile, true)
+	}
+	@Test
+	fun s3DeleteTest(){
+		amazonS3ClientService.deleteFileFromS3Bucket("newName.jpg")
+	}
+	@Test
+	fun stringUtilTest(){
+		val url="https://genemes-pic.s3.ap-northeast-1.amazonaws.com/ca.jpeg"
+		val fileNameFromUrl = StringUtils.getFileNameFromUrl(url)
+		assert(fileNameFromUrl.equals("ca.jpeg"))
 	}
 
 }
