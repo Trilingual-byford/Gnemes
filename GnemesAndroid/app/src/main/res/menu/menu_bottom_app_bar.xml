@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/expanded_menu"
+        android:id="@+id/nav_item_one"
         android:title="first"
         android:icon="@drawable/ic_baseline_menu_24"
         app:showAsAction="ifRoom"
         />
     <item
-        android:id="@+id/second_menu"
+        android:id="@+id/nav_item_two"
         android:title="second"
         android:icon="@drawable/ic_baseline_notes_24"
         app:showAsAction="ifRoom"

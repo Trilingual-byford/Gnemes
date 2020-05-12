@@ -7,7 +7,6 @@
     app:layout_anchorGravity="right"
     tools:context=".MainActivity">
 
-
  <com.google.android.material.bottomappbar.BottomAppBar
      android:id="@+id/bottomAppBar"
      android:layout_width="match_parent"
@@ -15,7 +14,6 @@
      android:layout_gravity="bottom"
      android:backgroundTint="@color/colorBottomAppBar"
      app:menu="@menu/menu_bottom_app_bar"
-     app:navigationIcon="@drawable/ic_baseline_notes_24"
      app:fabAlignmentMode="end"
      app:fabCradleMargin="10dp"
      app:fabCradleRoundedCornerRadius="20dp"
@@ -27,5 +25,13 @@
      android:src="@drawable/ic_baseline_notes_24"
      app:layout_anchor="@id/bottomAppBar"
      />
+
+ <fragment
+     android:id="@+id/fragment_container"
+     android:name="androidx.navigation.fragment.NavHostFragment"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     app:defaultNavHost="true"
+     app:navGraph="@navigation/gnemes_navigation" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
