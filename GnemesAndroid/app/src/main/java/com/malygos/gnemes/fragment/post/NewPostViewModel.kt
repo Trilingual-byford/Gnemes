@@ -1,4 +1,4 @@
-package com.malygos.gnemes.fragment
+package com.malygos.gnemes.fragment.post
 
 import androidx.lifecycle.ViewModel
 
