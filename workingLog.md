@@ -4,3 +4,5 @@ How to enable ssh server on WSL windows subsystem for linux
 Result:Failed 
 ### 2020 May 11
 Set up Android Project
+### 2020 May 14
+Learned the usage of LiveData,Databinding,ViewModal etc..
