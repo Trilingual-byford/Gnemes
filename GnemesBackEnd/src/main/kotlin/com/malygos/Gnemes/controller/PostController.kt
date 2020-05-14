@@ -33,7 +33,7 @@ class PostController @Autowired constructor(val storage:AmazonS3ClientService,va
     }
 
     @ResponseBody
-    @DeleteMapping(value = ["/{id}"])
+    @DeleteMapping(value = ["/"])
     fun deleteMemePost(@PathVariable id: Long): String {
         memePostService.findMemePostById(id).ifPresent(Consumer {
             val fileName = StringUtils.getFileNameFromUrl(it.dir)
@@ -43,11 +43,10 @@ class PostController @Autowired constructor(val storage:AmazonS3ClientService,va
         return "Id:$id Inu is gone by now"
     }
 
-//    @ResponseBody
-//    @PutMapping(value = ["/{id}"])
-//    fun updateInu(@PathVariable id: Long, @RequestBody model: Inu): Inu {
-//        val updatedInu = inuServiceImpl.updateInu(model, id)
-//        return updatedInu
-//    }
+    @ResponseBody
+    @GetMapping(value = ["/"])
+    fun getMemePost(): List<MemePost> {
+        return memePostService.findAllMemePost()
+    }
 
 }

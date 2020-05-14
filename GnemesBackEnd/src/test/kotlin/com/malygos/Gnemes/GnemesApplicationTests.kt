@@ -1,5 +1,6 @@
 package com.malygos.Gnemes
 
+import com.malygos.Gnemes.service.memePost.MemePostService
 import com.malygos.Gnemes.service.storage.s3.AmazonS3ClientService
 import com.malygos.Gnemes.utils.StringUtils
 import org.junit.jupiter.api.Test
@@ -15,6 +16,8 @@ import java.nio.file.Paths
 class GnemesApplicationTests {
 	@Autowired
    lateinit var  amazonS3ClientService:AmazonS3ClientService
+	@Autowired
+	lateinit var  postService:MemePostService
 	@Test
 	fun contextLoads() {
 	}
@@ -35,6 +38,11 @@ class GnemesApplicationTests {
 		val url="https://genemes-pic.s3.ap-northeast-1.amazonaws.com/ca.jpeg"
 		val fileNameFromUrl = StringUtils.getFileNameFromUrl(url)
 		assert(fileNameFromUrl.equals("ca.jpeg"))
+	}
+	@Test
+	fun serviceGetTest(){
+		val findAllMemePost = postService.findAllMemePost()
+		assert(findAllMemePost!=null)
 	}
 
 }
