@@ -1,13 +1,16 @@
 package com.malygos.gnemes.network
 
+import com.malygos.gnemes.data.entity.MemePost
 import okhttp3.OkHttpClient
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface GnemesApiService {
     @GET
-    fun getMemePosts():Defer
+    suspend fun getMemePosts():Response<List<MemePost>>
+
     companion object{
         const val DOMAIN:String="http://127.0.0.1:8080"
         const val END_POINT_URL:String="/api/v1/gnemes/post"
