@@ -1,6 +1,6 @@
 # GNEMES
 This is going to be an application of spreading and help people understand interesting idea
-Coming soon!
+## Coming soon!
 
 ## What is GNEMES
 ### Chinese 梗(GENG) Japanese ネタ（ネタ）English（Memes）
