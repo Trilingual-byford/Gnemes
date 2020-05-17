@@ -32,6 +32,7 @@ class NewPostFragment : Fragment() {
         viewModel.memePost.observe(viewLifecycleOwner, Observer {
             binding.postData= it[0].dir
         })
+//        binding.recyclerMemePost.adapter
     }
 
 }

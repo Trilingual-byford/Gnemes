@@ -1,4 +1,4 @@
-package com.malygos.gnemes.ui.fragment
+package com.malygos.gnemes.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
