@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.malygos.gnemes.R
 import com.malygos.gnemes.data.network.GnemesApiService
 import com.malygos.gnemes.data.repository.MemePostRepository
@@ -30,9 +31,9 @@ class NewPostFragment : Fragment() {
         val repository = MemePostRepository(GnemesApiService.invoke())
         viewModel = ViewModelProviders.of(this,NewPostViewModelFactory(repository)).get(NewPostViewModel::class.java)
         viewModel.memePost.observe(viewLifecycleOwner, Observer {
-            binding.postData= it[0].dir
+            binding.recyclerMemePost.layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+            binding.recyclerMemePost.adapter=MemePostsAdapter(it)
         })
-//        binding.recyclerMemePost.adapter
     }
 
 }

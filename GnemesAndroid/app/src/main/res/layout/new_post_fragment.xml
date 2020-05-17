@@ -12,16 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragment.post.NewPostFragment">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{postData}"
-            />
         <androidx.recyclerview.widget.RecyclerView
+            android:background="#F0F4C3"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/recycler_memePost"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
     </FrameLayout>
 </layout>

@@ -1,26 +1,38 @@
 package com.malygos.gnemes.ui.fragment.post
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.malygos.gnemes.R
+import com.malygos.gnemes.data.entity.MemePost
 import com.malygos.gnemes.databinding.ListItemMemePostBinding
 
-class MemePostsAdapter: RecyclerView.Adapter<MemePostsAdapter.MemePostHolder>() {
+class MemePostsAdapter(
+    val memePosts:List<MemePost>
+): RecyclerView.Adapter<MemePostsAdapter.MemePostHolder>() {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): MemePostsAdapter.MemePostHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return MemePostHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                R.layout.list_item_meme_post,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return memePosts.size
     }
 
     override fun onBindViewHolder(holder: MemePostsAdapter.MemePostHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    holder.binding.memePost=memePosts[position]
     }
 
     inner class MemePostHolder(val binding:ListItemMemePostBinding): RecyclerView.ViewHolder(binding.root)
-//    inner class QuoteViewHolder(val binding: ItemQuoteBinding) :
-//        RecyclerView.ViewHolder(binding.root)
 }
