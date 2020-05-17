@@ -5,5 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorBottomAppBar">#2E2E2E</color>
     <color name="colorWhite">#E3F2FD</color>
+    <color name="colorTextBlack">@color/colorBottomAppBar</color>
 
 </resources>
