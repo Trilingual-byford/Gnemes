@@ -7,7 +7,13 @@
     app:layout_anchorGravity="right"
     android:background="@color/colorPrimary"
     tools:context=".ui.MainActivity">
-
+ <fragment
+     android:id="@+id/nav_host_fragment"
+     android:name="androidx.navigation.fragment.NavHostFragment"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     app:defaultNavHost="true"
+     app:navGraph="@navigation/gnemes_navigation" />
  <com.google.android.material.bottomappbar.BottomAppBar
      android:id="@+id/bottomAppBar"
      android:layout_width="match_parent"
@@ -26,12 +32,5 @@
      app:layout_anchor="@id/bottomAppBar"
      />
 
- <fragment
-     android:id="@+id/nav_host_fragment"
-     android:name="androidx.navigation.fragment.NavHostFragment"
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     app:defaultNavHost="true"
-     app:navGraph="@navigation/gnemes_navigation" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
