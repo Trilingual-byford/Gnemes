@@ -13,6 +13,7 @@ interface GnemesApiService {
 
     companion object{
         const val DOMAIN:String="http://10.0.2.2:8080/"
+        const val DOMAIN_GENY_MOTION:String="http://10.0.3.2:8080/"
         const val END_POINT_URL:String="api/v1/gnemes/post/"
         const val BASE_URL= DOMAIN + END_POINT_URL
         operator fun invoke(): GnemesApiService {
@@ -22,7 +23,7 @@ interface GnemesApiService {
                 .build()
             return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl(DOMAIN)
+                .baseUrl(DOMAIN_GENY_MOTION)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(GnemesApiService::class.java)
