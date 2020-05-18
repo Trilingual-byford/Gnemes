@@ -2,7 +2,7 @@ app.message : This is message from dev app configuration file.
 
 
 spring.servlet.multipart:
-  max-file-size: 128KB
+  max-file-size: 3280KB
   max-request-size: 128KB
 spring:
   application:
@@ -13,6 +13,8 @@ spring:
     username: gnemes
     password: password
     initialization-mode: always
+server:
+
 #  jpa:
 #    hibernate.ddl-auto: none
 #    generate-ddl: true
@@ -26,16 +28,19 @@ spring:
     #  spring.datasource.platform=h2
     #  spring.jpa.hibernate.ddl-auto=none
     #  spring.datasource.continue-on-error=true
-  h2:
-    console:
-      enabled: on
-      path: /h2
+    #  h2:
+    #    console:
+    #      enabled: on
+    #      path: /h2
   jpa:
     generate-ddl: true
     show-sql: true
     hibernate:
       ddl-auto: update
       use-new-id-generator-mappings: true
+# TODO SSL
+#  ssl:
+#    enabled: true
 management:
   endpoint:
     beans:
