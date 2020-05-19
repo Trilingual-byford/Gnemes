@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,39 +38,55 @@
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_left_pic"
-                    android:src="@drawable/ic_baseline_access_time_gray_24" />
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/ic_baseline_access_time_gray_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_left_text"
+                    android:layout_marginStart="10dp"
                     android:text="@{memePost.createdTime.toString(),default=`Two days ago`}"
-                    android:textColor="@color/colorTextBlack" />
+                    android:textColor="@color/colorTextBlack"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_left_pic"
-                    android:src="@drawable/ic_baseline_remove_red_eye_24" />
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/ic_baseline_remove_red_eye_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_left_text"
+                    android:layout_marginStart="10dp"
                     android:text="@{memePost.viewer.toString(),default=`20000`}"
-                    android:textColor="@color/colorTextBlack" />
+                    android:textColor="@color/colorTextBlack"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
+                    android:id="@+id/imageView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:layout_marginStart="40dp"
-                    android:src="@drawable/ic_baseline_bookmark_24" />
-            </LinearLayout>
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/ic_baseline_bookmark_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -84,7 +100,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,80 +114,106 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
                 <ImageView
+                    android:id="@+id/imageView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_left_pic"
+                    android:layout_marginStart="20dp"
                     android:contentDescription="TODO"
-                    android:src="@drawable/ic_baseline_mode_comment_24" />
+                    android:src="@drawable/ic_baseline_mode_comment_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
+                    android:id="@+id/imageView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_left_pic"
-                    android:src="@drawable/ic_baseline_local_florist_24" />
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/ic_baseline_local_florist_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView6"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_left_text"
-                    android:text="@{memePost.likes.toString()}" />
+                    android:layout_marginStart="10dp"
+                    android:text="@{memePost.likes.toString()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView5"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/materialCardView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="100dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@color/colorWhite"
                     app:cardBackgroundColor="@color/colorWhite"
-                    app:cardCornerRadius="10dp">
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/materialCardView2"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
-                        android:visibility="@{memePost.tag.size()>=1?View.VISIBLE:View.GONE}"
                         android:text="@{memePost.tag.size()>=1?memePost.tag.get(0):null}"
-                        android:textColor="@color/colorTextBlack" />
+                        android:textColor="@color/colorTextBlack"
+                        android:visibility="@{memePost.tag.size()>=1?View.VISIBLE:View.GONE}" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/materialCardView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_left_pic"
+                    android:layout_marginEnd="20dp"
                     android:background="@color/colorWhite"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     app:cardBackgroundColor="@color/colorWhite"
-                    app:cardCornerRadius="10dp">
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/materialCardView3"
+                    app:layout_constraintTop_toTopOf="parent">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
-                        android:visibility="@{memePost.tag.size()>=2?View.VISIBLE:View.GONE}"
                         android:text="@{memePost.tag.size()>=2?memePost.tag.get(1):null}"
-                        android:textColor="@color/colorTextBlack" />
+                        android:textColor="@color/colorTextBlack"
+                        android:visibility="@{memePost.tag.size()>=2?View.VISIBLE:View.GONE}" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/materialCardView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_left_pic"
+                    android:layout_marginEnd="20dp"
                     android:background="@color/colorWhite"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
                     app:cardBackgroundColor="@color/colorWhite"
-                    app:cardCornerRadius="10dp">
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
-                        android:visibility="@{memePost.tag.size()>=3?View.VISIBLE:View.GONE}"
                         android:text="@{memePost.tag.size()>=3?memePost.tag.get(2):null}"
-                        android:textColor="@color/colorTextBlack" />
+                        android:textColor="@color/colorTextBlack"
+                        android:visibility="@{memePost.tag.size()>=3?View.VISIBLE:View.GONE}" />
                 </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
