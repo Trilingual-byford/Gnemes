@@ -13,14 +13,33 @@ class MainActivity : AppCompatActivity() {
         val navController = Navigation.findNavController(this,
             R.id.nav_host_fragment
         )
+        var click=false
         bottomAppBar.setOnMenuItemClickListener {
+            val currentDestination = navController.currentDestination
             when(it.itemId){
-                R.id.nav_item_one -> navController.navigate(
-                    R.id.action_global_go_post
-                )
-                R.id.nav_item_two ->navController.navigate(
-                    R.id.action_global_go_blanck
-                )
+                R.id.nav_item_one ->
+//                    if(currentDestination?.label =="NewPostFragment"){
+//                        return@setOnMenuItemClickListener true
+//                    }else{
+//                        navController.navigate(R.id.action_global_go_post)
+//                    }
+                if(!navController.popBackStack(R.id.newPostFragment,true)){
+                    navController.navigate(R.id.action_global_go_blanck)
+                }
+                R.id.nav_item_two ->
+//                    if(currentDestination?.label =="BlankFragment"){
+//                        return@setOnMenuItemClickListener true
+//                    }else{
+                    if(!navController.popBackStack(R.id.blankFragment,true)){
+                        navController.navigate(R.id.action_global_go_blanck)
+                    }
+//                    if(!click){
+//                        navController.navigate(R.id.action_global_go_blanck)
+//                        click=true
+//                    }else{
+//                    }
+
+//                    }
             }
             true
         }

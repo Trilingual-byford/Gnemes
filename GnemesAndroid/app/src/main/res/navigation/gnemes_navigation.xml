@@ -6,12 +6,14 @@
     app:startDestination="@id/newPostFragment">
     <action
         android:id="@+id/action_global_go_post"
-        app:destination="@+id/newPostFragment"
-        app:popUpToInclusive="false"/>
+        app:destination="@id/newPostFragment"
+        app:popUpTo="@id/newPostFragment"
+        />
     <action
         android:id="@+id/action_global_go_blanck"
-        app:destination="@+id/blankFragment"
-        app:popUpToInclusive="false"/>
+        app:destination="@id/blankFragment"
+        app:popUpTo="@+id/blankFragment"
+        />
     <fragment
         android:id="@+id/newPostFragment"
         android:name="com.malygos.gnemes.ui.fragment.post.NewPostFragment"

@@ -18,8 +18,6 @@ interface GnemesApiService {
         const val BASE_URL= DOMAIN + END_POINT_URL
         operator fun invoke(): GnemesApiService {
             val okHttpClient = OkHttpClient.Builder()
-//                .addInterceptor(requestInterceptor)
-//                .addInterceptor(connectivityInterceptor)
                 .build()
             return Retrofit.Builder()
                 .client(okHttpClient)
