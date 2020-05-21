@@ -6,5 +6,6 @@
     <color name="colorBottomAppBar">#2E2E2E</color>
     <color name="colorWhite">#E3F2FD</color>
     <color name="colorTextBlack">@color/colorBottomAppBar</color>
+    <color name="colorBlack">#000000</color>
 
 </resources>

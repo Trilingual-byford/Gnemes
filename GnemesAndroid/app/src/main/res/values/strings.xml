@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Gnemes</string>
+    <string name="text_offline">You are offline</string>
 </resources>
