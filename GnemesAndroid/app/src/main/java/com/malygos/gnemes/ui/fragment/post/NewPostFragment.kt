@@ -24,11 +24,6 @@ class NewPostFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = NewPostFragmentBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         val repository = MemePostRepository(GnemesApiService.invoke())
         viewModel = ViewModelProviders.of(this,NewPostViewModelFactory(repository)).get(NewPostViewModel::class.java)
         viewModel.memePost.observe(viewLifecycleOwner, Observer {
@@ -42,6 +37,7 @@ class NewPostFragment : Fragment() {
 
             binding.recyclerMemePost.addItemDecoration(decoration)
         })
+        return binding.root
     }
 
 }

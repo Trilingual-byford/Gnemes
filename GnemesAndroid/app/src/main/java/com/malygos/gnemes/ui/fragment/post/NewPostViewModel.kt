@@ -1,5 +1,6 @@
 package com.malygos.gnemes.ui.fragment.post
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,4 +26,8 @@ class NewPostViewModel(
         }
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        Log.d("onCleared","NewPostViewModel")
+    }
 }
