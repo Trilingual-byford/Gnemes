@@ -1,1 +1,1 @@
-### categorize it based on difficulty
+### categorize memePost based on difficulty
