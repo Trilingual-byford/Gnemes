@@ -3,7 +3,7 @@ app.message : This is message from dev app configuration file.
 
 spring.servlet.multipart:
   max-file-size: 3280KB
-  max-request-size: 128KB
+  max-request-size: 3280KB
 spring:
   application:
     name: GnemesDev
