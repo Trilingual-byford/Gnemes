@@ -2,4 +2,8 @@
     <string name="app_name">Gnemes</string>
     <string name="text_offline">You are offline</string>
     <string name="str_featured">Featured</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
