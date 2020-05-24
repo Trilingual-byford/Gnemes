@@ -9,3 +9,4 @@ This is going to be an application of spreading and help people understand inter
 ####  https://docs.jboss.org/hibernate/orm/5.3/userguide/html_single/Hibernate_User_Guide.html#entity
 ### What is Dto
 #### Data transfer Object that carries data between process.
+#### branch master and branch navi of using navigation view.
