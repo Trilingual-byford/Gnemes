@@ -19,18 +19,20 @@ class MainActivity : AppCompatActivity() {
             .commit()
         supportFragmentManager.beginTransaction().add(R.id.nav_host_fragment, blankFragment)
             .commit()
-        bottomAppBar.setOnMenuItemClickListener {
+        bottomAppBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_item_one -> {
                     supportFragmentManager.beginTransaction().hide(blankFragment)
                         .show(newPostFragment).commit()
+                    return@setOnNavigationItemSelectedListener true
                 }
                 R.id.nav_item_two -> {
                     supportFragmentManager.beginTransaction().hide(newPostFragment)
                         .show(blankFragment).commit()
+                    return@setOnNavigationItemSelectedListener true
                 }
+                else ->  return@setOnNavigationItemSelectedListener true
             }
-            true
         }
     }
 }
