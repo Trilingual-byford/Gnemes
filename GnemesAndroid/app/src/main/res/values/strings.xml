@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Gnemes</string>
     <string name="text_offline">You are offline</string>
+    <string name="str_featured">Featured</string>
 </resources>

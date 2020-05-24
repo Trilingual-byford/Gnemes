@@ -7,5 +7,6 @@
     <color name="colorWhite">#E3F2FD</color>
     <color name="colorTextBlack">@color/colorBottomAppBar</color>
     <color name="colorBlack">#000000</color>
+    <color name="cardview_dark">#FF424242</color>
 
 </resources>

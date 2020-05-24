@@ -99,13 +99,14 @@
                 app:imageURL="@{memePost.dir}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                android:contentDescription="@null" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/cardview_dark_background"
+                android:background="@color/cardview_dark"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
@@ -133,7 +134,8 @@
                     android:src="@drawable/ic_baseline_local_florist_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView6"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@null" />
 
                 <TextView
                     android:id="@+id/textView3"
