@@ -8,5 +8,6 @@
     <color name="colorTextBlack">@color/colorBottomAppBar</color>
     <color name="colorBlack">#000000</color>
     <color name="cardview_dark">#FF424242</color>
-
+    <color name="shrine_pink_100">#F8DCD2</color>
+    <color name="shrine_pink_80">#897370</color>
 </resources>
