@@ -6,3 +6,5 @@ Result:Failed
 Set up Android Project
 ### 2020 May 14
 Learned the usage of LiveData,Databinding,ViewModal etc..
+### 2020 May 28
+Would update  design Tonight.
