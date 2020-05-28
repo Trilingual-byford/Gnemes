@@ -9,14 +9,13 @@
     tools:context=".ui.MainActivity">
 
 
- <androidx.fragment.app.FragmentContainerView
-     android:id="@+id/nav_host_fragment"
-     android:name="androidx.navigation.fragment.NavHostFragment"
+ <androidx.viewpager2.widget.ViewPager2
+     android:id="@+id/fragment_container"
      android:layout_width="match_parent"
      android:layout_height="0dp"
      app:layout_constraintBottom_toTopOf="@+id/bottomAppBar"
-     app:layout_constraintVertical_bias="0.55" />
-
+     app:layout_constraintVertical_bias="0.55"
+     />
 
  <com.google.android.material.bottomnavigation.BottomNavigationView
      android:id="@+id/bottomAppBar"

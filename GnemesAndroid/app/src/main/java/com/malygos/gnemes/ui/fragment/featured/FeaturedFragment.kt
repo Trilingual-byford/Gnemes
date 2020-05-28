@@ -34,7 +34,6 @@ class FeaturedFragment : Fragment() {
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance() = FeaturedFragment()
     }
