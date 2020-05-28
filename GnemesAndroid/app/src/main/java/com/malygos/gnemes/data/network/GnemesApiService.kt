@@ -43,7 +43,7 @@ interface GnemesApiService {
         public val gnemesApiService by lazy{
              Retrofit.Builder()
                 .client(mClient)
-                .baseUrl(DOMAIN_INTERNET)
+                .baseUrl(DOMAIN_LOCAL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(GnemesApiService::class.java)

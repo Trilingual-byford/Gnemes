@@ -16,6 +16,7 @@ import com.malygos.gnemes.data.network.GnemesApiService.Companion.gnemesApiServi
 import com.malygos.gnemes.data.repository.MemePostRepository
 import com.malygos.gnemes.databinding.NewPostFragmentBinding
 import com.malygos.gnemes.utils.InternetUtils
+import kotlinx.android.synthetic.main.offline_layout_fragment.view.*
 
 
 class NewPostFragment : Fragment() {
@@ -47,6 +48,7 @@ class NewPostFragment : Fragment() {
                     binding.recyclerMemePost.addItemDecoration(decoration)
                 } else {
                     binding.viewOffline.visibility=View.VISIBLE
+                    binding.viewOffline.tv_detail_content.text=it.errorMessage
                     binding.recyclerMemePost.visibility=View.GONE
                 }
             }

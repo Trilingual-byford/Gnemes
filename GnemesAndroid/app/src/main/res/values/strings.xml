@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Gnemes</string>
     <string name="text_offline">You are offline</string>
+    <string name="text_offline_detail">Offline Detail:</string>
     <string name="str_featured">Featured</string>
+    <string name="text_demo_long">Demo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo Demo</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
