@@ -9,8 +9,8 @@ import com.malygos.gnemes.data.entity.MemePost
 import com.malygos.gnemes.databinding.ListItemMemePostBinding
 
 class MemePostsAdapter(
-    val memePosts:List<MemePost>
-): RecyclerView.Adapter<MemePostsAdapter.MemePostHolder>() {
+    val memePosts: List<MemePost>
+) : RecyclerView.Adapter<MemePostsAdapter.MemePostHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -31,8 +31,9 @@ class MemePostsAdapter(
     }
 
     override fun onBindViewHolder(holder: MemePostsAdapter.MemePostHolder, position: Int) {
-    holder.binding.memePost=memePosts[position]
+        holder.binding.memePost = memePosts[position]
     }
 
-    inner class MemePostHolder(val binding:ListItemMemePostBinding): RecyclerView.ViewHolder(binding.root)
+    inner class MemePostHolder(val binding: ListItemMemePostBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }

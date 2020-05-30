@@ -15,6 +15,7 @@ import com.malygos.gnemes.data.network.GnemesApiService
 import com.malygos.gnemes.data.network.GnemesApiService.Companion.gnemesApiService
 import com.malygos.gnemes.data.repository.MemePostRepository
 import com.malygos.gnemes.databinding.NewPostFragmentBinding
+import com.malygos.gnemes.ui.fragment.liked.LikedFragment
 import com.malygos.gnemes.utils.InternetUtils
 import kotlinx.android.synthetic.main.offline_layout_fragment.view.*
 
@@ -58,6 +59,10 @@ class NewPostFragment : Fragment() {
             binding.recyclerMemePost.visibility=View.GONE
         }
         return binding.root
+    }
+
+    companion object {
+        fun newInstance() = NewPostFragment()
     }
 
 }
