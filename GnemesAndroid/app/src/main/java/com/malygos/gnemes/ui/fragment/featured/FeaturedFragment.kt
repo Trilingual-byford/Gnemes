@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.malygos.gnemes.R
+import com.malygos.gnemes.ui.fragment.LastPostFragment
 import com.malygos.gnemes.ui.fragment.post.NewPostFragment
 import kotlinx.android.synthetic.main.fragment_featured.*
 
@@ -30,7 +31,6 @@ class FeaturedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_featured, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,15 +47,16 @@ class FeaturedFragment : Fragment() {
         val tabLayoutMediator =
             TabLayoutMediator(tab_layout, feature_view_pager, true,
                 TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+                    tab.setText("hahaha")
                 })
 
     }
     private fun getTabFragments(): ArrayList<Fragment> {
         val fragments = ArrayList<Fragment>(3)
-        val featuredFragment = NewPostFragment.newInstance()
-//        val searchFragment = SearchFragment.newInstance()
-        fragments.add(featuredFragment)
-//        fragments.add(searchFragment)
+        val newPostFragment = NewPostFragment.newInstance()
+        val lastPostFragment = LastPostFragment.newInstance()
+        fragments.add(newPostFragment)
+        fragments.add(lastPostFragment)
         return fragments
     }
 
