@@ -36,27 +36,28 @@ class FeaturedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tabFragments = getTabFragments()
-        feature_view_pager.adapter=object : FragmentStateAdapter(this) {
+        feature_view_pager.adapter = object : FragmentStateAdapter(this) {
             override fun createFragment(position: Int): Fragment {
                 return tabFragments[position]
             }
+
             override fun getItemCount(): Int {
                 return tabFragments.size
             }
         }
-        val tabLayoutMediator =
-            TabLayoutMediator(tab_layout, feature_view_pager, true,
-                TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                  when(position){
-                      0->
-                          tab.text="Recommended"
-                      1->
-                          tab.text="Latest"
+        TabLayoutMediator(tab_layout, feature_view_pager, true,
+            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+                when (position) {
+                    0 ->
+                        tab.text = "Recommended"
+                    1 ->
+                        tab.text = "Latest"
 
-                  }
-                }).attach()
+                }
+            }).attach()
 
     }
+
     private fun getTabFragments(): ArrayList<Fragment> {
         val fragments = ArrayList<Fragment>(3)
         val newPostFragment = NewPostFragment.newInstance()
