@@ -8,3 +8,5 @@ Set up Android Project
 Learned the usage of LiveData,Databinding,ViewModal etc..
 ### 2020 May 28
 Would update  design Tonight.
+### 2020 May 28
+Tried to implement nested fragment-viewpager2
