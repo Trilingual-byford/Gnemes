@@ -47,8 +47,14 @@ class FeaturedFragment : Fragment() {
         val tabLayoutMediator =
             TabLayoutMediator(tab_layout, feature_view_pager, true,
                 TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                    tab.setText("hahaha")
-                })
+                  when(position){
+                      0->
+                          tab.text="Recommended"
+                      1->
+                          tab.text="Latest"
+
+                  }
+                }).attach()
 
     }
     private fun getTabFragments(): ArrayList<Fragment> {
