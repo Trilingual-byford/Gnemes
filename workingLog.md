@@ -10,3 +10,5 @@ Learned the usage of LiveData,Databinding,ViewModal etc..
 Would update  design Tonight.
 ### 2020 May 28
 Tried to implement nested fragment-viewpager2
+### 2020 June 1
+Take a rest.
