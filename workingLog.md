@@ -14,3 +14,5 @@ Tried to implement nested fragment-viewpager2
 Take a rest.
 ### 2020 Jun 4
 Going to make Custom ImageView on Saturday Jun6
+### 2020 Jun 5
+Went to gym and Karaok Tonight.
