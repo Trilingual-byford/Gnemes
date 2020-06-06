@@ -16,3 +16,6 @@ Take a rest.
 Going to make Custom ImageView on Saturday Jun6
 ### 2020 Jun 5
 Went to gym and Karaok Tonight.
+### 2020 Jun6
+Implement materil design full screen dialog!
+https://material.io/components/dialogs#full-screen-dialog
