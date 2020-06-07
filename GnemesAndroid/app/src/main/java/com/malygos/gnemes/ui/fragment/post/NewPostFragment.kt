@@ -15,6 +15,7 @@ import com.malygos.gnemes.data.network.GnemesApiService
 import com.malygos.gnemes.data.network.GnemesApiService.Companion.gnemesApiService
 import com.malygos.gnemes.data.repository.MemePostRepository
 import com.malygos.gnemes.databinding.NewPostFragmentBinding
+import com.malygos.gnemes.ui.fragment.liked.LikedFragment
 import com.malygos.gnemes.utils.InternetUtils
 import kotlinx.android.synthetic.main.offline_layout_fragment.view.*
 
@@ -27,6 +28,7 @@ class NewPostFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val parentFragmentManager = getParentFragmentManager()
         binding = NewPostFragmentBinding.inflate(inflater, container, false)
         if (InternetUtils.hasNetworkAvailable(context)) {
             val repository = MemePostRepository(gnemesApiService)
@@ -39,7 +41,7 @@ class NewPostFragment : Fragment() {
                 if (it.isSuccessful) {
                     binding.recyclerMemePost.layoutManager =
                         LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                    binding.recyclerMemePost.adapter = MemePostsAdapter(it.body!!)
+                    binding.recyclerMemePost.adapter = MemePostsAdapter(parentFragmentManager,it.body!!)
                     val decoration = DividerItemDecoration(
                         context,
                         DividerItemDecoration.VERTICAL
@@ -58,6 +60,10 @@ class NewPostFragment : Fragment() {
             binding.recyclerMemePost.visibility=View.GONE
         }
         return binding.root
+    }
+
+    companion object {
+        fun newInstance() = NewPostFragment()
     }
 
 }

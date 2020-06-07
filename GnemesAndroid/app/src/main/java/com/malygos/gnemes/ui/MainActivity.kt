@@ -3,13 +3,10 @@ package com.malygos.gnemes.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.Navigation
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.malygos.gnemes.R
 import com.malygos.gnemes.ui.fragment.featured.FeaturedFragment
 import com.malygos.gnemes.ui.fragment.liked.LikedFragment
-import com.malygos.gnemes.ui.fragment.post.NewPostFragment
 import com.malygos.gnemes.ui.fragment.search.SearchFragment
 import com.malygos.gnemes.ui.fragment.user.UserFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -52,12 +49,10 @@ class MainActivity : AppCompatActivity() {
     }
     private fun getTabFragments(): ArrayList<Fragment> {
         val fragments = ArrayList<Fragment>(3)
-
         val featuredFragment = FeaturedFragment.newInstance()
         val searchFragment = SearchFragment.newInstance()
         val likedFragment = LikedFragment.newInstance()
         val userFragment = UserFragment.newInstance()
-
         fragments.add(featuredFragment)
         fragments.add(searchFragment)
         fragments.add(likedFragment)

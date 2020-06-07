@@ -2,47 +2,25 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
-
         <variable
             name="postData"
             type="String" />
     </data>
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
         tools:context=".ui.fragment.post.NewPostFragment">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="a_tab" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="b_tab" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="c_tab" />
-
-        </com.google.android.material.tabs.TabLayout>
         <include
             android:id="@+id/view_offline"
             layout="@layout/offline_layout_fragment"
             android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:clipToPadding = "false"
+            android:padding="10dp"
+            android:background="@color/colorWhite"
             android:id="@+id/recycler_memePost"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
