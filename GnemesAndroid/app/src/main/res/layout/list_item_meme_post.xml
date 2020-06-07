@@ -97,6 +97,7 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_launcher_foreground"
                 app:imageURL="@{memePost.dir}"
+                android:transitionName="meme_post_img"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2"

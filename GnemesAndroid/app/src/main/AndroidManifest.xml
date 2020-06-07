@@ -14,13 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.NoActionBar"
         android:usesCleartextTraffic="true">
+
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"></activity>
+            android:name=".ui.MemeDetailActivity"
+            android:label="@string/title_activity_meme_detail">
+        </activity>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

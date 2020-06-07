@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu  xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_item_one"
+        android:title="@string/str_featured"
+        android:icon="@drawable/ic_baseline_local_florist_24"
+        app:showAsAction="always"
+        android:actionLayout="@layout/bottom_feature_menu"
+        tools:ignore="AlwaysShowAction" />
+    <item
+        android:id="@+id/nav_item_two"
+        android:title="Search"
+        android:icon="@drawable/ic_baseline_share_24"
+        app:showAsAction="always"
+        />
+</menu>

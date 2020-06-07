@@ -28,6 +28,7 @@ class NewPostFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val parentFragmentManager = getParentFragmentManager()
         binding = NewPostFragmentBinding.inflate(inflater, container, false)
         if (InternetUtils.hasNetworkAvailable(context)) {
             val repository = MemePostRepository(gnemesApiService)
@@ -40,7 +41,7 @@ class NewPostFragment : Fragment() {
                 if (it.isSuccessful) {
                     binding.recyclerMemePost.layoutManager =
                         LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                    binding.recyclerMemePost.adapter = MemePostsAdapter(it.body!!)
+                    binding.recyclerMemePost.adapter = MemePostsAdapter(parentFragmentManager,it.body!!)
                     val decoration = DividerItemDecoration(
                         context,
                         DividerItemDecoration.VERTICAL

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.google.android.material.transition.MaterialContainerTransform
 import com.malygos.gnemes.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -29,8 +30,9 @@ class MemeDetailFragment : DialogFragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        sharedElementEnterTransition=MaterialContainerTransform()
         setStyle(DialogFragment.STYLE_NORMAL,
-            android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+            android.R.style.Theme_Black_NoTitleBar);
     }
 
     override fun onCreateView(
