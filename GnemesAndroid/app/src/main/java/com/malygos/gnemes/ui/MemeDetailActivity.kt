@@ -8,17 +8,24 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.malygos.gnemes.R
+import com.malygos.gnemes.data.entity.MemePost
+import kotlinx.android.synthetic.main.fragment_meme_detail.*
 
 class MemeDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_meme_detail)
-
+        tool_bar_detail.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
     companion object {
-        private const val posterKey = "posterKey"
-        fun startActivityModel(context: Context?, startView: View) {
+        fun startActivityModel(
+            context: Context?,
+            startView: View,
+            memePost: MemePost
+        ) {
             if (context is Activity) {
                 val intent = Intent(context, MemeDetailActivity::class.java)
                 val options = ActivityOptions.makeSceneTransitionAnimation(context,
