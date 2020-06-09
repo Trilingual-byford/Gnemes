@@ -7,16 +7,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.malygos.gnemes.R
 import com.malygos.gnemes.data.entity.MemePost
-import kotlinx.android.synthetic.main.fragment_meme_detail.*
+import com.malygos.gnemes.databinding.ActivityMemeDetailBinding
+import kotlinx.android.synthetic.main.activity_meme_detail.*
 
 class MemeDetailActivity : AppCompatActivity() {
 
+    lateinit var memePost: MemePost
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_meme_detail)
-        tool_bar_detail.setNavigationOnClickListener {
+
+        val activityMemeDetailBinding: ActivityMemeDetailBinding = DataBindingUtil.setContentView(
+            this, R.layout.activity_meme_detail)
+//        activityMemeDetailBinding.memePost=
+            activityMemeDetailBinding.toolBarDetail.setNavigationOnClickListener {
             onBackPressed()
         }
     }
