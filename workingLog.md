@@ -20,3 +20,5 @@ Went to gym and Karaok Tonight.
 Implement materil design full screen dialog!
 https://material.io/components/dialogs#full-screen-dialo
 ### 2020 Jun7
+### 2020 Jun13
+Don't feel like doing anything.
