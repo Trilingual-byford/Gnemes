@@ -11,6 +11,6 @@ import com.bumptech.glide.signature.ObjectKey
 fun ImageView.imageURI(uri: String) {
     Glide.with(this)
         .load(uri)
-        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
         .into(this)
 }

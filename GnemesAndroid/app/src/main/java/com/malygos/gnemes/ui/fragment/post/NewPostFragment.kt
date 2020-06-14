@@ -1,5 +1,6 @@
 package com.malygos.gnemes.ui.fragment.post
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.malygos.gnemes.R
 import com.malygos.gnemes.data.network.GnemesApiService
 import com.malygos.gnemes.data.network.GnemesApiService.Companion.gnemesApiService
+import com.malygos.gnemes.data.persistence.MemeDataBase.Companion.getMemeDataBase
 import com.malygos.gnemes.data.repository.MemePostRepository
 import com.malygos.gnemes.databinding.NewPostFragmentBinding
 import com.malygos.gnemes.ui.fragment.liked.LikedFragment
@@ -31,7 +33,7 @@ class NewPostFragment : Fragment() {
         val parentFragmentManager = getParentFragmentManager()
         binding = NewPostFragmentBinding.inflate(inflater, container, false)
         if (InternetUtils.hasNetworkAvailable(context)) {
-            val repository = MemePostRepository(gnemesApiService)
+            val repository = MemePostRepository(gnemesApiService,getMemeDataBase())
             viewModel = ViewModelProviders.of(this, NewPostViewModelFactory(repository))
                 .get(NewPostViewModel::class.java)
             if (viewModel.memePost.value == null) {

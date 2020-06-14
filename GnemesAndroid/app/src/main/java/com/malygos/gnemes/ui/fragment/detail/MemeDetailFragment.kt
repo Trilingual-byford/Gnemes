@@ -40,7 +40,7 @@ class MemeDetailFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meme_detail, container, false)
+        return inflater.inflate(R.layout.activity_meme_detail, container, false)
     }
 
     companion object {

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.malygos.gnemes.data.entity.MemePost" />
+        <variable
+            name="memePost"
+            type="MemePost" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:transitionName="meme_post_img"
+        android:fillViewport="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:menu="@menu/menu_top_app_detail"
+                android:id="@+id/tool_bar_detail"
+                app:navigationIcon="@drawable/ic_baseline_close_24"
+                android:background="@color/material_grey_900" />
+        </com.google.android.material.appbar.AppBarLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_meme_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
+            android:src="@drawable/img_standard_size"
+            app:imageURL="@{memePost.dir}" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_demo_long"
+            />
+
+    </LinearLayout>
+</layout>
+
