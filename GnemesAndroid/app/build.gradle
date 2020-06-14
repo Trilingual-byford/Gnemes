@@ -21,10 +21,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        annotationProcessorOptions {
-            arguments = ["room.schemaLocation":
-                                 "$projectDir/schemas".toString()]
-        }
+//        annotationProcessorOptions {
+//            arguments = ["room.schemaLocation":
+//                                 "$projectDir/schemas".toString()]
+//        }
     }
 
     buildTypes {
@@ -63,6 +63,7 @@ dependencies {
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+    kapt "android.arch.persistence.room:compiler:1.1.1"
 
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$room_version"

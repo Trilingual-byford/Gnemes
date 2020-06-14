@@ -17,9 +17,15 @@ data class MemePost(
     @PrimaryKey
     var id: Int,
     var likes: Int?,
+    @Embedded
     var olsentences: List<String>?,
+    @Embedded
     var phrase: List<String>?,
+    @Embedded
     var slsentences: List<String>?,
+    @Embedded
     var tag: List<String>?,
     var viewer: Int?
-) : Parcelable
+) : Parcelable{
+    constructor() : this(null, null, null, 1, null, null, null, null,null,null)
+}
