@@ -22,3 +22,5 @@ https://material.io/components/dialogs#full-screen-dialo
 ### 2020 Jun7
 ### 2020 Jun13
 Don't feel like doing anything.
+### 2020 Jun16
+Implemented database with Room till now.
