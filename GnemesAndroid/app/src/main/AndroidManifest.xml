@@ -16,10 +16,10 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".ui.MemeDetailActivity"
+            android:name=".ui.activity.detail.MemeDetailActivity"
             android:label="@string/title_activity_meme_detail">
         </activity>
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

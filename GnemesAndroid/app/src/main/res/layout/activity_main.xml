@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     app:layout_anchorGravity="right"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.activity.MainActivity">
 
 
  <androidx.viewpager2.widget.ViewPager2

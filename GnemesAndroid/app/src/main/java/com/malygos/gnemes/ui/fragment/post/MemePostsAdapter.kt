@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.malygos.gnemes.R
 import com.malygos.gnemes.data.entity.MemePost
 import com.malygos.gnemes.databinding.ListItemMemePostBinding
-import com.malygos.gnemes.ui.MemeDetailActivity
+import com.malygos.gnemes.ui.activity.detail.MemeDetailActivity
 
 class MemePostsAdapter(
     val fragmentManager: FragmentManager,val memePosts: List<MemePost>
@@ -42,7 +42,7 @@ class MemePostsAdapter(
     override fun onBindViewHolder(holder: MemePostsAdapter.MemePostHolder, position: Int) {
         holder.binding.memePost = memePosts[position]
         holder.binding.memeImg.setOnClickListener {
-            MemeDetailActivity.startActivityModel(parent.context,it,memePosts[position])
+            MemeDetailActivity.startActivityModel(parent.context,it,memePosts[position].id)
         }
     }
 
