@@ -20,6 +20,12 @@ class ApiResponse<T> {
     val isSuccessful: Boolean
         get() = code in 200..299
 
+    constructor(){
+        code=-1
+        body=null
+        errorMessage=null
+    }
+
     constructor(error: Throwable) {
         code = 500
         body = null
@@ -55,5 +61,9 @@ class ApiResponse<T> {
         }
 
     }
-
+    constructor(body: T){
+        code=200
+        this.body=body
+        errorMessage=null
+    }
 }

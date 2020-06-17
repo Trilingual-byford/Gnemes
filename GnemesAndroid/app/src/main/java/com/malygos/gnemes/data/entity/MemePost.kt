@@ -1,29 +1,24 @@
 package com.malygos.gnemes.data.entity
 
 import android.os.Parcelable
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
+import com.malygos.gnemes.data.persistence.MemeDataConverter
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 
 @Parcelize
 @Entity(tableName = "memes")
+@TypeConverters(MemeDataConverter::class)
 data class MemePost(
-    @Embedded
     var comment: List<MemeComment>?,
     var createdTime: String?,
     var dir: String?,
     @PrimaryKey
-    var id: Int,
+    var id: Long,
     var likes: Int?,
-    @Embedded
     var olsentences: List<String>?,
-    @Embedded
     var phrase: List<String>?,
-    @Embedded
     var slsentences: List<String>?,
-    @Embedded
     var tag: List<String>?,
     var viewer: Int?
 ) : Parcelable{

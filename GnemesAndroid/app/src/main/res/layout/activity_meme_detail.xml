@@ -15,7 +15,6 @@
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
         android:orientation="vertical"
-        android:transitionName="meme_post_img"
         android:fillViewport="true">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -30,14 +29,17 @@
                 app:navigationIcon="@drawable/ic_baseline_close_24"
                 android:background="@color/material_grey_900" />
         </com.google.android.material.appbar.AppBarLayout>
-        <com.google.android.material.imageview.ShapeableImageView
+        <ImageView
             android:id="@+id/img_meme_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitStart"
+            android:transitionName="meme_post_img"
             android:src="@drawable/img_standard_size"
-            app:imageURL="@{memePost.dir}" />
+            android:background="@mipmap/ic_launcher"
+            app:loadImage="@{memePost.dir}" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
