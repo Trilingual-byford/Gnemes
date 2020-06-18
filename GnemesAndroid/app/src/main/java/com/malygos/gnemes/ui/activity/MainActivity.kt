@@ -1,7 +1,10 @@
 package com.malygos.gnemes.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
+import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.malygos.gnemes.R
@@ -10,6 +13,7 @@ import com.malygos.gnemes.ui.fragment.liked.LikedFragment
 import com.malygos.gnemes.ui.fragment.search.SearchFragment
 import com.malygos.gnemes.ui.fragment.user.UserFragment
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 return tabFragments.size
             }
         }
-        bottomAppBar.setOnNavigationItemSelectedListener {
+        bottom_navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_item_one -> {
                     fragment_container.setCurrentItem(0,true)
@@ -58,5 +62,41 @@ class MainActivity : AppCompatActivity() {
         fragments.add(likedFragment)
         fragments.add(userFragment)
         return fragments
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showBottomNavigation()
+    }
+
+    public fun hideBottomNavigation(afterAnimation: () -> Unit) {
+        with(bottom_navigation) {
+            if (visibility == View.VISIBLE) {
+                animate()
+                    .translationY((200).toFloat())
+                    .withEndAction {
+                        visibility = View.GONE
+                        afterAnimation()
+                    }
+                    .duration = 200
+            }
+        }
+    }
+
+    public fun showBottomNavigation() {
+        // bottom_navigation is BottomNavigationView
+        with(bottom_navigation) {
+            if(!isVisible){
+                visibility = View.VISIBLE
+                animate()
+                    .translationY((0).toFloat())
+                    .duration = 200
+            }
+
+        }
     }
 }

@@ -1,7 +1,5 @@
 <resources>
-    <style name="Widget.App.ActionMode" parent="Widget.AppCompat.ActionMode">
-        <item name="titleTextStyle">?attr/textAppearanceHeadline6</item>
-        <item name="subtitleTextStyle">?attr/textAppearanceSubtitle1</item>
-        <item name="background">@color/material_grey_900</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 </resources>

@@ -1,8 +1,6 @@
 package com.malygos.gnemes.ui.fragment.post
 
-import android.app.Application
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +10,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.malygos.gnemes.R
-import com.malygos.gnemes.data.network.GnemesApiService
 import com.malygos.gnemes.data.network.GnemesApiService.Companion.gnemesApiService
 import com.malygos.gnemes.data.persistence.MemeDataBase.Companion.getMemeDataBase
 import com.malygos.gnemes.data.repository.MemePostRepository
 import com.malygos.gnemes.databinding.NewPostFragmentBinding
-import com.malygos.gnemes.ui.fragment.liked.LikedFragment
 import com.malygos.gnemes.utils.InternetUtils
 import kotlinx.android.synthetic.main.offline_layout_fragment.view.*
 
@@ -43,7 +39,7 @@ class NewPostFragment : Fragment() {
                 if (it.isSuccessful) {
                     binding.recyclerMemePost.layoutManager =
                         LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                    binding.recyclerMemePost.adapter = MemePostsAdapter(parentFragmentManager,it.body!!)
+                    binding.recyclerMemePost.adapter = MemePostsAdapter(parentFragmentManager,it.body!!,this.activity)
                     val decoration = DividerItemDecoration(
                         context,
                         DividerItemDecoration.VERTICAL

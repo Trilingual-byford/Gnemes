@@ -38,7 +38,7 @@
             android:transitionName="meme_post_img"
             android:src="@drawable/img_standard_size"
             android:background="@mipmap/ic_launcher"
-            app:loadImage="@{memePost.dir}" />
+            />
 
         <TextView
             android:layout_width="match_parent"

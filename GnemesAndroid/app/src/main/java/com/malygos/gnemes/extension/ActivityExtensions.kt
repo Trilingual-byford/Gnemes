@@ -29,7 +29,6 @@ fun AppCompatActivity.applyExitMaterialTransform() {
 fun AppCompatActivity.applyMaterialTransform(transitionName: String) {
   window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
   ViewCompat.setTransitionName(findViewById(android.R.id.content), transitionName)
-
   // set up shared element transition
   setEnterSharedElementCallback(MaterialContainerTransformSharedElementCallback())
   window.sharedElementEnterTransition = getContentTransform(this)
