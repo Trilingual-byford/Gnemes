@@ -1,4 +1,4 @@
-package com.malygos.Gnemes
+package com.malygos.gnemes
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

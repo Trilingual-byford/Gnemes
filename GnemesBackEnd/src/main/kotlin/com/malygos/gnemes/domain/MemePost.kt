@@ -1,7 +1,7 @@
-package com.malygos.Gnemes.domain
+package com.malygos.gnemes.domain
 
 import com.fasterxml.jackson.annotation.JsonFormat
-import com.malygos.Gnemes.annotation.Domain
+import com.malygos.gnemes.annotation.Domain
 import java.util.*
 import javax.persistence.*
 @Entity
@@ -9,9 +9,19 @@ import javax.persistence.*
 data class MemePost(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long?,
+        var postId: Long?,
         @JsonFormat(pattern = "yyyy-MM-dd")
         var createdTime: Date,
+        /**
+         * Meme difficulty level
+         * obvious：100
+         * mediocre：200
+         * tough：300
+         * pro：400
+         * monster：500
+         * god : 600
+         */
+        var difficulty:Int,
         var dir: String,
         var likes: Long,
         var viewer: Long,
@@ -24,7 +34,5 @@ data class MemePost(
         @ElementCollection
         var sLSentences: List<String>?,
         @ElementCollection
-        var phrase: List<String>?,
-        @OneToMany
-        var comment: List<MemeComment>?
+        var phrase: List<String>?
 )

@@ -1,16 +1,15 @@
-package com.malygos.Gnemes
+package com.malygos.gnemes
 
-import com.malygos.Gnemes.service.memePost.MemePostService
-import com.malygos.Gnemes.service.storage.s3.AmazonS3ClientService
-import com.malygos.Gnemes.utils.StringUtils
+import com.malygos.gnemes.service.memePost.MemePostService
+import com.malygos.gnemes.service.storage.s3.AmazonS3ClientService
+import com.malygos.gnemes.utils.StringUtils
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.mock.web.MockMultipartFile
-import org.springframework.web.multipart.MultipartFile
-import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths
+import java.security.SecureRandom
 
 @SpringBootTest
 class GnemesApplicationTests {
@@ -42,7 +41,11 @@ class GnemesApplicationTests {
 	@Test
 	fun serviceGetTest(){
 		val findAllMemePost = postService.findAllMemePost()
-		assert(findAllMemePost!=null)
 	}
+	@Test
+	fun Random16DigitalUUIDTEst(){
+		SecureRandom.getInstance()
+	}
+
 
 }

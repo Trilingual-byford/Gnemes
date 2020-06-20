@@ -1,6 +1,6 @@
-package com.malygos.Gnemes.service.memePost
+package com.malygos.gnemes.service.memePost
 
-import com.malygos.Gnemes.domain.MemePost
+import com.malygos.gnemes.domain.MemePost
 import java.util.*
 
 interface MemePostService {
