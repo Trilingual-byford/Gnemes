@@ -24,3 +24,5 @@ https://material.io/components/dialogs#full-screen-dialo
 Don't feel like doing anything.
 ### 2020 Jun16
 Implemented database with Room till now.
+### 2020 Jun22
+Change Entity Obj:add UUID,difficulty level.
