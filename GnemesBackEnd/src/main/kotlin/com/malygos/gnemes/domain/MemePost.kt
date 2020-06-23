@@ -30,11 +30,11 @@ data class MemePost(
         @ElementCollection
         var tag: List<String>?,
         //Original Language Sentences
-        @ElementCollection
+        @ElementCollection(fetch = FetchType.LAZY)
         var oLSentences: List<String>?,
         //Second Language Sentences
-        @ElementCollection
+        @ElementCollection(fetch = FetchType.LAZY)
         var sLSentences: List<String>?,
-        @ElementCollection
+        @ElementCollection(fetch = FetchType.LAZY)
         var phrase: List<String>?
 )

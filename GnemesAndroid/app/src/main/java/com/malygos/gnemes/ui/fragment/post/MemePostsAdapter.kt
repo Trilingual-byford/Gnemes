@@ -50,10 +50,7 @@ class MemePostsAdapter(
                     MemeDetailActivity.startActivityModel(parent.context,it,memePosts[position].id)
                 }
             }
-
         }
-
-
     }
 
     inner class MemePostHolder(val binding: ListItemMemePostBinding) :

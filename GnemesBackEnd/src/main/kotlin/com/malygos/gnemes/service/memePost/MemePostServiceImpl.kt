@@ -6,6 +6,7 @@ import com.malygos.gnemes.repository.MemeRepository
 import com.malygos.gnemes.utils.StringUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.util.*
 
 @Service
@@ -30,6 +31,12 @@ class MemePostServiceImpl @Autowired constructor(val memePostRepository: MemeRep
     override fun findMemePostById(id: Long): Optional<MemePost> {
         return memePostRepository.findById(id)
     }
+
+    @Transactional
+    override fun findMemePostByPostId(postId: String): Optional<MemePost> {
+        return memePostRepository.findMemePostByPostId(postId)
+    }
+
     override fun findAllMemePost():List<MemePost>{
         return memePostRepository.findAll()
     }

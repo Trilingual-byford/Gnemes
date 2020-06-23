@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.mock.web.MockMultipartFile
+import org.springframework.transaction.annotation.Transactional
 import java.nio.file.Files
 import java.nio.file.Paths
 
@@ -55,5 +56,12 @@ class GnemesApplicationTests {
 	fun addPostId(){
 		ChangeDataBaseTable.insertPostId(postService)
 	}
+	@Test
+	@Transactional
+	fun searchByPostIdTest(){
+		val findMemePostByPostId = postService.findMemePostByPostId("7FnsXbA1H5O60N084UVFLouCn")
+		assert(!findMemePostByPostId.isEmpty)
+	}
+
 
 }
