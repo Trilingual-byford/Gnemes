@@ -9,7 +9,9 @@ import javax.persistence.*
 data class MemePost(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var postId: Long?,
+        var id: Long?,
+        @Column(unique = true)
+        var postId: String?,
         @JsonFormat(pattern = "yyyy-MM-dd")
         var createdTime: Date,
         /**
@@ -21,7 +23,7 @@ data class MemePost(
          * monster：500
          * god : 600
          */
-        var difficulty:Int,
+        var difficulty: Byte,
         var dir: String,
         var likes: Long,
         var viewer: Long,

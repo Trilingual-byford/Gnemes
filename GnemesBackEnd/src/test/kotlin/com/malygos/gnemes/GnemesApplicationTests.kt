@@ -1,5 +1,6 @@
 package com.malygos.gnemes
 
+import com.malygos.gnemes.job.ChangeDataBaseTable
 import com.malygos.gnemes.service.memePost.MemePostService
 import com.malygos.gnemes.service.storage.s3.AmazonS3ClientService
 import com.malygos.gnemes.utils.StringUtils
@@ -45,7 +46,14 @@ class GnemesApplicationTests {
 	}
 	@Test
 	fun Random16DigitalUUIDTEst(){
-		RandomStringUtils()
+		val randomAlphanumeric = RandomStringUtils.randomAlphanumeric(20)
+		val randomAlphanumeric2 = RandomStringUtils.randomAlphanumeric(25)
+		println(randomAlphanumeric)
+		println(randomAlphanumeric2)
+	}
+	@Test
+	fun addPostId(){
+		ChangeDataBaseTable.insertPostId(postService)
 	}
 
 }
