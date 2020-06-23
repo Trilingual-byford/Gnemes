@@ -8,5 +8,6 @@ interface MemePostService {
     fun deleteMemePost(id: Long)
     fun updateMemePost(memePost: MemePost): MemePost
     fun findMemePostById(id: Long): Optional<MemePost>
+    fun findMemePostByPostId(id: String): Optional<MemePost>
     fun findAllMemePost():List<MemePost>
 }

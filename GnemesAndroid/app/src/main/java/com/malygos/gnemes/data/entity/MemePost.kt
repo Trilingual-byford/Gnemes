@@ -10,11 +10,12 @@ import kotlinx.android.parcel.RawValue
 @Entity(tableName = "memes")
 @TypeConverters(MemeDataConverter::class)
 data class MemePost(
-    var comment: List<MemeComment>?,
-    var createdTime: String?,
-    var dir: String?,
     @PrimaryKey
     var id: Long,
+    var postId: String?,
+    var difficulty: Byte,
+    var createdTime: String?,
+    var dir: String?,
     var likes: Int?,
     var olsentences: List<String>?,
     var phrase: List<String>?,
@@ -22,5 +23,5 @@ data class MemePost(
     var tag: List<String>?,
     var viewer: Int?
 ) : Parcelable{
-    constructor() : this(null, null, null, 1, null, null, null, null,null,null)
+    constructor() : this(1,null,1, null, null, null, null, null, null,null,null)
 }

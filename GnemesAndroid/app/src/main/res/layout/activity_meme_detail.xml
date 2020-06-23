@@ -23,11 +23,11 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:layout_width="match_parent"
+                android:background="@color/shrine_pink_100"
                 android:layout_height="?actionBarSize"
                 app:menu="@menu/menu_top_app_detail"
                 android:id="@+id/tool_bar_detail"
-                app:navigationIcon="@drawable/ic_baseline_close_24"
-                android:background="@color/material_grey_900" />
+                app:navigationIcon="@drawable/ic_baseline_close_24" />
         </com.google.android.material.appbar.AppBarLayout>
         <ImageView
             android:id="@+id/img_meme_detail"

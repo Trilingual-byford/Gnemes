@@ -27,7 +27,7 @@ class PostController @Autowired constructor(val storage: AmazonS3ClientService, 
     @PostMapping(value = ["/"], consumes = ["multipart/form-data"])
     fun addMemePost(@RequestPart("meta") @Valid memePost: MemePostCreationDto, @RequestPart("file") @Valid @NotNull @NotBlank file: MultipartFile): ResponseEntity<MemePost> {
         val fileS3Dir = storage.uploadFileToS3Bucket(file, true)
-        val tmpEntityObj = MemePost(null, Date(), memePost.difficulty, fileS3Dir, 0, 0, memePost.tag, memePost.oLSentences, memePost.sLSentences, memePost.phrase)
+        val tmpEntityObj = MemePost(null,null, Date(), memePost.difficulty, fileS3Dir, 0, 0, memePost.tag, memePost.oLSentences, memePost.sLSentences, memePost.phrase)
         memePostService.addMemePost(tmpEntityObj)
         return ResponseEntity(tmpEntityObj, HttpStatus.OK)
     }
