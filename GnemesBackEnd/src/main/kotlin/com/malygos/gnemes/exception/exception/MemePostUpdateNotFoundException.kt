@@ -1,4 +1,4 @@
-package com.malygos.Gnemes.exception.exception
+package com.malygos.gnemes.exception.exception
 
 class MemePostUpdateNotFoundException:RuntimeException {
     constructor(message: String) : super(message) {}

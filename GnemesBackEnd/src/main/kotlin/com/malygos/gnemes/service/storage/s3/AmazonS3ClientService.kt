@@ -1,4 +1,4 @@
-package com.malygos.Gnemes.service.storage.s3
+package com.malygos.gnemes.service.storage.s3
 
 import org.springframework.web.multipart.MultipartFile
 

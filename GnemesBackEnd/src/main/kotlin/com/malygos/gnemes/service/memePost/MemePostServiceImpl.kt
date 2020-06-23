@@ -1,8 +1,8 @@
-package com.malygos.Gnemes.service.memePost
+package com.malygos.gnemes.service.memePost
 
-import com.malygos.Gnemes.domain.MemePost
-import com.malygos.Gnemes.exception.exception.MemePostUpdateNotFoundException
-import com.malygos.Gnemes.repository.MemeRepository
+import com.malygos.gnemes.domain.MemePost
+import com.malygos.gnemes.exception.exception.MemePostUpdateNotFoundException
+import com.malygos.gnemes.repository.MemeRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
@@ -20,7 +20,7 @@ class MemePostServiceImpl @Autowired constructor(val memePostRepository: MemeRep
     }
 
     override fun updateMemePost(memePost: MemePost): MemePost {
-        if(memePostRepository.findById(memePost.id!!).isEmpty){
+        if(memePostRepository.findById(memePost.postId!!).isEmpty){
             return memePostRepository.saveAndFlush(memePost)
         }else{
             throw MemePostUpdateNotFoundException("Could not find original post,Failed")

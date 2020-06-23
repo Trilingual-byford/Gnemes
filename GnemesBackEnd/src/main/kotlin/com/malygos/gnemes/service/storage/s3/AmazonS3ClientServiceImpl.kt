@@ -1,4 +1,4 @@
-package com.malygos.Gnemes.service.storage.s3
+package com.malygos.gnemes.service.storage.s3
 
 
 import com.amazonaws.auth.AWSCredentialsProvider
@@ -14,8 +14,6 @@ import org.springframework.web.multipart.MultipartFile
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.nio.file.Path
-import java.nio.file.Paths
 import javax.annotation.PostConstruct
 
 
