@@ -26,3 +26,5 @@ Don't feel like doing anything.
 Implemented database with Room till now.
 ### 2020 Jun22
 Change Entity Obj:add UUID,difficulty level.
+### 2020 Jun
+Thinking about add interesting level.
