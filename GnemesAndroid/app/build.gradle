@@ -76,6 +76,7 @@ dependencies {
     // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation 'com.robertlevonyan.view:MaterialChipView:2.0.4'
 
     // timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
