@@ -17,8 +17,8 @@ data class MemePost(
     var createdTime: String?,
     var dir: String?,
     var likes: Int?,
-    var olsentences: List<String>?,
     var phrase: List<String>?,
+    var olsentences: List<String>?,
     var slsentences: List<String>?,
     var tag: List<String>?,
     var viewer: Int?

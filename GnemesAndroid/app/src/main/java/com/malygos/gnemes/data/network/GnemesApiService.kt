@@ -16,7 +16,7 @@ interface GnemesApiService {
 
     companion object{
         const val DOMAIN:String="http://10.0.2.2:8080/"
-        const val DOMAIN_INTERNET:String="http:/192.168.100.36:8080"
+        const val DOMAIN_INTERNET:String="http:/192.168.100.51:8080"
         const val DOMAIN_GENY_MOTION:String="http://10.0.3.2:8080/"
         const val DOMAIN_LOCAL:String="http://localhost:8080/"
         const val END_POINT_URL:String="api/v1/gnemes/post/"

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -26,6 +27,7 @@ import com.malygos.gnemes.data.repository.MemePostRepository
 import com.malygos.gnemes.databinding.ActivityMemeDetailBinding
 import com.malygos.gnemes.ui.fragment.post.NewPostViewModel
 import com.malygos.gnemes.ui.fragment.post.NewPostViewModelFactory
+import kotlinx.android.synthetic.main.activity_meme_detail.*
 
 class MemeDetailActivity : AppCompatActivity() {
 
@@ -33,7 +35,8 @@ class MemeDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val activityMemeDetailBinding: ActivityMemeDetailBinding = DataBindingUtil.setContentView(
-            this, R.layout.activity_meme_detail)
+            this, R.layout.activity_meme_detail
+        )
         val postId = intent.getLongExtra("postId", 0)
         val repository = MemePostRepository(
             GnemesApiService.gnemesApiService,
@@ -42,19 +45,27 @@ class MemeDetailActivity : AppCompatActivity() {
         val viewModel = ViewModelProviders.of(this, NewPostViewModelFactory(repository))
             .get(MemeDetailViewModel::class.java)
         val memePost = viewModel.getMemePostById(postId)
-        activityMemeDetailBinding.memePost= memePost
+        activityMemeDetailBinding.memePost = memePost
         memePost.dir?.let { bindDetailLoadImage(activityMemeDetailBinding.imgMemeDetail, it) }
+        recycler_memePostDetail.layoutManager =
+            LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
+        recycler_memePostDetail.adapter = MemePostDetailAdapter(
+            this.supportFragmentManager,
+            memePost.olsentences,
+            memePost.slsentences
+        )
         activityMemeDetailBinding.toolBarDetail.setNavigationOnClickListener {
             onBackPressed()
         }
     }
+
     private fun bindDetailLoadImage(view: ImageView, url: String) {
         supportPostponeEnterTransition()
         Glide.with(view.context)
             .load(url)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .dontTransform()
-            .listener(object :RequestListener<Drawable>{
+            .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?,
                     model: Any?,
@@ -87,10 +98,11 @@ class MemeDetailActivity : AppCompatActivity() {
         ) {
             if (context is Activity) {
                 val intent = Intent(context, MemeDetailActivity::class.java)
-                val options = ActivityOptions.makeSceneTransitionAnimation(context,
+                val options = ActivityOptions.makeSceneTransitionAnimation(
+                    context,
                     startView, "meme_post_img"
                 )
-                intent.putExtra("postId",postId)
+                intent.putExtra("postId", postId)
                 context.startActivity(intent, options.toBundle())
             }
         }

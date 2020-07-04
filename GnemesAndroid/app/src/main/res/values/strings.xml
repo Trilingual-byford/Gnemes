@@ -4,6 +4,8 @@
     <string name="text_offline_detail">Offline Detail:</string>
     <string name="str_featured">Featured</string>
     <string name="text_demo_long">Demo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo DemoDemo Demo</string>
+    <string name="text_demo_ol"> It\'s clear to me who was the most photogenic in this picture</string>
+    <string name="text_demo_sl">「この写真で最もフォトジェニックだったのは私には明らかだ」</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

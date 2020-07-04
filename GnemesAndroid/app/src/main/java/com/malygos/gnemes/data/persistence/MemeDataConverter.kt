@@ -13,7 +13,7 @@ class MemeDataConverter {
     fun strListToStr(strList:List<String>?):String{
         var string = ""
         if (strList != null) {
-            for (s in strList) string += "$s,"
+            for (s in strList) string += "$s---"
         }
         return string
     }
@@ -22,7 +22,7 @@ class MemeDataConverter {
         if (str=="") {
             return null
         }
-        return str.split(",")
+        return str.split("---").dropLast(1)
     }
     @TypeConverter
     fun fromMemeCommentList(value: List<MemeComment>): String {
