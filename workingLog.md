@@ -31,4 +31,7 @@ Thinking about add interesting level.
 ### 2020 Jun 27
 Played game whole day.
 ### 2020 July 3
-plannedto implement MemesDetail to 100% this week
+planned to implement MemesDetail to 100% this week
+### 2020 July 6
+Design remaining pages and think about project structure.
+
