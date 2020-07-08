@@ -34,4 +34,5 @@ Played game whole day.
 planned to implement MemesDetail to 100% this week
 ### 2020 July 6
 Design remaining pages and think about project structure.
-
+### 2020 July 8
+Watched Youtubu video and movie at night.
