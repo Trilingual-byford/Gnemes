@@ -36,3 +36,5 @@ planned to implement MemesDetail to 100% this week
 Design remaining pages and think about project structure.
 ### 2020 July 8
 Watched Youtubu video and movie at night.
+### 2020 July 12
+Thinking about using SpringCloud
