@@ -39,4 +39,4 @@ Watched Youtubu video and movie at night.
 ### 2020 July 12
 Thinking about using SpringCloud
 ### 2020 July 14
-Refactory project structure
+Refactory project structure.
