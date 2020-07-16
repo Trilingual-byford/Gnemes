@@ -2,7 +2,6 @@ package com.malygos.gnemes.job
 
 import com.malygos.gnemes.service.memePost.MemePostService
 import com.malygos.gnemes.utils.StringUtils
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 @Component

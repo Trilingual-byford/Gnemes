@@ -32,6 +32,8 @@ allOpen {
 repositories {
     mavenCentral()
 }
+extra["springCloudVersion"] = "Hoxton.SR6"
+
 buildscript {
     repositories {
         maven {
@@ -42,6 +44,12 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-noarg:1.3.72")
     }
 }
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+    }
+}
+
 
 dependencies {
     implementation(platform("com.amazonaws:aws-java-sdk-bom:1.11.775"))
@@ -54,6 +62,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.apache.commons:commons-lang3:3.3.2")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+
 //	runtimeOnly("com.h2database:h2")
     runtimeOnly("mysql:mysql-connector-java")
 

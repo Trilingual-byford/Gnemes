@@ -5,7 +5,6 @@ import com.malygos.gnemes.service.memePost.MemePostService
 import com.malygos.gnemes.service.storage.s3.AmazonS3ClientService
 import com.malygos.gnemes.utils.StringUtils
 import org.apache.commons.lang3.RandomStringUtils
-import org.apache.commons.logging.Log
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
