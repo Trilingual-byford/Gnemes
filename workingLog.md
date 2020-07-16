@@ -31,4 +31,12 @@ Thinking about add interesting level.
 ### 2020 Jun 27
 Played game whole day.
 ### 2020 July 3
-plannedto implement MemesDetail to 100% this week
+planned to implement MemesDetail to 100% this week
+### 2020 July 6
+Design remaining pages and think about project structure.
+### 2020 July 8
+Watched Youtubu video and movie at night.
+### 2020 July 12
+Thinking about using SpringCloud
+### 2020 July 14
+Refactory project structure.
