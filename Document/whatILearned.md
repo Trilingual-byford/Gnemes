@@ -11,3 +11,7 @@ https://codelabs.developers.google.com/codelabs/kotlin-android-training-view-mod
 ・Dynamic URLS in the cloud
 ・Load balancing
 ・Multiple enviironments.
+Spring Cloud is the Lib to solve this problem.
+Spring Cloud uses client side discovery.
+Client side service discovery
+Server side service discovery
