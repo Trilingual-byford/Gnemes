@@ -40,3 +40,5 @@ Watched Youtubu video and movie at night.
 Thinking about using SpringCloud
 ### 2020 July 14
 Refactory project structure.
+### 2020 July 19
+Think about database Sharding.
