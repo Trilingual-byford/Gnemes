@@ -9,7 +9,6 @@ plugins {
     kotlin("plugin.jpa") version "1.3.71"
     id("org.jetbrains.kotlin.plugin.noarg") version "1.3.72"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.3.72"
-
 }
 
 group = "com.malygos"

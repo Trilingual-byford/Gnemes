@@ -1,18 +1,16 @@
 package com.malygos.gnemes.domain
 
 import com.fasterxml.jackson.annotation.JsonFormat
-import com.malygos.gnemes.annotation.Domain
 import java.util.*
 import javax.persistence.*
 @Entity
-@Domain
 data class MemePost(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long?,
         @Column(unique = true)
         var postId: String?,
-        @JsonFormat(pattern = "yyyy-MM-dd")
+        @JsonFormat(pattern = "yyyy-MM-dd-hh-mm")
         var createdTime: Date,
         /**
          * Meme difficulty level
