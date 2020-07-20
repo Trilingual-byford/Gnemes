@@ -1,0 +1,53 @@
+app.message : This is message from dev app configuration file.
+spring.servlet.multipart:
+  max-file-size: 3280KB
+  max-request-size: 3280KB
+spring:
+  application:
+    name: GnemesUser
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/genemesUser?serverTimezone=UTC
+    username: gnemes
+    password: password
+    initialization-mode: always
+server:
+
+  #  jpa:
+  #    hibernate.ddl-auto: none
+  #    generate-ddl: true
+  #    show-sql: true
+  # database-platform=org: hibernate.dialect.H2Dialect
+  # Enabling H2 Console
+  # spring.h2.console.enabled=true
+  # Custom H2 Console URL
+  #    spring.h2.console.path=/h2
+  #  spring.datasource.url=jdbc:h2:mem:testdb;Mode=Oracle
+  #  spring.datasource.platform=h2
+  #  spring.jpa.hibernate.ddl-auto=none
+  #  spring.datasource.continue-on-error=true
+  #  h2:
+  #    console:
+  #      enabled: on
+  #      path: /h2
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: true
+  port: 9090
+# TODO SSL
+#  ssl:
+#    enabled: true
+management:
+  endpoint:
+    beans:
+      enabled: true
+    info:
+      enabled: false
+
+logging:
+  level.root: info
+  pattern:
+    console: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
