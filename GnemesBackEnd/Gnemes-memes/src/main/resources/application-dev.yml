@@ -5,21 +5,22 @@ spring.servlet.multipart:
   max-file-size: 3280KB
   max-request-size: 3280KB
 spring:
+  data:
+    mongodb:
+      uri: mongodb://gnemes:123456@localhost/
+      database: gnemes
+#      host: localhost
+#      port: 27017
+#      username: gnemes
+#      password: 123456
+#      authentication-database: admin
 
   application:
     name: GnemesDev
+
 #  datasource:
-
-  data:
-    mongodb:
-      database: gnemes
-      host: localhost
-      port: 27017
-      username: gnemes
-      password: 123456
-      uri: mongodb://gnemes:123456@localhost/
-
-    #    driverClassName: com.mysql.jdbc.Driver
+#    driver-class-name: mon
+  #    driverClassName: com.mysql.jdbc.Driver
 #    url: jdbc:mysql://localhost:3306/genemes?serverTimezone=UTC
 #    username: gnemes
 #    password: password

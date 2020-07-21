@@ -1,9 +1,9 @@
 package com.malygos.gnemes.domain
 
+import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.util.*
 
-import javax.persistence.Id
 
 @Document(collection = "MemeComment")
 data class MemeComment (

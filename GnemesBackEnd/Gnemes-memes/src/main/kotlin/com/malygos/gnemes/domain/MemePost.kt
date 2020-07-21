@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonRawValue
 import org.bson.types.ObjectId
+import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.Field
 import java.util.*
-import javax.persistence.*
 @Document(collection = "MemePost")
 data class MemePost(
         @Id
@@ -28,7 +28,6 @@ data class MemePost(
         var dir: String,
         var likes: Long,
         var viewer: Long,
-        @ElementCollection
         var tag: List<String>?,
         //Original Language Sentences
 //        @Field("olsentences")
