@@ -1,16 +1,18 @@
 package com.malygos.gnemes.domain
 
 import com.fasterxml.jackson.annotation.JsonFormat
+import com.fasterxml.jackson.annotation.JsonGetter
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonRawValue
+import org.bson.types.ObjectId
 import org.springframework.data.mongodb.core.mapping.Document
+import org.springframework.data.mongodb.core.mapping.Field
 import java.util.*
 import javax.persistence.*
 @Document(collection = "MemePost")
 data class MemePost(
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long?,
-        @Column(unique = true)
-        var postId: String?,
+        var id: String?,
         @JsonFormat(pattern = "yyyy-MM-dd-hh-mm")
         var createdTime: Date,
         /**
@@ -26,14 +28,15 @@ data class MemePost(
         var dir: String,
         var likes: Long,
         var viewer: Long,
-//        @ElementCollection
+        @ElementCollection
         var tag: List<String>?,
         //Original Language Sentences
-//        @ElementCollection(fetch = FetchType.LAZY)
+//        @Field("olsentences")
+        @JsonRawValue
         var oLSentences: List<String>?,
         //Second Language Sentences
-//        @ElementCollection(fetch = FetchType.LAZY)
+//        @Field("slsentences")
+        @JsonRawValue
         var sLSentences: List<String>?,
-//        @ElementCollection(fetch = FetchType.LAZY)
         var phrase: List<String>?
 )

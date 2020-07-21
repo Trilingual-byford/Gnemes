@@ -1,0 +1,212 @@
+db.MemePost.insert(
+[
+  {
+    "postId": "7FnsXbA1H5O60N084UVFLouCn",
+    "createdTime": new Date(),
+    "difficulty": 1,
+    "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/animal-meme-test.jpeg",
+    "likes": 0,
+    "viewer": 0,
+    "tag": [
+      "cat",
+      "cute"
+    ],
+    "phrase": [
+      "scalpel",
+      "operation table",
+      "receive surgery"
+    ],
+    "olsentences": [
+      "I don't know why but this looks to me like i'm on an operation table receiving surgery from cats",
+      "frank hand me the scalpel"
+    ],
+    "slsentences": [
+      "理由はわかりませんが、手術台に猫の手術を受けているようです",
+      "メースをください"
+    ]
+  },
+  {
+    "postId": "okBIIk2dkNNImVIr55iUmn4Qg",
+    "createdTime": new Date(),
+    "difficulty": 1,
+    "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/animal-meme-test2.jpg",
+    "likes": 0,
+    "viewer": 0,
+    "tag": [
+      "cat",
+      "funny"
+    ],
+    "phrase": [
+      "disturb",
+      "sleep"
+    ],
+    "olsentences": [
+      "You disturbed my sleep for this?"
+    ],
+    "slsentences": [
+      "こんな理由で起こるんだ"
+    ]
+  },
+  {
+    "postId": "Edn8y2DYQfk123vyY4araGW4h",
+    "createdTime": new Date(),
+    "difficulty": 1,
+    "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-3.jpg",
+    "likes": 0,
+    "viewer": 0,
+    "tag": [
+      "dog",
+      "funny"
+    ],
+    "phrase": [
+      "try"
+    ],
+    "olsentences": [
+      "When you have no idea what's going on but you still try to help?"
+    ],
+    "slsentences": [
+      "何が起こっているのか分からないが、それでも役に立ちたい"
+    ]
+  },
+  {
+    "postId": "tuO6ta1fjHagNcg7QUsVQO8X7",
+    "createdTime": new Date(),
+    "difficulty": 1,
+    "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-4.jpg",
+    "likes": 0,
+    "viewer": 0,
+    "tag": [
+      "cat",
+      "cutie"
+    ],
+    "phrase": [
+      "rocks"
+    ],
+    "olsentences": [
+      "She likes to collect rocks"
+    ],
+    "slsentences": [
+      "彼女は石を集めるのが好き"
+    ]
+  },
+  {
+    "postId": "PfbvcSh8XqkD8jKkJ2jyLQIsw",
+    "createdTime": new Date(),
+    "difficulty": 1,
+    "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-5.jpg",
+    "likes": 0,
+    "viewer": 0,
+    "tag": [
+      "dog",
+      "hilarious"
+    ],
+    "phrase": [
+      "photogenic"
+    ],
+    "olsentences": [
+      "It's clear to me who was the most photogenic in this picture"
+    ],
+    "slsentences": [
+      "「この写真で最もフォトジェニックだったのは私には明らかだ」"
+    ]
+  },
+  {
+    "postId": "BJCHgliHqYICrNyrGK3MZwgIT",
+    "createdTime": new Date(),
+    "difficulty": 1,
+    "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-6.jpg",
+    "likes": 0,
+    "viewer": 0,
+    "tag": [
+      "cat",
+      "cutie",
+      "floor",
+      "gesture"
+    ],
+    "phrase": [
+      "private parts",
+      "sleep on his back",
+      "decent",
+      "upstanding member of society"
+    ],
+    "olsentences": [
+      "My cat always covers his private parts when sleeping on his back",
+      "because he is a decent,upstanding member of society"
+    ],
+    "slsentences": [
+      "私の猫は仰向けに寝ているとき、いつも私的な部分を覆っています",
+      "だって彼はきちんとした、立派な社会人なので"
+    ]
+  },
+  {
+    "postId": "gibv0sP5RWOTkE3fUEwFqf7Y0",
+    "createdTime": new Date(),
+    "difficulty": 1,
+    "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-7.jpg",
+    "likes": 0,
+    "viewer": 0,
+    "tag": [
+      "cat",
+      "cats",
+      "vacation",
+      "floor"
+    ],
+    "phrase": [
+      "essentials",
+      "vacation"
+    ],
+    "olsentences": [
+      "only pack essentials when going on vacation"
+    ],
+    "slsentences": [
+      "休暇に行くときに必要なものだけを詰める"
+    ]
+  },
+  {
+    "postId": "qJoLxV3uFybi8SDkYGgVGkf4w",
+    "createdTime": new Date(),
+    "difficulty": 1,
+    "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-8.jpg",
+    "likes": 0,
+    "viewer": 0,
+    "tag": [
+      "animals",
+      "cat",
+      "monkey",
+      "capybara"
+    ],
+    "phrase": [
+      "chill with everyone"
+    ],
+    "olsentences": [
+      "when you're chill with everyone"
+    ],
+    "slsentences": [
+      "あなたがみんなと一緒に冷えているとき"
+    ]
+  },
+  {
+    "postId": "ktkOyMde8tuPyxVYqPQsfs1nl",
+    "createdTime": new Date(),
+    "difficulty": 1,
+    "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-9.jpg",
+    "likes": 0,
+    "viewer": 0,
+    "tag": [
+      "dog",
+      "friendly",
+      "white"
+    ],
+    "phrase": [
+      "give him a kiss ",
+      "leave "
+    ],
+    "olsentences": [
+      "She comes here everyday to give him a kiss and then leaves"
+    ],
+    "slsentences": [
+      "彼女は彼にキスをするために毎日ここに来て、それから去ります"
+    ]
+  }
+]
+)

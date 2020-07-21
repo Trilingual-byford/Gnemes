@@ -5,6 +5,7 @@ import com.malygos.gnemes.dto.MemePostCreationDto
 import com.malygos.gnemes.service.memePost.MemePostService
 import com.malygos.gnemes.service.storage.s3.AmazonS3ClientService
 import com.malygos.gnemes.utils.StringUtils
+import org.bson.types.ObjectId
 import org.jetbrains.annotations.NotNull
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -27,14 +28,14 @@ class PostController @Autowired constructor(val storage: AmazonS3ClientService, 
     @PostMapping(value = ["/"], consumes = ["multipart/form-data"])
     fun addMemePost(@RequestPart("meta") @Valid memePost: MemePostCreationDto, @RequestPart("file") @Valid @NotNull @NotBlank file: MultipartFile): ResponseEntity<MemePost> {
         val fileS3Dir = storage.uploadFileToS3Bucket(file, true)
-        val tmpEntityObj = MemePost(null,null, Date(), memePost.difficulty, fileS3Dir, 0, 0, memePost.tag, memePost.oLSentences, memePost.sLSentences, memePost.phrase)
+        val tmpEntityObj = MemePost(null, Date(), memePost.difficulty, fileS3Dir, 0, 0, memePost.tag, memePost.oLSentences, memePost.sLSentences, memePost.phrase)
         memePostService.addMemePost(tmpEntityObj)
         return ResponseEntity(tmpEntityObj, HttpStatus.OK)
     }
 
     @ResponseBody
     @DeleteMapping(value = ["/"])
-    fun deleteMemePost(@PathVariable id: Long): String {
+    fun deleteMemePost(@PathVariable id: String): String {
         memePostService.findMemePostById(id).ifPresent(Consumer {
             val fileName = StringUtils.getFileNameFromUrl(it.dir)
             storage.deleteFileFromS3Bucket(fileName)
@@ -48,5 +49,4 @@ class PostController @Autowired constructor(val storage: AmazonS3ClientService, 
     fun getMemePost(): List<MemePost> {
         return memePostService.findAllMemePost()
     }
-
 }

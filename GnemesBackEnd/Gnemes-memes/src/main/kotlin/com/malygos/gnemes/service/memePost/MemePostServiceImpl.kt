@@ -4,6 +4,7 @@ import com.malygos.gnemes.domain.MemePost
 import com.malygos.gnemes.exception.exception.MemePostUpdateNotFoundException
 import com.malygos.gnemes.repository.MemeRepository
 import com.malygos.gnemes.utils.StringUtils
+import org.bson.types.ObjectId
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -13,11 +14,10 @@ import java.util.*
 class MemePostServiceImpl @Autowired constructor(val memePostRepository: MemeRepository):MemePostService{
 
     override fun addMemePost(memePost: MemePost): MemePost {
-        memePost.postId=StringUtils.get25DigitalsRandomAlphanumeric()
         return memePostRepository.save(memePost)
     }
 
-    override fun deleteMemePost(id: Long) {
+    override fun deleteMemePost(id: String) {
         return memePostRepository.deleteById(id)
     }
 
@@ -28,13 +28,13 @@ class MemePostServiceImpl @Autowired constructor(val memePostRepository: MemeRep
         throw MemePostUpdateNotFoundException("Could not find original post,Failed")
     }
 
-    override fun findMemePostById(id: Long): Optional<MemePost> {
+    override fun findMemePostById(id: String): Optional<MemePost> {
         return memePostRepository.findById(id)
     }
 
     @Transactional
-    override fun findMemePostByPostId(postId: String): Optional<MemePost> {
-        return memePostRepository.findMemePostByPostId(postId)
+    override fun findMemePostByPostId(id: String): Optional<MemePost> {
+        return memePostRepository.findById(id)
     }
 
     override fun findAllMemePost():List<MemePost>{

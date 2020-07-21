@@ -11,7 +11,6 @@ object ChangeDataBaseTable {
         val allMemePost = memePostService.findAllMemePost()
 
         allMemePost.forEach {
-            it.postId=StringUtils.get25DigitalsRandomAlphanumeric()
             it.difficulty=1
             memePostService.updateMemePost(it)
         }

@@ -5,6 +5,7 @@ spring.servlet.multipart:
   max-file-size: 3280KB
   max-request-size: 3280KB
 spring:
+
   application:
     name: GnemesDev
 #  datasource:
