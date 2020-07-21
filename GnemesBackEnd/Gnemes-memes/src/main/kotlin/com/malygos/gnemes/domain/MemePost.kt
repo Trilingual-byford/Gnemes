@@ -1,9 +1,10 @@
 package com.malygos.gnemes.domain
 
 import com.fasterxml.jackson.annotation.JsonFormat
+import org.springframework.data.mongodb.core.mapping.Document
 import java.util.*
 import javax.persistence.*
-@Entity
+@Document(collection = "MemePost")
 data class MemePost(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,14 +26,14 @@ data class MemePost(
         var dir: String,
         var likes: Long,
         var viewer: Long,
-        @ElementCollection
+//        @ElementCollection
         var tag: List<String>?,
         //Original Language Sentences
-        @ElementCollection(fetch = FetchType.LAZY)
+//        @ElementCollection(fetch = FetchType.LAZY)
         var oLSentences: List<String>?,
         //Second Language Sentences
-        @ElementCollection(fetch = FetchType.LAZY)
+//        @ElementCollection(fetch = FetchType.LAZY)
         var sLSentences: List<String>?,
-        @ElementCollection(fetch = FetchType.LAZY)
+//        @ElementCollection(fetch = FetchType.LAZY)
         var phrase: List<String>?
 )

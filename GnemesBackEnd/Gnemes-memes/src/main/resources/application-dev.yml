@@ -7,13 +7,24 @@ spring.servlet.multipart:
 spring:
   application:
     name: GnemesDev
-  datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/genemes?serverTimezone=UTC
-    username: gnemes
-    password: password
-    initialization-mode: always
+#  datasource:
+
+  data:
+    mongodb:
+      database: gnemes
+      host: localhost
+      port: 27017
+      username: gnemes
+      password: 123456
+      uri: mongodb://gnemes:123456@localhost/
+
+    #    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/genemes?serverTimezone=UTC
+#    username: gnemes
+#    password: password
+#    initialization-mode: always
 server:
+  port: 9090
 
 #  jpa:
 #    hibernate.ddl-auto: none
@@ -32,12 +43,12 @@ server:
     #    console:
     #      enabled: on
     #      path: /h2
-  jpa:
-    generate-ddl: true
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-      use-new-id-generator-mappings: true
+#  jpa:
+#    generate-ddl: true
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#      use-new-id-generator-mappings: true
 # TODO SSL
 #  ssl:
 #    enabled: true

@@ -1,15 +1,13 @@
 package com.malygos.gnemes.domain
 
+import org.springframework.data.mongodb.core.mapping.Document
 import java.util.*
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
+
 import javax.persistence.Id
 
-@Entity
+@Document(collection = "MemeComment")
 data class MemeComment (
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
         var commentId: Long,
         var postId:Long,
         var userId:Long,

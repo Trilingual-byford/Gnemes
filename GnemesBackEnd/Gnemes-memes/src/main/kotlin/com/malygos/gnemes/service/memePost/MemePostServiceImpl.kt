@@ -14,7 +14,7 @@ class MemePostServiceImpl @Autowired constructor(val memePostRepository: MemeRep
 
     override fun addMemePost(memePost: MemePost): MemePost {
         memePost.postId=StringUtils.get25DigitalsRandomAlphanumeric()
-        return memePostRepository.saveAndFlush(memePost)
+        return memePostRepository.save(memePost)
     }
 
     override fun deleteMemePost(id: Long) {
@@ -23,7 +23,7 @@ class MemePostServiceImpl @Autowired constructor(val memePostRepository: MemeRep
 
     override fun updateMemePost(memePost: MemePost): MemePost {
         if(memePostRepository.findById(memePost.id!!).isEmpty){
-            return memePostRepository.saveAndFlush(memePost)
+            return memePostRepository.save(memePost)
         }
         throw MemePostUpdateNotFoundException("Could not find original post,Failed")
     }

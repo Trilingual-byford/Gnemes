@@ -62,9 +62,10 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.3.2")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+    implementation ("org.springframework.boot:spring-boot-starter-data-mongodb")
 
 //	runtimeOnly("com.h2database:h2")
-    runtimeOnly("mysql:mysql-connector-java")
+//    runtimeOnly("mysql:mysql-connector-java")
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 //	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
