@@ -1,5 +1,6 @@
 package com.malygos.gnemes
 
+import com.malygos.gnemes.domain.MemePost
 import com.malygos.gnemes.job.ChangeDataBaseTable
 import com.malygos.gnemes.service.memePost.MemePostService
 import com.malygos.gnemes.service.storage.s3.AmazonS3ClientService
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.mock.web.MockMultipartFile
 import org.springframework.transaction.annotation.Transactional
+import reactor.core.publisher.Mono
 import java.nio.file.Files
 import java.nio.file.Paths
 
@@ -56,10 +58,8 @@ class GnemesApplicationTests {
 		ChangeDataBaseTable.insertPostId(postService)
 	}
 	@Test
-	@Transactional
 	fun searchByPostIdTest(){
-		val findMemePostByPostId = postService.findMemePostByPostId("7FnsXbA1H5O60N084UVFLouCn")
-//		assert(!findMemePostByPostId.isEmpty)
+		postService.deleteMemePost("5f171cae765b1da3d5cf56")
 	}
 
 

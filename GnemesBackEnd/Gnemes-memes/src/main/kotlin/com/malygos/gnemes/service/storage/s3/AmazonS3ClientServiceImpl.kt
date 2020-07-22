@@ -9,6 +9,7 @@ import com.amazonaws.services.s3.model.DeleteObjectRequest
 import com.amazonaws.services.s3.model.PutObjectRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.http.codec.multipart.FilePart
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
@@ -52,6 +53,19 @@ class AmazonS3ClientServiceImpl @Autowired constructor( val awsCredentialsProvid
         tmpFile?.delete()
         return amazonS3.getUrl(bucketName, multipartFile.originalFilename).toString()
     }
+    override fun uploadFileToS3Bucket(multipartFile: FilePart, enablePublicReadAccess: Boolean):String {
+        val tmpFile = convertFilePartToFile(multipartFile)
+        val putObjectRequest = PutObjectRequest(bucketName,multipartFile.filename(), tmpFile)
+        putObjectRequest.withCannedAcl(CannedAccessControlList.PublicRead);
+        try {
+            amazonS3.putObject(putObjectRequest)
+        }catch (e:Exception){
+            return e.toString()
+        }
+        tmpFile?.delete()
+        return amazonS3.getUrl(bucketName, multipartFile.filename()).toString()
+    }
+
 
     @Throws(IOException::class)
     private fun convertMultiPartToFile(file: MultipartFile): File? {
@@ -59,6 +73,12 @@ class AmazonS3ClientServiceImpl @Autowired constructor( val awsCredentialsProvid
         val fos = FileOutputStream(convFile)
         fos.write(file.bytes)
         fos.close()
+        return convFile
+    }
+    @Throws(IOException::class)
+    private fun convertFilePartToFile(file: FilePart): File? {
+        val convFile = File("tmpFile")
+        file.transferTo(convFile).block()
         return convFile
     }
 

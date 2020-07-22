@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.http.codec.multipart.FilePart
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.multipart.MultipartFile
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import javax.validation.Valid
@@ -22,17 +22,24 @@ class PostController @Autowired constructor(val memePostService: MemePostService
     var logger: Logger = LoggerFactory.getLogger(PostController::class.java)
 
     @ResponseBody
-    @PostMapping(value = ["/"], consumes = ["multipart/form-data"])
-    fun addMemePost(@RequestPart("meta") @Valid memePost: MemePostCreationDto, @RequestPart("file") @Valid @NotNull @NotBlank file: MultipartFile): ResponseEntity<Mono<MemePost>> {
+    @PostMapping(value = ["/"],consumes = ["multipart/form-data"])
+    fun addMemePost(@RequestPart("meta") @Valid memePost: MemePostCreationDto, @RequestPart("file") @Valid @NotNull @NotBlank file: FilePart): ResponseEntity<Mono<MemePost>> {
         val addMemePost = memePostService.addMemePost(memePost, file)
+        return ResponseEntity(addMemePost, HttpStatus.OK)
+//        return "ResponseEntity(null, HttpStatus.OK)"
+    }
+
+    @ResponseBody
+    @PutMapping(value = ["/"])
+    fun updateMemePost(@RequestPart("meta") @Valid memePost: MemePost): ResponseEntity<Mono<MemePost>> {
+        val addMemePost = memePostService.updateMemePost(memePost)
         return ResponseEntity(addMemePost, HttpStatus.OK)
     }
 
     @ResponseBody
     @DeleteMapping(value = ["/{id}"])
-    fun deleteMemePost(@PathVariable id: String): String {
-        memePostService.deleteMemePost(id)
-        return "Id:$id Inu is gone by now"
+    fun deleteMemePost(@PathVariable id: String): Mono<String> {
+        return memePostService.deleteMemePost(id)
     }
 
     @ResponseBody
@@ -40,4 +47,5 @@ class PostController @Autowired constructor(val memePostService: MemePostService
     fun getMemePost(): Flux<MemePost> {
         return memePostService.findAllMemePost()
     }
+
 }
