@@ -16,3 +16,4 @@ https://codelabs.developers.google.com/codelabs/kotlin-android-training-view-mod
  - Spring Cloud uses client side discovery.
  - Client side service discovery
  - Server side service discovery
+### What is CORS - stand for Cross-Orgin Resource Sharing 
