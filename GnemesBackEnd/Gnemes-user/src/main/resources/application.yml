@@ -5,12 +5,19 @@ spring.servlet.multipart:
 spring:
   application:
     name: GnemesUser
-  datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/genemesUser?serverTimezone=UTC
-    username: gnemes
-    password: password
-    initialization-mode: always
+  data:
+    mongodb:
+      uri: mongodb://gnemes:123456@localhost/
+      database: gnemes
+
+
+
+#  datasource:
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/genemesUser?serverTimezone=UTC
+#    username: gnemes
+#    password: password
+#    initialization-mode: always
 server:
 
   #  jpa:

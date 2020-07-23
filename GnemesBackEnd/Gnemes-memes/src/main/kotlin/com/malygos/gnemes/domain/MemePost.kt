@@ -30,11 +30,9 @@ data class MemePost(
         var viewer: Long,
         var tag: List<String>?,
         //Original Language Sentences
-//        @Field("olsentences")
         @JsonRawValue
         var oLSentences: List<String>?,
         //Second Language Sentences
-//        @Field("slsentences")
         @JsonRawValue
         var sLSentences: List<String>?,
         var phrase: List<String>?
