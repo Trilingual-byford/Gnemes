@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.Field
 import java.util.*
-@Document(collection = "MemePost")
+@Document(collection = "GnemesPost")
 data class MemePost(
         @Id
         var id: String?,

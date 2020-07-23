@@ -55,7 +55,6 @@ dependencies {
     implementation("com.amazonaws:aws-java-sdk-s3")
 
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-//    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")

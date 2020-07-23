@@ -1,8 +1,8 @@
 package com.malygos.gnemesuser.repository
 
 import com.malygos.gnemesuser.domin.GnemesUser
-import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface GnemesUserRepository:JpaRepository<GnemesUser,Long> {}
+interface GnemesUserRepository: ReactiveMongoRepository<GnemesUser, Long>
