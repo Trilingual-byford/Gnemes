@@ -17,4 +17,4 @@ https://codelabs.developers.google.com/codelabs/kotlin-android-training-view-mod
  - Client side service discovery
  - Server side service discovery
 ### What is CORS - stand for Cross-Orgin Resource Sharing 
- - Its for Browser
+ - Access-Control-Allow-Origin
