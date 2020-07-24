@@ -1,3 +1,4 @@
+/*
 package com.malygos.gnemesuser.controller
 
 import org.springframework.web.bind.annotation.*
@@ -16,4 +17,4 @@ class GnemesUserAuthController {
         return "gogogo"
     }
 
-}
+}*/

@@ -5,6 +5,9 @@ import org.springframework.web.reactive.function.server.ServerResponse
 
 @Component
 class JWTUtil {
-    val secret:String="abcdefghi"
-    var response:ServerResponse
+    val secret:String="abcdefghijkmnYUIO+KLJHGHUIO*GYIUOLKJJHFYIUO$%&'()"
+    val expireTimeInMiliSec="30000"
+    fun generateToken(){
+
+    }
 }

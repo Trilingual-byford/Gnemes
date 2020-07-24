@@ -21,6 +21,7 @@ extra["springCloudVersion"] = "Hoxton.SR6"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
@@ -31,9 +32,12 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation ("org.springframework.boot:spring-boot-starter-data-mongodb")
-
-	runtimeOnly("mysql:mysql-connector-java")
-
+	implementation("io.jsonwebtoken:jjwt-api:0.11.2")
+	runtimeOnly ("io.jsonwebtoken:jjwt-impl:0.11.2")
+	runtimeOnly ("io.jsonwebtoken:jjwt-jackson:0.11.2")
+	// Uncomment the next line if you want to use RSASSA-PSS (PS256, PS384, PS512) algorithms:
+	//'org.bouncycastle:bcprov-jdk15on:1.60',
+	// or 'io.jsonwebtoken:jjwt-gson:0.11.2' for gson
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
