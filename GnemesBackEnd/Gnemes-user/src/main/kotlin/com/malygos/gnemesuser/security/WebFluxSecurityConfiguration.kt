@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpStatus
-import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity
 import org.springframework.security.config.web.server.ServerHttpSecurity
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService
@@ -39,7 +38,8 @@ class WebFluxSecurityConfiguration {
                 .and()
                 .exceptionHandling()
                 .authenticationEntryPoint{exchange, e -> Mono.fromRunnable{
-                    exchange.response.setStatusCode(HttpStatus.OK)
+                    println(e)
+                    exchange.response.setStatusCode(HttpStatus.UNAUTHORIZED)
                 } }
                 .accessDeniedHandler { exchange, denied -> Mono.fromRunnable {
                     exchange.response.setStatusCode(HttpStatus.FORBIDDEN)

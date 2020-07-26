@@ -56,7 +56,7 @@ class JWTUtil {
     }
     fun isTokenExpired(token:String):Boolean{
         val expirationDate = getExpirationDateFromToken(token)
-        return expirationDate.before(Date())
+        return expirationDate.after(Date())
     }
     fun isTokenValidated(token: String):Boolean{
         return isTokenExpired(token)

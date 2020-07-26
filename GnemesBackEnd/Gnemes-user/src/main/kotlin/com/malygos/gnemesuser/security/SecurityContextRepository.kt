@@ -27,23 +27,15 @@ class SecurityContextRepository:ServerSecurityContextRepository {
         val authHeader = exchange!!.request.headers.getFirst(HttpHeaders.AUTHORIZATION)
         var authToken=""
         if(authHeader!=null&&authHeader.startsWith(bearer)){
-            authHeader.replace(bearer,"")
+            authToken=authHeader.replace(bearer,"")
         }else{
             println("could not find bearer string,will ignore the header-------")
         }
-        if(authHeader.isNullOrEmpty()){
-            return Mono.empty()
+        return if(authHeader.isNullOrEmpty()){
+            Mono.empty()
         }else{
-            val auth = UsernamePasswordAuthenticationToken(authToken, authToken)
-            return this.authenticationManager.authenticate(auth).map { authentication: Authentication? -> SecurityContextImpl(authentication) }
+            val auth = UsernamePasswordAuthenticationToken(authToken, authToken, Collections.singletonList(SimpleGrantedAuthority("ROLE_USER")))
+            this.authenticationManager.authenticate(auth).map { authentication: Authentication? -> SecurityContextImpl(authentication) }
         }
-//        return Mono.
-//        justOrEmpty(authHeader)
-//                .log()
-//                .filter { it.startsWith(bearer) }
-//                .map { it.substring(bearer.length) }
-//                .flatMap { Mono.just(UsernamePasswordAuthenticationToken(it,it, Collections.singletonList(SimpleGrantedAuthority("ROLE_USER")))) }
-//                .flatMap { auth -> authenticationManager.authenticate(auth)
-//                        .map { itMap->SecurityContextImpl(itMap)}  }
     }
 }
