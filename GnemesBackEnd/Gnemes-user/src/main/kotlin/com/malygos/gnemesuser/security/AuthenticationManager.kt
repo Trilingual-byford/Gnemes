@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.ReactiveAuthenticationManager
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Component
-import org.springframework.stereotype.Repository
 import reactor.core.publisher.Mono
 @Component
 class AuthenticationManager:ReactiveAuthenticationManager {
@@ -24,6 +23,6 @@ class AuthenticationManager:ReactiveAuthenticationManager {
                     }else{
                         Mono.empty()
                     }
-                 }
+                 }.switchIfEmpty(Mono.empty())
     }
 }

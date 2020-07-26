@@ -14,6 +14,7 @@ class GnemesUserAuthRouter {
                 .GET("/api/v1/gnemes/auth",handler::findAllUser)
                 .POST("/api/v1/gnemes/auth",handler::registerUser)
                 .GET("/api/v1/gnemes/auth/{email}",handler::findUserByEmail)
+                .POST("/api/v1/gnemes/auth/token",handler::getToken)
                 .build()
     }
 
