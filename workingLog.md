@@ -44,3 +44,5 @@ Refactory project structure.
 Thinking about database Sharding.
 ### 2020 July 28
 Learning stuff about spring security.
+### 2020 July 29
+Busy working day.
