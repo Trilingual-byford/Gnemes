@@ -6,9 +6,13 @@ import com.malygos.gnemesuser.dto.UserRegisterDto
 import com.malygos.gnemesuser.security.jwt.JWTUtil
 import com.malygos.gnemesuser.services.GnemesUserService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.annotation.Bean
 import org.springframework.http.HttpStatus
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.stereotype.Component
+import org.springframework.web.reactive.function.server.RouterFunction
+import org.springframework.web.reactive.function.server.RouterFunctions
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
 import reactor.core.publisher.Mono
@@ -20,6 +24,7 @@ class GnemesUserAuthHandler {
     lateinit var gnemesUserService: GnemesUserService
     @Autowired
     lateinit var jwtUtil: JWTUtil
+    @PreAuthorize("hasAnyRole('ROLE_GOD')")
     fun findAllUser(serverRequest:ServerRequest): Mono<ServerResponse> {
         val gnemesUser = gnemesUserService.findAllGnemesUser()
         return ServerResponse.ok().body(gnemesUser,GnemesUser::class.java)
@@ -34,12 +39,14 @@ class GnemesUserAuthHandler {
         return serverRequest.bodyToMono(UserRegisterDto::class.java)
                 .log()
                 .flatMap {
-                    val listOf = setOf(SimpleGrantedAuthority("admin"))
-                    GnemesUser(listOf, it.email, it.password, it.userName).toMono()
+                    GnemesUser( it.email, it.password, it.userName).toMono()
                 }.flatMap { user->
                     gnemesUserService.registerGnemes(user)
                 }.flatMap {
                     return@flatMap ServerResponse.status(HttpStatus.CREATED).bodyValue(it)
+                }.onErrorResume {ex->
+                    val message = ex.localizedMessage
+                    ServerResponse.badRequest().bodyValue(message)
                 }.switchIfEmpty (ServerResponse.notFound().build())
     }
     fun getToken(serverRequest: ServerRequest):Mono<ServerResponse>{
@@ -58,5 +65,13 @@ class GnemesUserAuthHandler {
                 }
                 .switchIfEmpty(ServerResponse.notFound().build())
     }
-
+    @Bean
+    fun root(handler: GnemesUserAuthHandler): RouterFunction<ServerResponse> {
+        return RouterFunctions.route()
+                .GET("/api/v1/gnemes/auth",handler::findAllUser)
+                .POST("/api/v1/gnemes/auth",handler::registerUser)
+                .GET("/api/v1/gnemes/auth/{email}",handler::findUserByEmail)
+                .POST("/api/v1/gnemes/auth/token",handler::getToken)
+                .build()
+    }
 }

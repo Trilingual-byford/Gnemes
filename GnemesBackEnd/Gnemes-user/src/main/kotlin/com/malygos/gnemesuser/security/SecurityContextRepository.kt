@@ -34,7 +34,7 @@ class SecurityContextRepository:ServerSecurityContextRepository {
         return if(authHeader.isNullOrEmpty()){
             Mono.empty()
         }else{
-            val auth = UsernamePasswordAuthenticationToken(authToken, authToken, Collections.singletonList(SimpleGrantedAuthority("ROLE_USER")))
+            val auth = UsernamePasswordAuthenticationToken(authToken, authToken, Collections.singletonList(SimpleGrantedAuthority("ROLE_LOLI")))
             this.authenticationManager.authenticate(auth).map { authentication: Authentication? -> SecurityContextImpl(authentication) }
         }
     }
