@@ -41,4 +41,8 @@ Thinking about using SpringCloud
 ### 2020 July 14
 Refactory project structure.
 ### 2020 July 19
-Think about database Sharding.
+Thinking about database Sharding.
+### 2020 July 28
+Learning stuff about spring security.
+### 2020 July 29
+Busy working day.
