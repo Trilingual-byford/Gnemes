@@ -46,3 +46,5 @@ Thinking about database Sharding.
 Learning stuff about spring security.
 ### 2020 July 29
 Busy working day.
+### 2020 Aug2
+Auth2?
