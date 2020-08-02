@@ -3,14 +3,10 @@ package com.malygos.gnemesuser.security
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity
 import org.springframework.security.config.web.server.ServerHttpSecurity
-import org.springframework.security.core.userdetails.MapReactiveUserDetailsService
-import org.springframework.security.core.userdetails.User
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.server.SecurityWebFilterChain
@@ -25,16 +21,7 @@ class WebFluxSecurityConfiguration {
     lateinit var authenticationManager: AuthenticationManager
     @Autowired
     lateinit var securityContextRepository: SecurityContextRepository
-//    @Bean
-//    fun userDetailsService(passwordEncoder: PasswordEncoder):MapReactiveUserDetailsService{
-//        val userDetails=
-//                User.builder()
-//                .username("wj")
-//                .password(passwordEncoder.encode("password"))
-//                .roles("LOLI")
-//                .build()
-//        return MapReactiveUserDetailsService(userDetails)
-//    }
+
     @Bean
     fun passwordEncoder():PasswordEncoder{
         return BCryptPasswordEncoder(10)
@@ -43,11 +30,10 @@ class WebFluxSecurityConfiguration {
     fun filterChain(http:ServerHttpSecurity):SecurityWebFilterChain{
         return http
                 .authorizeExchange()
-                .pathMatchers("/api/v1/gnemes/auth/token").permitAll()
-                .pathMatchers(HttpMethod.POST,"/api/v1/gnemes/auth").permitAll()
-//                .pathMatchers(HttpMethod.GET,"/api/v1/gnemes/auth").hasRole("LOLI")
+//                .pathMatchers(HttpMethod.POST,"/api/v1/gnemes/auth/token").permitAll()
+//                .pathMatchers("/api/v1/gnemes/auth/token").permitAll()
                 .anyExchange()
-                .authenticated()
+                .permitAll()
                 .and()
                 .exceptionHandling()
                 .authenticationEntryPoint{exchange, e -> Mono.fromRunnable{
