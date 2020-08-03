@@ -6,13 +6,13 @@ import java.util.*
 
 
 @Document(collection = "MemeComment")
-data class MemeComment (
+data class MemeComment(
         @Id
         var commentId: Long,
-        var postId:Long,
-        var userId:Long,
-        var userName: String? =null,
-        var comment:String,
-        var postDate:Date
+        var postId: Long,
+        var userId: Long,
+        var userName: String? = null,
+        var comment: String,
+        var postDate: Date
 )
 

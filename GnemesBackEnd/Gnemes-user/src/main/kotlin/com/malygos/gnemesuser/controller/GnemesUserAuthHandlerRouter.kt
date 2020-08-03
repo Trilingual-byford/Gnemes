@@ -37,6 +37,7 @@ class GnemesUserAuthHandlerRouter {
                 .flatMap { user -> ServerResponse.ok().bodyValue(user) }
                 .switchIfEmpty(ServerResponse.notFound().build())
     }
+
     @PreAuthorize("permitAll()")
     fun registerUser(serverRequest: ServerRequest): Mono<ServerResponse> {
         return serverRequest.bodyToMono(UserRegisterDto::class.java)
@@ -52,6 +53,7 @@ class GnemesUserAuthHandlerRouter {
                     ServerResponse.badRequest().bodyValue(message)
                 }.switchIfEmpty(ServerResponse.notFound().build())
     }
+
     @PreAuthorize("permitAll()")
     fun getToken(serverRequest: ServerRequest): Mono<ServerResponse> {
         val userMono = serverRequest.bodyToMono(UserLoginDto::class.java)

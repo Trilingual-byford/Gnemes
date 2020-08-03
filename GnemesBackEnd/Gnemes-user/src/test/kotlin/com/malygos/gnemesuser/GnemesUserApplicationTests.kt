@@ -10,22 +10,24 @@ import org.springframework.test.web.reactive.server.WebTestClient
 @SpringBootTest
 class GnemesUserApplicationTests {
 
-	@Autowired
-	lateinit var gnemesUserService: GnemesUserService
-//	@Autowired
+    @Autowired
+    lateinit var gnemesUserService: GnemesUserService
+
+    //	@Autowired
 //	lateinit var webTestClient: WebTestClient
-	@Test
-	fun findAllUser(){
+    @Test
+    fun findAllUser() {
 //        Mockito.`when`(gnemesUserService.findAllGnemesUser())
 //                .thenReturn()
-		val findAllGnemesUser = gnemesUserService.findAllGnemesUser()
-		val blockLast = findAllGnemesUser.blockLast()
-		blockLast?.userName
+        val findAllGnemesUser = gnemesUserService.findAllGnemesUser()
+        val blockLast = findAllGnemesUser.blockLast()
+        blockLast?.userName
 //	GrantedAuthority
 
-	}
-	@Test
-	fun contextLoads() {
-	}
+    }
+
+    @Test
+    fun contextLoads() {
+    }
 
 }

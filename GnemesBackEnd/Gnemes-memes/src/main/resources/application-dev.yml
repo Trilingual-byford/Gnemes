@@ -1,4 +1,4 @@
-app.message : This is message from dev app configuration file.
+app.message: This is message from dev app configuration file.
 
 
 spring.servlet.multipart:
@@ -11,13 +11,13 @@ spring:
     mongodb:
       uri: mongodb://gnemes:123456@localhost/
       database: gnemes
-#      host: localhost
-#      port: 27017
-#      username: gnemes
-#      password: 123456
-#      authentication-database: admin
-#  datasource:
-#    driver-class-name: mon
+  #      host: localhost
+  #      port: 27017
+  #      username: gnemes
+  #      password: 123456
+  #      authentication-database: admin
+  #  datasource:
+  #    driver-class-name: mon
   #    driverClassName: com.mysql.jdbc.Driver
 #    url: jdbc:mysql://localhost:3306/genemes?serverTimezone=UTC
 #    username: gnemes
@@ -25,10 +25,10 @@ spring:
 #    initialization-mode: always
 server:
   port: 9090
-#  jpa:
-#    hibernate.ddl-auto: none
-#    generate-ddl: true
-#    show-sql: true
+    #  jpa:
+    #    hibernate.ddl-auto: none
+    #    generate-ddl: true
+    #    show-sql: true
     # database-platform=org: hibernate.dialect.H2Dialect
     # Enabling H2 Console
     # spring.h2.console.enabled=true
@@ -41,7 +41,7 @@ server:
     #  h2:
     #    console:
     #      enabled: on
-    #      path: /h2
+  #      path: /h2
 #  jpa:
 #    generate-ddl: true
 #    show-sql: true

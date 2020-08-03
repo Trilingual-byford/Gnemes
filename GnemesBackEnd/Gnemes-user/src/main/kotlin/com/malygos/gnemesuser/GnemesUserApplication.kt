@@ -11,5 +11,5 @@ import org.springframework.web.reactive.config.EnableWebFlux
 class GnemesUserApplication
 
 fun main(args: Array<String>) {
-	runApplication<GnemesUserApplication>(*args)
+    runApplication<GnemesUserApplication>(*args)
 }

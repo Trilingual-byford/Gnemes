@@ -8,7 +8,7 @@
 ##    hibernate.ddl-auto: update
 ##    generate-ddl: true
 ##    show-sql: true
-app.message : This is message from ative app configuration file.
+app.message: This is message from ative app configuration file.
 spring:
   application:
     name: Gnemes

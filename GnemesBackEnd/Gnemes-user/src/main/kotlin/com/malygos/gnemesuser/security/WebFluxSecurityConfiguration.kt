@@ -19,15 +19,17 @@ import reactor.core.publisher.Mono
 class WebFluxSecurityConfiguration {
     @Autowired
     lateinit var authenticationManager: AuthenticationManager
+
     @Autowired
     lateinit var securityContextRepository: SecurityContextRepository
 
     @Bean
-    fun passwordEncoder():PasswordEncoder{
+    fun passwordEncoder(): PasswordEncoder {
         return BCryptPasswordEncoder(10)
     }
+
     @Bean
-    fun filterChain(http:ServerHttpSecurity):SecurityWebFilterChain{
+    fun filterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
         return http
                 .authorizeExchange()
 //                .pathMatchers(HttpMethod.POST,"/api/v1/gnemes/auth/token").permitAll()
@@ -36,13 +38,17 @@ class WebFluxSecurityConfiguration {
                 .permitAll()
                 .and()
                 .exceptionHandling()
-                .authenticationEntryPoint{exchange, e -> Mono.fromRunnable{
-                    println(e)
-                    exchange.response.setStatusCode(HttpStatus.UNAUTHORIZED)
-                } }
-                .accessDeniedHandler { exchange, denied -> Mono.fromRunnable {
-                    exchange.response.setStatusCode(HttpStatus.FORBIDDEN)
-                } }
+                .authenticationEntryPoint { exchange, e ->
+                    Mono.fromRunnable {
+                        println(e)
+                        exchange.response.setStatusCode(HttpStatus.UNAUTHORIZED)
+                    }
+                }
+                .accessDeniedHandler { exchange, denied ->
+                    Mono.fromRunnable {
+                        exchange.response.setStatusCode(HttpStatus.FORBIDDEN)
+                    }
+                }
                 .and()
                 .httpBasic().disable()
                 .cors().disable()

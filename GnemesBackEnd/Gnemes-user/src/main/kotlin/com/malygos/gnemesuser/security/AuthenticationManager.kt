@@ -12,23 +12,24 @@ import reactor.core.publisher.Mono
 import java.util.*
 
 @Component
-class AuthenticationManager:ReactiveAuthenticationManager {
+class AuthenticationManager : ReactiveAuthenticationManager {
     @Autowired
     lateinit var jwtUtil: JWTUtil
+
     @Autowired
     lateinit var gnemesUserRepository: GnemesUserRepository
     override fun authenticate(authentication: Authentication): Mono<Authentication> {
         val token = authentication.credentials.toString()
 
-        val email = if(token.isEmpty()) "" else jwtUtil.getUserEmailFromToken(token)
+        val email = if (token.isEmpty()) "" else jwtUtil.getUserEmailFromToken(token)
         return gnemesUserRepository.findByEmail(email)
                 .flatMap { gnemesUser ->
-                    return@flatMap if(jwtUtil.isTokenValidated(token)){
+                    return@flatMap if (jwtUtil.isTokenValidated(token)) {
                         val auth = UsernamePasswordAuthenticationToken(authentication.principal, authentication.credentials, gnemesUser.authorities) as Authentication
                         Mono.just(auth)
-                    }else{
+                    } else {
                         Mono.empty()
                     }
-                 }.switchIfEmpty(Mono.empty())
+                }.switchIfEmpty(Mono.empty())
     }
 }

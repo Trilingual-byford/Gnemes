@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository
 import reactor.core.publisher.Mono
 
 @Repository
-interface GnemesUserRepository: ReactiveMongoRepository<GnemesUser, String>{
-    fun findByEmail(email:String): Mono<GnemesUser>
-    fun existsByEmail(email:String):Boolean
+interface GnemesUserRepository : ReactiveMongoRepository<GnemesUser, String> {
+    fun findByEmail(email: String): Mono<GnemesUser>
+    fun existsByEmail(email: String): Boolean
 }

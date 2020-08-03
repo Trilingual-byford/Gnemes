@@ -1,4 +1,4 @@
-app.message : This is message from dev app configuration file.
+app.message: This is message from dev app configuration file.
 spring.servlet.multipart:
   max-file-size: 3280KB
   max-request-size: 3280KB
@@ -37,12 +37,12 @@ server:
   #    console:
   #      enabled: on
   #      path: /h2
-#  jpa:
-#    generate-ddl: true
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: update
-#      use-new-id-generator-mappings: true
+  #  jpa:
+  #    generate-ddl: true
+  #    show-sql: true
+  #    hibernate:
+  #      ddl-auto: update
+  #      use-new-id-generator-mappings: true
   port: 9090
 # TODO SSL
 #  ssl:

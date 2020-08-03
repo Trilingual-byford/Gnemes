@@ -14,16 +14,16 @@ import org.springframework.data.mongodb.core.query.Collation
 @Configuration
 class MongoConfig {
     @Autowired
-    lateinit var mongoOperations:MongoOperations
+    lateinit var mongoOperations: MongoOperations
 
     @EventListener(ApplicationReadyEvent::class)
     fun initMongo() {
         mongoOperations
                 .indexOps(GnemesUser::class.java)
-                .ensureIndex(   Index()
-                                .on("email", Sort.Direction.ASC)
-                                .unique()
-                                .collation(Collation.of("en").strength(2)))
+                .ensureIndex(Index()
+                        .on("email", Sort.Direction.ASC)
+                        .unique()
+                        .collation(Collation.of("en").strength(2)))
     }
 
 }

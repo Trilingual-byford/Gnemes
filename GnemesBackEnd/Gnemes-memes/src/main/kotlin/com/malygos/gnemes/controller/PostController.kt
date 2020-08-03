@@ -22,7 +22,7 @@ class PostController @Autowired constructor(val memePostService: MemePostService
     var logger: Logger = LoggerFactory.getLogger(PostController::class.java)
 
     @ResponseBody
-    @PostMapping(value = ["/"],consumes = ["multipart/form-data"])
+    @PostMapping(value = ["/"], consumes = ["multipart/form-data"])
     fun addMemePost(@RequestPart("meta") @Valid memePost: MemePostCreationDto, @RequestPart("file") @Valid @NotNull @NotBlank file: FilePart): ResponseEntity<Mono<MemePost>> {
         val addMemePost = memePostService.addMemePost(memePost, file)
         return ResponseEntity(addMemePost, HttpStatus.OK)

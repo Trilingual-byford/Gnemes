@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository
 
 
 @Repository(value = "memePostRepository")
-interface MemeRepository: ReactiveMongoRepository<MemePost, String> {
+interface MemeRepository : ReactiveMongoRepository<MemePost, String> {
 }

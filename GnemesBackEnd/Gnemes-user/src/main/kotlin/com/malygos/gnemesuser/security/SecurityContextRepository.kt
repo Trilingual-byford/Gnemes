@@ -15,7 +15,7 @@ import java.lang.UnsupportedOperationException
 import java.util.*
 
 @Component
-class SecurityContextRepository:ServerSecurityContextRepository {
+class SecurityContextRepository : ServerSecurityContextRepository {
     @Autowired
     lateinit var authenticationManager: AuthenticationManager
     override fun save(exchange: ServerWebExchange?, context: SecurityContext?): Mono<Void> {
@@ -23,17 +23,17 @@ class SecurityContextRepository:ServerSecurityContextRepository {
     }
 
     override fun load(exchange: ServerWebExchange?): Mono<SecurityContext> {
-        val bearer="Bearer "
+        val bearer = "Bearer "
         val authHeader = exchange!!.request.headers.getFirst(HttpHeaders.AUTHORIZATION)
-        var authToken=""
-        if(authHeader!=null&&authHeader.startsWith(bearer)){
-            authToken=authHeader.replace(bearer,"")
-        }else{
+        var authToken = ""
+        if (authHeader != null && authHeader.startsWith(bearer)) {
+            authToken = authHeader.replace(bearer, "")
+        } else {
             println("could not find bearer string,will ignore the header-------")
         }
-        return if(authHeader.isNullOrEmpty()){
+        return if (authHeader.isNullOrEmpty()) {
             Mono.empty()
-        }else{
+        } else {
             val auth = UsernamePasswordAuthenticationToken(authToken, authToken, Collections.singletonList(SimpleGrantedAuthority("ROLE_LOLI")))
             this.authenticationManager.authenticate(auth).map { authentication: Authentication? -> SecurityContextImpl(authentication) }
         }

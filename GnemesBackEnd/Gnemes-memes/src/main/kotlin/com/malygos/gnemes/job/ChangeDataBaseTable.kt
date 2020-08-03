@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 @Component
 object ChangeDataBaseTable {
 
-    fun insertPostId(memePostService: MemePostService){
+    fun insertPostId(memePostService: MemePostService) {
         val allMemePost = memePostService.findAllMemePost()
 
 //        allMemePost.forEach {

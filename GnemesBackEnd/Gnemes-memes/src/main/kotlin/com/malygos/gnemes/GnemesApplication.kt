@@ -10,5 +10,5 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 class GnemesApplication
 
 fun main(args: Array<String>) {
-	runApplication<GnemesApplication>(*args)
+    runApplication<GnemesApplication>(*args)
 }

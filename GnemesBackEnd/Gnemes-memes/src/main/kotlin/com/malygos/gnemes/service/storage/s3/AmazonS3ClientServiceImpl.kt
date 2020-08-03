@@ -20,7 +20,7 @@ import javax.annotation.PostConstruct
 
 
 @Component
-class AmazonS3ClientServiceImpl @Autowired constructor( val awsCredentialsProvider: AWSCredentialsProvider): AmazonS3ClientService {
+class AmazonS3ClientServiceImpl @Autowired constructor(val awsCredentialsProvider: AWSCredentialsProvider) : AmazonS3ClientService {
 
     @Value("\${amazonProperties.endpointUrl}")
     private val endpointUrl: String? = null
@@ -31,35 +31,36 @@ class AmazonS3ClientServiceImpl @Autowired constructor( val awsCredentialsProvid
     @Value("\${amazonProperties.region}")
     private val awsRegion: String? = null
 
-    private lateinit var amazonS3:AmazonS3
+    private lateinit var amazonS3: AmazonS3
 
     @PostConstruct
-    fun initAmazonService(){
-        amazonS3=AmazonS3ClientBuilder.standard()
+    fun initAmazonService() {
+        amazonS3 = AmazonS3ClientBuilder.standard()
                 .withCredentials(awsCredentialsProvider)
                 .withRegion(awsRegion)
                 .build()
     }
 
-    override fun uploadFileToS3Bucket(multipartFile: MultipartFile, enablePublicReadAccess: Boolean):String {
+    override fun uploadFileToS3Bucket(multipartFile: MultipartFile, enablePublicReadAccess: Boolean): String {
         val tmpFile = convertMultiPartToFile(multipartFile)
-        val putObjectRequest = PutObjectRequest(bucketName,multipartFile.originalFilename, tmpFile)
+        val putObjectRequest = PutObjectRequest(bucketName, multipartFile.originalFilename, tmpFile)
         putObjectRequest.withCannedAcl(CannedAccessControlList.PublicRead);
         try {
             amazonS3.putObject(putObjectRequest)
-        }catch (e:Exception){
+        } catch (e: Exception) {
             return e.toString()
         }
         tmpFile?.delete()
         return amazonS3.getUrl(bucketName, multipartFile.originalFilename).toString()
     }
-    override fun uploadFileToS3Bucket(multipartFile: FilePart, enablePublicReadAccess: Boolean):String {
+
+    override fun uploadFileToS3Bucket(multipartFile: FilePart, enablePublicReadAccess: Boolean): String {
         val tmpFile = convertFilePartToFile(multipartFile)
-        val putObjectRequest = PutObjectRequest(bucketName,multipartFile.filename(), tmpFile)
+        val putObjectRequest = PutObjectRequest(bucketName, multipartFile.filename(), tmpFile)
         putObjectRequest.withCannedAcl(CannedAccessControlList.PublicRead);
         try {
             amazonS3.putObject(putObjectRequest)
-        }catch (e:Exception){
+        } catch (e: Exception) {
             return e.toString()
         }
         tmpFile?.delete()
@@ -75,6 +76,7 @@ class AmazonS3ClientServiceImpl @Autowired constructor( val awsCredentialsProvid
         fos.close()
         return convFile
     }
+
     @Throws(IOException::class)
     private fun convertFilePartToFile(file: FilePart): File? {
         val convFile = File("tmpFile")

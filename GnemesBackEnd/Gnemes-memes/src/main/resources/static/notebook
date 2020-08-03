@@ -2,7 +2,8 @@ db.MemePost.insert(
 [
   {
     "postId": "7FnsXbA1H5O60N084UVFLouCn",
-    "createdTime": new Date(),
+    "createdTime": new
+    Date(),
     "difficulty": 1,
     "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/animal-meme-test.jpeg",
     "likes": 0,
@@ -27,7 +28,8 @@ db.MemePost.insert(
   },
   {
     "postId": "okBIIk2dkNNImVIr55iUmn4Qg",
-    "createdTime": new Date(),
+    "createdTime": new
+    Date(),
     "difficulty": 1,
     "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/animal-meme-test2.jpg",
     "likes": 0,
@@ -49,7 +51,8 @@ db.MemePost.insert(
   },
   {
     "postId": "Edn8y2DYQfk123vyY4araGW4h",
-    "createdTime": new Date(),
+    "createdTime": new
+    Date(),
     "difficulty": 1,
     "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-3.jpg",
     "likes": 0,
@@ -70,7 +73,8 @@ db.MemePost.insert(
   },
   {
     "postId": "tuO6ta1fjHagNcg7QUsVQO8X7",
-    "createdTime": new Date(),
+    "createdTime": new
+    Date(),
     "difficulty": 1,
     "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-4.jpg",
     "likes": 0,
@@ -91,7 +95,8 @@ db.MemePost.insert(
   },
   {
     "postId": "PfbvcSh8XqkD8jKkJ2jyLQIsw",
-    "createdTime": new Date(),
+    "createdTime": new
+    Date(),
     "difficulty": 1,
     "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-5.jpg",
     "likes": 0,
@@ -112,7 +117,8 @@ db.MemePost.insert(
   },
   {
     "postId": "BJCHgliHqYICrNyrGK3MZwgIT",
-    "createdTime": new Date(),
+    "createdTime": new
+    Date(),
     "difficulty": 1,
     "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-6.jpg",
     "likes": 0,
@@ -140,7 +146,8 @@ db.MemePost.insert(
   },
   {
     "postId": "gibv0sP5RWOTkE3fUEwFqf7Y0",
-    "createdTime": new Date(),
+    "createdTime": new
+    Date(),
     "difficulty": 1,
     "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-7.jpg",
     "likes": 0,
@@ -164,7 +171,8 @@ db.MemePost.insert(
   },
   {
     "postId": "qJoLxV3uFybi8SDkYGgVGkf4w",
-    "createdTime": new Date(),
+    "createdTime": new
+    Date(),
     "difficulty": 1,
     "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-8.jpg",
     "likes": 0,
@@ -187,7 +195,8 @@ db.MemePost.insert(
   },
   {
     "postId": "ktkOyMde8tuPyxVYqPQsfs1nl",
-    "createdTime": new Date(),
+    "createdTime": new
+    Date(),
     "difficulty": 1,
     "dir": "https://genemes-pic.s3.ap-northeast-1.amazonaws.com/funny-wholesome-animal-memes-9.jpg",
     "likes": 0,

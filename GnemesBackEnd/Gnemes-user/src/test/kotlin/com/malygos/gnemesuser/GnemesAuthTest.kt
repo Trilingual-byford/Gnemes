@@ -14,10 +14,12 @@ import org.springframework.test.web.reactive.server.WebTestClient
 class GnemesAuthTest {
     @Autowired
     lateinit var gnemesUserService: GnemesUserService
+
     @Autowired
-    lateinit var webTestClient:WebTestClient
+    lateinit var webTestClient: WebTestClient
+
     @Test
-    fun findAllUser(){
+    fun findAllUser() {
 //        Mockito.`when`(gnemesUserService.findAllGnemesUser())
 //                .thenReturn()
         val findAllGnemesUser = gnemesUserService.findAllGnemesUser()

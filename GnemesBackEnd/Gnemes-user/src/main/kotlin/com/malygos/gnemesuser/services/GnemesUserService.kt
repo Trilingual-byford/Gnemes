@@ -8,16 +8,18 @@ import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @Service
-class GnemesUserService()  {
+class GnemesUserService() {
     @Autowired
     lateinit var gnemesUserRepository: GnemesUserRepository
     fun registerGnemes(gnemesUser: GnemesUser): Mono<GnemesUser> {
-        return  gnemesUserRepository.insert(gnemesUser)
+        return gnemesUserRepository.insert(gnemesUser)
     }
+
     fun findAllGnemesUser(): Flux<GnemesUser> {
-        return  gnemesUserRepository.findAll()
+        return gnemesUserRepository.findAll()
     }
-    fun findGnemesUserByEmail(email:String):Mono<GnemesUser>{
+
+    fun findGnemesUserByEmail(email: String): Mono<GnemesUser> {
         return gnemesUserRepository.findByEmail(email)
     }
 

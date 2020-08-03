@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile
 @Service
 class FileSystemStorageService : StorageService {
     lateinit var rootLocation: Path
+
     @Autowired
     fun fileSystemStorageService(properties: StorageProperties) {
         this.rootLocation = Paths.get(properties.location)
