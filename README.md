@@ -10,5 +10,4 @@ This is going to be an application of spreading and help people understand inter
 ### What is Dto
 #### Data transfer Object that carries data between process.
 #### branch master and branch navi of using navigation view.
-#### please keep doing🙈
 
