@@ -16,10 +16,11 @@ configurations {
         extendsFrom(configurations.annotationProcessor.get())
     }
 }
-
 repositories {
     mavenCentral()
 }
+
+
 
 extra["springCloudVersion"] = "Hoxton.SR6"
 
@@ -39,7 +40,6 @@ dependencyManagement {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
     }
 }
-
 tasks.withType<Test> {
     useJUnitPlatform()
 }

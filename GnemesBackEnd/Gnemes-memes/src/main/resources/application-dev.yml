@@ -39,8 +39,8 @@ server:
     #  spring.jpa.hibernate.ddl-auto=none
     #  spring.datasource.continue-on-error=true
     #  h2:
-    #    console:
-    #      enabled: on
+  #    console:
+  #      enabled: on
   #      path: /h2
 #  jpa:
 #    generate-ddl: true
