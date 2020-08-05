@@ -50,4 +50,6 @@ Busy working day.
 OAuth2?
 ### 2020 Aug3
 Hash the password.
+### 2020 Aug5
+Implementing Adding to collection and saving history feature.
 
