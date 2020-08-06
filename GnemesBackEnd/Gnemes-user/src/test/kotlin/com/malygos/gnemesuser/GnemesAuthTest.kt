@@ -9,14 +9,13 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.web.reactive.server.WebTestClient
 
-@WebFluxTest
 @SpringBootTest
 class GnemesAuthTest {
     @Autowired
     lateinit var gnemesUserService: GnemesUserService
 
-    @Autowired
-    lateinit var webTestClient: WebTestClient
+//    @Autowired
+//    lateinit var webTestClient: WebTestClient
 
     @Test
     fun findAllUser() {
@@ -27,4 +26,5 @@ class GnemesAuthTest {
         blockLast?.userName
 
     }
+
 }

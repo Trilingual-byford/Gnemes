@@ -29,5 +29,9 @@ class GnemesUserApplicationTests {
     @Test
     fun contextLoads() {
     }
-
+    @Test
+    fun saveCollection(){
+        val addCollection = gnemesUserService.addCollection("niconicocbf@gmail.com", "5f171cae765b1da3d508cf59")
+        println(addCollection)
+    }
 }

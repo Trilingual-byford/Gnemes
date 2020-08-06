@@ -10,10 +10,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.http.HttpStatus
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Component
-import org.springframework.web.reactive.function.server.RouterFunction
-import org.springframework.web.reactive.function.server.RouterFunctions
-import org.springframework.web.reactive.function.server.ServerRequest
-import org.springframework.web.reactive.function.server.ServerResponse
+import org.springframework.web.reactive.function.server.*
 import reactor.core.publisher.Mono
 import reactor.kotlin.core.publisher.toMono
 
@@ -72,10 +69,23 @@ class GnemesUserAuthHandlerRouter {
                 .switchIfEmpty(ServerResponse.notFound().build())
     }
 
+    //    @PreAuthorize("hasAnyRole('ROLE_GOD','ROLE_USER')")
 //    fun addCollection(serverRequest: ServerRequest): Mono<ServerResponse> {
-//
-//
-//    }
+//        val id = serverRequest.pathVariable("gnemesId")
+//        return Mono.just(id).flatMap {
+////            gnemesUserService
+//        }
+    @PreAuthorize("permitAll()")
+    fun addCollection(serverRequest: ServerRequest): Mono<ServerResponse> {
+        val PATH_VARIABLE_EMAIL = "email"
+        val email = serverRequest.headers().header(PATH_VARIABLE_EMAIL).first()
+        val gnemesId = serverRequest.headers().header("gnemes-id").first()
+        return if (gnemesUserService.addCollection(email, gnemesId)) {
+            ServerResponse.ok().bodyValue("Save collection successfully")
+        } else {
+            ServerResponse.badRequest().bodyValue("Save collection Fail")
+        }
+    }
 
     @Bean
     fun root(handler: GnemesUserAuthHandlerRouter): RouterFunction<ServerResponse> {
@@ -84,6 +94,7 @@ class GnemesUserAuthHandlerRouter {
                 .POST("/api/v1/gnemes/auth", handler::registerUser)
                 .GET("/api/v1/gnemes/administration/{email}", handler::findUserByEmail)
                 .GET("/api/v1/gnemes/administration", handler::findAllUser)
+                .PATCH("/api/v1/gnemes/collection", handler::addCollection)
                 .build()
     }
 }
