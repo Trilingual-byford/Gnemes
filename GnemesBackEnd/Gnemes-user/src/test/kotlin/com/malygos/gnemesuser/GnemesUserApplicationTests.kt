@@ -4,8 +4,6 @@ import com.malygos.gnemesuser.services.GnemesUserService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.security.core.GrantedAuthority
-import org.springframework.test.web.reactive.server.WebTestClient
 
 @SpringBootTest
 class GnemesUserApplicationTests {
@@ -31,7 +29,7 @@ class GnemesUserApplicationTests {
     }
     @Test
     fun saveCollection(){
-        val addCollection = gnemesUserService.addCollection("niconicocbf@gmail.com", "5f171cae765b1da3d508cf59")
+        val addCollection = gnemesUserService.likeCollection("niconicocbf@gmail.com", "5f171cae765b1da3d508cf59")
         println(addCollection)
     }
 }

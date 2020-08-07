@@ -9,9 +9,17 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class MongoDao {
-    fun insertLikedCollection(mongoTemplate: MongoOperations, likedCollectionId:String, userEmail:String):Boolean{
+
+    fun likeCollection(mongoTemplate: MongoOperations, likedCollectionId:String, userEmail:String):Boolean{
         val update = Update()
         update.addToSet("likedCollection", likedCollectionId)
+        val criteria = Criteria.where("email").`is`(userEmail)
+        val updateFirst = mongoTemplate.updateFirst(Query.query(criteria), update, "GnemesUser")
+        return updateFirst.modifiedCount>0
+    }
+    fun saveCollection(mongoTemplate: MongoOperations, savedCollection:String, userEmail:String):Boolean{
+        val update = Update()
+        update.addToSet("savedCollection", savedCollection)
         val criteria = Criteria.where("email").`is`(userEmail)
         val updateFirst = mongoTemplate.updateFirst(Query.query(criteria), update, "GnemesUser")
         return updateFirst.modifiedCount>0

@@ -76,11 +76,22 @@ class GnemesUserAuthHandlerRouter {
 ////            gnemesUserService
 //        }
     @PreAuthorize("permitAll()")
-    fun addCollection(serverRequest: ServerRequest): Mono<ServerResponse> {
+    fun likeCollection(serverRequest: ServerRequest): Mono<ServerResponse> {
         val PATH_VARIABLE_EMAIL = "email"
         val email = serverRequest.headers().header(PATH_VARIABLE_EMAIL).first()
         val gnemesId = serverRequest.headers().header("gnemes-id").first()
-        return if (gnemesUserService.addCollection(email, gnemesId)) {
+        return if (gnemesUserService.likeCollection(email, gnemesId)) {
+            ServerResponse.ok().bodyValue("Save collection successfully")
+        } else {
+            ServerResponse.badRequest().bodyValue("Save collection Fail")
+        }
+    }
+    @PreAuthorize("permitAll()")
+    fun saveCollection(serverRequest: ServerRequest): Mono<ServerResponse> {
+        val PATH_VARIABLE_EMAIL = "email"
+        val email = serverRequest.headers().header(PATH_VARIABLE_EMAIL).first()
+        val gnemesId = serverRequest.headers().header("gnemes-id").first()
+        return if (gnemesUserService.saveCollection(email, gnemesId)) {
             ServerResponse.ok().bodyValue("Save collection successfully")
         } else {
             ServerResponse.badRequest().bodyValue("Save collection Fail")
@@ -94,7 +105,8 @@ class GnemesUserAuthHandlerRouter {
                 .POST("/api/v1/gnemes/auth", handler::registerUser)
                 .GET("/api/v1/gnemes/administration/{email}", handler::findUserByEmail)
                 .GET("/api/v1/gnemes/administration", handler::findAllUser)
-                .PATCH("/api/v1/gnemes/collection", handler::addCollection)
+                .PATCH("/api/v1/gnemes/collection/like", handler::likeCollection)
+                .PATCH("/api/v1/gnemes/collection/save", handler::saveCollection)
                 .build()
     }
 }

@@ -29,8 +29,11 @@ class GnemesUserService() {
     fun findGnemesUserByEmail(email: String): Mono<GnemesUser> {
         return gnemesUserRepository.findByEmail(email)
     }
-    fun addCollection(email:String,gnemesPostId:String):Boolean{
-        return mongoDao.insertLikedCollection(mongoOperations,gnemesPostId,email)
+    fun likeCollection(email:String, gnemesPostId:String):Boolean{
+        return mongoDao.likeCollection(mongoOperations,gnemesPostId,email)
+    }
+    fun saveCollection(email:String, gnemesPostId:String):Boolean{
+        return mongoDao.saveCollection(mongoOperations,gnemesPostId,email)
     }
 
 }

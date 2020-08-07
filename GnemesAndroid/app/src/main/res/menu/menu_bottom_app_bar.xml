@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/nav_item_one"
-        android:title="@string/str_featured"
+        android:title="@string/str_lucky"
         android:icon="@drawable/ic_featured"
         app:showAsAction="always"
         android:actionLayout="@layout/bottom_feature_menu"
