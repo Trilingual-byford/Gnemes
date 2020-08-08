@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import GnemesImportPage from "./GnemesImportPage";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <GnemesImportPage />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,8 +1,6 @@
 package com.malygos.gnemes.domain
 
 import com.fasterxml.jackson.annotation.JsonFormat
-import com.fasterxml.jackson.annotation.JsonGetter
-import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonRawValue
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
