@@ -57,4 +57,4 @@ Watched season 2 episo2 of hanzawa_naoki
 ### 2020 Aug11
 Build frontEnd for data insert
 ### 2020 Aug11
-50%
+!50%
