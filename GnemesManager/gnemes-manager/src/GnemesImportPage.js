@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 import './GnemesImportPage.css';
-import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import {makeStyles} from '@material-ui/core/styles';
-import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
         margin: `${theme.spacing(1)}px auto`,
         padding: theme.spacing(2),
     },
+    sentenceItem:{
+        margin: `${theme.spacing(1)}px auto`,
+        padding: theme.spacing(2),
+    },
     tagItem:{
         maxWidth: "0 auto",
         margin: `${theme.spacing(1)}px auto`,
@@ -43,11 +46,23 @@ const useStyles = makeStyles((theme) => ({
     },
     avatarDesign:{
         marginTop:10
+    },
+    plusMark:{
+        marginTop:10
+    },
+    plusMarkLong:{
+        marginTop:10,
+        width:"100%"
     }
 }));
 
 function GnemesImportPage() {
-    let [] = useState();
+    let [values,setValues] = useState({tagOne:'',tagTwo:'',tagThree:'',olSentences:['',''],slSentences:['','']});
+
+    const handleInputChange = e => {
+        const {name, value} = e.target
+        setValues({...values, [name]: value})
+    }
 
     const classes = useStyles();
     return (
@@ -71,26 +86,68 @@ function GnemesImportPage() {
                             <Avatar className={classes.avatarDesign}>T</Avatar>
                         </Grid>
                         <Grid item xs zeroMinWidth>
-                            <TextField className={classes.tagTextFiled}
+                            <TextField
+                                name='tagOne'
+                                value={values.tagOne}
+                                onChange={handleInputChange}
+                                className={classes.tagTextFiled}
                                        label="Tag"
                                        id="outlined-basic" variant="outlined"/>
                         </Grid>
                         <Grid item xs zeroMinWidth>
                             <TextField className={classes.tagTextFiled}
+                                       name='tagTwo'
+                                       value={values.tagTwo}
+                                       onChange={handleInputChange}
                                        label="Tag"
                                        id="outlined-basic" variant="outlined"/>
                         </Grid>
                         <Grid item xs zeroMinWidth>
                             <TextField className={classes.tagTextFiled}
+                                       name='tagThree'
+                                       value={values.tagThree}
+                                       onChange={handleInputChange}
                                        label="Tag"
                                        id="outlined-basic" variant="outlined"/>
                         </Grid>
                         <Grid item xs zeroMinWidth>
-                            <Button variant="contained" color="secondary">
+                            <Button className={classes.plusMark} variant="contained" color="secondary">
                                 +
                             </Button>
                         </Grid>
-
+                    </Grid>
+                </Paper>
+                <Paper className={classes.sentenceItem}>
+                    {values.olSentences.map((value,index)=>{
+                        return (
+                            <Box>
+                                <Grid container wrap="nowrap" spacing={2}>
+                                    <Grid item>
+                                        <Avatar className={classes.avatarDesign}>S</Avatar>
+                                    </Grid>
+                                    <Grid item xs zeroMinWidth>
+                                        <TextField className={classes.difficultyTextFiled}
+                                                   label="OlSentence"
+                                                   id="outlined-basic" variant="outlined"/>
+                                    </Grid>
+                                </Grid>
+                                <Grid container wrap="nowrap" spacing={2}>
+                                    <Grid item>
+                                        <Avatar className={classes.avatarDesign}>S</Avatar>
+                                    </Grid>
+                                    <Grid item xs zeroMinWidth>
+                                        <TextField className={classes.difficultyTextFiled}
+                                                   label="SlSentence"
+                                                   id="outlined-basic" variant="outlined"/>
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                        )
+                    })}
+                    <Grid item xs zeroMinWidth>
+                        <Button className={classes.plusMarkLong} variant="contained" color="secondary">
+                            +
+                        </Button>
                     </Grid>
                 </Paper>
             </Container>
