@@ -8,6 +8,9 @@ import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+import ImageUploader from 'react-images-upload';
+import EditIcon from '@material-ui/icons/Edit';
+import Fab from "@material-ui/core/Fab";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,58 +28,146 @@ const useStyles = makeStyles((theme) => ({
 
     },
     difficultyTextFiled: {
-        width:"100%"
+        width: "100%"
+    },
+    fab: {
+        position: 'absolute',
+        top: theme.spacing(2),
+        right: theme.spacing(20),
     },
     tagTextFiled: {
-        width:"100%"
+        width: "100%"
+    },
+    media: {
+        height: 300,
     },
     item: {
-        maxWidth: 400,
+        maxWidth: "100%",
+        margin: `${theme.spacing(1)}px auto`,
+        padding: theme.spacing(2),
+        // background:"red"
+    },
+    itemWithLeftPadding:{
+        paddingLeft: theme.spacing(2),
+    },
+    itemInner: {
+        maxWidth: "50%",
+        // margin: `${theme.spacing(1)}px auto`,
+        padding: theme.spacing(2),
+        // background:"yellow"
+    },
+    sentenceItem: {
         margin: `${theme.spacing(1)}px auto`,
         padding: theme.spacing(2),
     },
-    sentenceItem:{
+    phraseItem: {
         margin: `${theme.spacing(1)}px auto`,
         padding: theme.spacing(2),
     },
-    tagItem:{
+    tagItem: {
         maxWidth: "0 auto",
         margin: `${theme.spacing(1)}px auto`,
         padding: theme.spacing(2),
     },
-    avatarDesign:{
-        marginTop:10
+    avatarDesign: {
+        marginTop: 10
     },
-    plusMark:{
-        marginTop:10
+    plusMark: {
+        marginTop: 10
     },
-    plusMarkLong:{
-        marginTop:10,
-        width:"100%"
+    plusMarkLong: {
+        marginTop: 10,
+        width: "100%"
     }
 }));
 
 function GnemesImportPage() {
-    let [values,setValues] = useState({tagOne:'',tagTwo:'',tagThree:'',olSentences:['',''],slSentences:['','']});
+    let [values, setValues] = useState({pic:'',tags: [''], olSentences: [''], slSentences: [''],phrases:['']});
 
-    const handleInputChange = e => {
+    const handleTagInputChange = e => {
         const {name, value} = e.target
-        setValues({...values, [name]: value})
+        let array = [...values.tags]
+        array[name] = value
+        setValues({...values, tags: array})
     }
+    const handleSentenceInputChange = e => {
+        const {name, value, label} = e.target
+        console.log("name", name)
+        console.log("value", value)
+        console.log("target", e.target)
+        if (name.startsWith("Ol")) {
+            console.log("value", "ol")
+            let newArr = [...values.olSentences]
+            newArr[name.substr(2)] = value
+            setValues({...values, olSentences: newArr})
+        } else if (name.startsWith("Sl")) {
+            console.log("value", "sl")
+            let newArr = [...values.slSentences]
+            newArr[name.substr(2)] = value
+            setValues({...values, slSentences: newArr})
+        }
+    }
+    const handleLongPlusButtonClick = e => {
+        let newOlArr = [...values.olSentences]
+        newOlArr.push("")
+        let newSlArr = [...values.slSentences]
+        newSlArr.push("")
+        setValues({...values, olSentences: newOlArr, slSentences: newSlArr})
+    }
+    const handleTagsPlusButtonClick = e => {
+        let array = [...values.tags]
+        array.push('')
+        setValues({...values, tags: array})
+    }
+    const handlePhrasePlusButtonClick = e => {
+        let array = [...values.phrases]
+        array.push('')
+        setValues({...values, phrases: array})
+    }
+    const maxNumber = 69;
+    const onChange = (imageList,pictures)=> {
+        // data for submit
+        // values.pic=imageList[0]
+        let objectURL = URL.createObjectURL(imageList[0]);
+        console.log(objectURL);
+        console.log(pictures);
+        setValues({...values,pic:objectURL})
+    };
 
     const classes = useStyles();
     return (
         <React.Fragment>
             <Container className={classes.container} maxWidth="lg">
                 <Paper className={classes.item}>
-                    <Grid container wrap="nowrap" spacing={2}>
-                        <Grid item>
-                            <Avatar className={classes.avatarDesign}>D</Avatar>
+                    <Grid container
+                          direction="row"
+                          justify="flex-start"
+                          alignItems="stretch">
+                        <Grid className={classes.itemInner} direction="column" container wrap="nowrap" spacing={2}>
+                            <Grid
+                                container
+                                direction="row"
+                                justify="flex-start"
+                                alignItems="stretch">
+                                <Grid item>
+                                    <Avatar className={classes.avatarDesign}>D</Avatar>
+                                </Grid>
+                                <Grid className={classes.itemWithLeftPadding} item xs zeroMinWidth>
+                                    <TextField className={classes.difficultyTextFiled}
+                                               label="Difficulty"
+                                               id="outlined-basic" variant="outlined"/>
+                                </Grid>
+                            </Grid>
+
+                            <Grid>
+                                <ImageUploader multiple onChange={onChange} maxNumber={maxNumber}/>
+                            </Grid>
                         </Grid>
-                        <Grid item xs zeroMinWidth>
-                            <TextField className={classes.difficultyTextFiled}
-                                       label="Difficulty"
-                                       id="outlined-basic" variant="outlined"/>
+                        <Grid className={classes.itemInner}>
+                            <img
+                                className={classes.media}
+                                src={values.pic}
+                            />
                         </Grid>
                     </Grid>
                 </Paper>
@@ -85,40 +176,32 @@ function GnemesImportPage() {
                         <Grid item>
                             <Avatar className={classes.avatarDesign}>T</Avatar>
                         </Grid>
+                        {
+                            values.tags.map((value, index) => {
+                                return (
+                                    <Grid item xs zeroMinWidth>
+                                        <TextField
+                                            name={index}
+                                            value={value}
+                                            onChange={handleTagInputChange}
+                                            className={classes.tagTextFiled}
+                                            label="Tag"
+                                            id="outlined-basic" variant="outlined"/>
+                                    </Grid>
+                                )
+                            })
+                        }
+
                         <Grid item xs zeroMinWidth>
-                            <TextField
-                                name='tagOne'
-                                value={values.tagOne}
-                                onChange={handleInputChange}
-                                className={classes.tagTextFiled}
-                                       label="Tag"
-                                       id="outlined-basic" variant="outlined"/>
-                        </Grid>
-                        <Grid item xs zeroMinWidth>
-                            <TextField className={classes.tagTextFiled}
-                                       name='tagTwo'
-                                       value={values.tagTwo}
-                                       onChange={handleInputChange}
-                                       label="Tag"
-                                       id="outlined-basic" variant="outlined"/>
-                        </Grid>
-                        <Grid item xs zeroMinWidth>
-                            <TextField className={classes.tagTextFiled}
-                                       name='tagThree'
-                                       value={values.tagThree}
-                                       onChange={handleInputChange}
-                                       label="Tag"
-                                       id="outlined-basic" variant="outlined"/>
-                        </Grid>
-                        <Grid item xs zeroMinWidth>
-                            <Button className={classes.plusMark} variant="contained" color="secondary">
+                            <Button onClick={handleTagsPlusButtonClick} className={classes.plusMark} variant="contained"
+                                    color="secondary">
                                 +
                             </Button>
                         </Grid>
                     </Grid>
                 </Paper>
                 <Paper className={classes.sentenceItem}>
-                    {values.olSentences.map((value,index)=>{
+                    {values.olSentences.map((value, index) => {
                         return (
                             <Box>
                                 <Grid container wrap="nowrap" spacing={2}>
@@ -128,7 +211,11 @@ function GnemesImportPage() {
                                     <Grid item xs zeroMinWidth>
                                         <TextField className={classes.difficultyTextFiled}
                                                    label="OlSentence"
-                                                   id="outlined-basic" variant="outlined"/>
+                                                   name={"Ol" + index}
+                                                   onChange={handleSentenceInputChange}
+                                                   id="outlined-basic" variant="outlined"
+                                                   value={value}
+                                        />
                                     </Grid>
                                 </Grid>
                                 <Grid container wrap="nowrap" spacing={2}>
@@ -138,36 +225,57 @@ function GnemesImportPage() {
                                     <Grid item xs zeroMinWidth>
                                         <TextField className={classes.difficultyTextFiled}
                                                    label="SlSentence"
-                                                   id="outlined-basic" variant="outlined"/>
+                                                   name={"Sl" + index}
+                                                   onChange={handleSentenceInputChange}
+                                                   id="outlined-basic" variant="outlined"
+                                                   value={values.slSentences[index]}
+                                        />
                                     </Grid>
                                 </Grid>
                             </Box>
                         )
                     })}
                     <Grid item xs zeroMinWidth>
-                        <Button className={classes.plusMarkLong} variant="contained" color="secondary">
+                        <Button onClick={handleLongPlusButtonClick} className={classes.plusMarkLong} variant="contained"
+                                color="secondary">
                             +
                         </Button>
                     </Grid>
                 </Paper>
+                <Paper className={classes.phraseItem}>
+                    <Grid container wrap="nowrap" spacing={2}>
+                        <Grid item>
+                            <Avatar className={classes.avatarDesign}>P</Avatar>
+                        </Grid>
+                        {
+                            values.phrases.map((value, index) => {
+                                return (
+                                    <Grid item xs zeroMinWidth>
+                                        <TextField
+                                            name={index}
+                                            value={value}
+                                            onChange={handleTagInputChange}
+                                            className={classes.tagTextFiled}
+                                            label="Phrase"
+                                            id="outlined-basic" variant="outlined"/>
+                                    </Grid>
+                                )
+                            })
+                        }
+
+                        <Grid item xs zeroMinWidth>
+                            <Button onClick={handlePhrasePlusButtonClick} className={classes.plusMark} variant="contained"
+                                    color="secondary">
+                                +
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Paper>
+                <Fab aria-label={"add"} className={classes.fab} color={"secondary"}>
+                    <EditIcon />
+                </Fab>
             </Container>
         </React.Fragment>
-
-
-        // <Box className={classes.container}>
-        //         <TextField className={classes.textFiled}
-        //             label="Difficulty"
-        //             id="outlined-basic"  variant="outlined" />
-        //         <Box>
-        //             <Typography variant="h1" component="h2">
-        //                 h1. Heading
-        //             </Typography>
-        //             <TextField className={classes.textFiled}
-        //                        label="Difficulty"
-        //                        id="outlined-basic"  variant="outlined" />
-        //         </Box>
-        //
-        // </Box>
     )
 
 }
