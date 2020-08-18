@@ -11,6 +11,7 @@ import Box from "@material-ui/core/Box";
 import ImageUploader from 'react-images-upload';
 import EditIcon from '@material-ui/icons/Edit';
 import Fab from "@material-ui/core/Fab";
+import Alert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,9 +22,9 @@ const useStyles = makeStyles((theme) => ({
     },
     container: {
         background: "linear-gradient(rgba(250,0,0,0.5),transparent)",
-        backgroundColor: "orange", /*this your primary color*/
+        // backgroundColor: "orange", /*this your primary color*/
         flexGrow: 1,
-        padding: theme.spacing(0, 3),
+        // padding: theme.spacing(0, 3),
         overflow: "hidden",
 
     },
@@ -64,6 +65,10 @@ const useStyles = makeStyles((theme) => ({
         margin: `${theme.spacing(1)}px auto`,
         padding: theme.spacing(2),
     },
+    infoItem: {
+        margin: `${theme.spacing(1)}px auto`,
+        padding: theme.spacing(2),
+    },
     tagItem: {
         maxWidth: "0 auto",
         margin: `${theme.spacing(1)}px auto`,
@@ -80,15 +85,20 @@ const useStyles = makeStyles((theme) => ({
         width: "100%"
     }
 }));
-
 function GnemesImportPage() {
-    let [values, setValues] = useState({pic:'',tags: [''], olSentences: [''], slSentences: [''],phrases:['']});
+    let [values, setValues] = useState({response:'',picObj:'',pic:'',difficulty:10,tags: [''], olSentences: [''], slSentences: [''],phrases:['']});
 
     const handleTagInputChange = e => {
         const {name, value} = e.target
         let array = [...values.tags]
         array[name] = value
         setValues({...values, tags: array})
+    }
+    const handlePhraseInputChange=e=>{
+        const {name, value} = e.target
+        let array = [...values.phrases]
+        array[name] = value
+        setValues({...values, phrases: array})
     }
     const handleSentenceInputChange = e => {
         const {name, value, label} = e.target
@@ -131,12 +141,40 @@ function GnemesImportPage() {
         let objectURL = URL.createObjectURL(imageList[0]);
         console.log(objectURL);
         console.log(pictures);
-        setValues({...values,pic:objectURL})
+        setValues({...values,pic:objectURL,picObj:imageList[0]})
     };
+
+    const submitGnemesPost =async()=>{
+        let formData = new FormData()
+        formData.append("meta",  new Blob([JSON.stringify({
+            "oLSentences":values.olSentences,
+            "sLSentences":values.slSentences,
+            "tag":values.tags,
+            "phrase":values.phrases
+        })], {
+            type: "application/json"
+        }))
+
+        await formData.append("file",values.picObj,values.picObj.name)
+        console.log("formData",formData.toString())
+        console.log("file",values.picObj)
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Accept':'application/json',
+            },
+            body: formData,
+        };
+        console.log("requestOptions",requestOptions)
+        const response=await fetch('http://127.0.0.1:9090/api/v1/gnemes/post/', requestOptions)
+        let responseJson = await response.text();
+        console.log("response---",responseJson)
+        setValues({picObj:'',pic:'',difficulty:10,tags: [''], olSentences: [''], slSentences: [''],phrases:[''],response:responseJson})
+    }
 
     const classes = useStyles();
     return (
-        <React.Fragment>
+        <React.Fragment >
             <Container className={classes.container} maxWidth="lg">
                 <Paper className={classes.item}>
                     <Grid container
@@ -154,6 +192,7 @@ function GnemesImportPage() {
                                 </Grid>
                                 <Grid className={classes.itemWithLeftPadding} item xs zeroMinWidth>
                                     <TextField className={classes.difficultyTextFiled}
+                                               value={values.difficulty}
                                                label="Difficulty"
                                                id="outlined-basic" variant="outlined"/>
                                 </Grid>
@@ -254,7 +293,7 @@ function GnemesImportPage() {
                                         <TextField
                                             name={index}
                                             value={value}
-                                            onChange={handleTagInputChange}
+                                            onChange={handlePhraseInputChange}
                                             className={classes.tagTextFiled}
                                             label="Phrase"
                                             id="outlined-basic" variant="outlined"/>
@@ -271,7 +310,10 @@ function GnemesImportPage() {
                         </Grid>
                     </Grid>
                 </Paper>
-                <Fab aria-label={"add"} className={classes.fab} color={"secondary"}>
+                <Paper className={classes.infoItem}>
+                    <Alert severity="info">{values.response}</Alert>
+                </Paper>
+                <Fab onClick={submitGnemesPost} aria-label={"add"} className={classes.fab} color={"secondary"}>
                     <EditIcon />
                 </Fab>
             </Container>
