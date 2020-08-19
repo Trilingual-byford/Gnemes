@@ -30,6 +30,7 @@ allOpen {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 extra["springCloudVersion"] = "Hoxton.SR6"
 
@@ -64,6 +65,7 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation ("com.github.kilianB:JImageHash:3.0.0")
 
 
 //	runtimeOnly("com.h2database:h2")

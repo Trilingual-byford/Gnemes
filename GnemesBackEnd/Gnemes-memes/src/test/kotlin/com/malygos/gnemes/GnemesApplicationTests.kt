@@ -1,6 +1,6 @@
 package com.malygos.gnemes
 
-import com.malygos.gnemes.domain.MemePost
+import com.github.kilianB.hashAlgorithms.PerceptiveHash
 import com.malygos.gnemes.job.ChangeDataBaseTable
 import com.malygos.gnemes.service.memePost.MemePostService
 import com.malygos.gnemes.service.storage.s3.AmazonS3ClientService
@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.mock.web.MockMultipartFile
-import org.springframework.transaction.annotation.Transactional
-import reactor.core.publisher.Mono
+import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths
 
@@ -29,11 +28,23 @@ class GnemesApplicationTests {
 
     @Test
     fun s3UploadTest() {
-        val imgPath = Paths.get("./src/main/resources/static/animal-meme-test.jpeg")
+        val imgPath = Paths.get("./src/main/resources/static/funny.jpeg")
         val fileBytes = Files.readAllBytes(imgPath)
-        val mockMultipartFile = MockMultipartFile("animal-meme-test.jpeg", "animal-meme-test.jpeg", "image/jpeg", fileBytes)
+        val mockMultipartFile = MockMultipartFile("funny.jpeg", "funny.jpeg", "image/jpeg", fileBytes)
         mockMultipartFile.originalFilename
         amazonS3ClientService.uploadFileToS3Bucket(mockMultipartFile, true)
+    }
+    @Test
+    fun pHashTest() {
+        val imgPath = Paths.get("/Users/byford/IdeaProjects/GNEMES/GnemesBackEnd/Gnemes-memes/src/main/resources/static/pic/funny.jpeg").toFile()
+        val hasher = PerceptiveHash(32)
+        println("hashOfPic-----"+imgPath.absolutePath)
+        println("hashOfPic-----"+imgPath.exists())
+
+
+        val hash = hasher.hash(imgPath)
+        println("hashOfPic-----"+hash.toString())
+
     }
 
     @Test

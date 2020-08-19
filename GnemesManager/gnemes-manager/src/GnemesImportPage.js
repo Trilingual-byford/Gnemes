@@ -87,7 +87,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 function GnemesImportPage() {
     let [values, setValues] = useState({response:'',picObj:'',pic:'',difficulty:10,tags: [''], olSentences: [''], slSentences: [''],phrases:['']});
-
+    const handleDifficultyInputChange = e =>{
+        const {name} = e.target
+        setValues({...values, difficulty: name})
+    }
     const handleTagInputChange = e => {
         const {name, value} = e.target
         let array = [...values.tags]
@@ -147,6 +150,7 @@ function GnemesImportPage() {
     const submitGnemesPost =async()=>{
         let formData = new FormData()
         formData.append("meta",  new Blob([JSON.stringify({
+            "difficulty":values.difficulty,
             "oLSentences":values.olSentences,
             "sLSentences":values.slSentences,
             "tag":values.tags,
@@ -193,7 +197,9 @@ function GnemesImportPage() {
                                 <Grid className={classes.itemWithLeftPadding} item xs zeroMinWidth>
                                     <TextField className={classes.difficultyTextFiled}
                                                value={values.difficulty}
-                                               label="Difficulty"
+                                               name={"difficulty"}
+                                               label="difficulty"
+                                               onChange={handleDifficultyInputChange}
                                                id="outlined-basic" variant="outlined"/>
                                 </Grid>
                             </Grid>
