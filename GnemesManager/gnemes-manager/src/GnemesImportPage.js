@@ -86,10 +86,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 function GnemesImportPage() {
-    let [values, setValues] = useState({response:'',picObj:'',pic:'',difficulty:10,tags: [''], olSentences: [''], slSentences: [''],phrases:['']});
+    let [values, setValues] = useState({response:'',picObj:'',pic:'',difficulty:"1",tags: [''], olSentences: [''], slSentences: [''],phrases:['']});
     const handleDifficultyInputChange = e =>{
-        const {name} = e.target
-        setValues({...values, difficulty: name})
+        const {value} = e.target
+        if(value){
+            setValues({...values, difficulty: parseInt(value)})
+        }else {
+            setValues({...values, difficulty: ""})
+        }
     }
     const handleTagInputChange = e => {
         const {name, value} = e.target
@@ -173,7 +177,8 @@ function GnemesImportPage() {
         const response=await fetch('http://127.0.0.1:9090/api/v1/gnemes/post/', requestOptions)
         let responseJson = await response.text();
         console.log("response---",responseJson)
-        setValues({picObj:'',pic:'',difficulty:10,tags: [''], olSentences: [''], slSentences: [''],phrases:[''],response:responseJson})
+        // setValues({picObj:'',pic:'',difficulty:1,tags: [''], olSentences: [''], slSentences: [''],phrases:[''],response:responseJson})
+        setValues({...values,response:responseJson})
     }
 
     const classes = useStyles();

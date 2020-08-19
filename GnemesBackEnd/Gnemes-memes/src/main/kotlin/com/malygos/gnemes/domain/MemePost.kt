@@ -16,12 +16,12 @@ data class MemePost(
         var createdTime: Date,
         /**
          * Meme difficulty level
-         * obvious：100
-         * mediocre：200
-         * tough：300
-         * pro：400
-         * monster：500
-         * god : 600
+         * obvious：1
+         * mediocre：2
+         * tough：3
+         * pro：4
+         * monster：5
+         * god : 6
          */
         var difficulty: Byte,
         var dir: String,

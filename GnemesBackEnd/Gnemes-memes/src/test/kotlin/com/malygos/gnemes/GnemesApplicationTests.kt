@@ -28,15 +28,15 @@ class GnemesApplicationTests {
 
     @Test
     fun s3UploadTest() {
-        val imgPath = Paths.get("./src/main/resources/static/funny.jpeg")
+        val imgPath = Paths.get("./src/main/resources/static/funny-wholesome-animal-memes-1.jpeg")
         val fileBytes = Files.readAllBytes(imgPath)
-        val mockMultipartFile = MockMultipartFile("funny.jpeg", "funny.jpeg", "image/jpeg", fileBytes)
+        val mockMultipartFile = MockMultipartFile("funny-wholesome-animal-memes-1.jpeg", "funny-wholesome-animal-memes-1.jpeg", "image/jpeg", fileBytes)
         mockMultipartFile.originalFilename
         amazonS3ClientService.uploadFileToS3Bucket(mockMultipartFile, true)
     }
     @Test
     fun pHashTest() {
-        val imgPath = Paths.get("/Users/byford/IdeaProjects/GNEMES/GnemesBackEnd/Gnemes-memes/src/main/resources/static/pic/funny.jpeg").toFile()
+        val imgPath = Paths.get("/Users/byford/IdeaProjects/GNEMES/GnemesBackEnd/Gnemes-memes/src/main/resources/static/pic/funny-wholesome-animal-memes-1.jpeg").toFile()
         val hasher = PerceptiveHash(32)
         println("hashOfPic-----"+imgPath.absolutePath)
         println("hashOfPic-----"+imgPath.exists())
