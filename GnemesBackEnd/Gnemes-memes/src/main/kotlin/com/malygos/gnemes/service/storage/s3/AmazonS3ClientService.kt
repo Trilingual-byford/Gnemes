@@ -6,6 +6,6 @@ import org.springframework.web.multipart.MultipartFile
 
 interface AmazonS3ClientService {
     fun uploadFileToS3Bucket(multipartFile: MultipartFile, enablePublicReadAccess: Boolean): String
-    fun uploadFileToS3Bucket(multipartFile: FilePart, enablePublicReadAccess: Boolean): String
+    fun uploadFileToS3Bucket(multipartFile: FilePart, enablePublicReadAccess: Boolean): S3File
     fun deleteFileFromS3Bucket(fileName: String?)
 }

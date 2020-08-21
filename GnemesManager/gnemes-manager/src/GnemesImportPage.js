@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import ImageUploader from 'react-images-upload';
 import EditIcon from '@material-ui/icons/Edit';
+import BackspaceSharpIcon from '@material-ui/icons/BackspaceSharp';
 import Fab from "@material-ui/core/Fab";
 import Alert from '@material-ui/lab/Alert';
 
@@ -22,9 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
     container: {
         background: "linear-gradient(rgba(250,0,0,0.5),transparent)",
-        // backgroundColor: "orange", /*this your primary color*/
         flexGrow: 1,
-        // padding: theme.spacing(0, 3),
         overflow: "hidden",
 
     },
@@ -34,6 +33,11 @@ const useStyles = makeStyles((theme) => ({
     fab: {
         position: 'absolute',
         top: theme.spacing(2),
+        right: theme.spacing(20),
+    },
+    clearFab: {
+        position: 'absolute',
+        top: theme.spacing(15),
         right: theme.spacing(20),
     },
     tagTextFiled: {
@@ -145,11 +149,14 @@ function GnemesImportPage() {
     const onChange = (imageList,pictures)=> {
         // data for submit
         // values.pic=imageList[0]
-        let objectURL = URL.createObjectURL(imageList[0]);
+        let objectURL = URL.createObjectURL(imageList[imageList.length-1]);
         console.log(objectURL);
         console.log(pictures);
-        setValues({...values,pic:objectURL,picObj:imageList[0]})
+        setValues({...values,pic:objectURL,picObj:imageList[imageList.length-1]})
     };
+    const clearState=()=>{
+        setValues({response:'',picObj:'',pic:'',difficulty:"1",tags: [''], olSentences: [''], slSentences: [''],phrases:['']})
+    }
 
     const submitGnemesPost =async()=>{
         let formData = new FormData()
@@ -326,6 +333,9 @@ function GnemesImportPage() {
                 </Paper>
                 <Fab onClick={submitGnemesPost} aria-label={"add"} className={classes.fab} color={"secondary"}>
                     <EditIcon />
+                </Fab>
+                <Fab onClick={clearState} aria-label={"add"} className={classes.clearFab} color={"first"}>
+                    <BackspaceSharpIcon />
                 </Fab>
             </Container>
         </React.Fragment>

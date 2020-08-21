@@ -1,0 +1,9 @@
+app.message: This is message from Testttttt app configuration file.
+
+spring:
+  application:
+    name: GnemesDev
+  data:
+    mongodb:
+      uri: mongodb://gnemes:123456@localhost/
+      database: gnemes

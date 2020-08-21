@@ -36,12 +36,10 @@ class GnemesApplicationTests {
     }
     @Test
     fun pHashTest() {
-        val imgPath = Paths.get("/Users/byford/IdeaProjects/GNEMES/GnemesBackEnd/Gnemes-memes/src/main/resources/static/pic/funny-wholesome-animal-memes-1.jpeg").toFile()
+        val imgPath = Paths.get("/Users/byford/IdeaProjects/GNEMES/GnemesBackEnd/Gnemes-memes/src/main/resources/static/pic/funny-wholesome-animal-memes-3.jpg").toFile()
         val hasher = PerceptiveHash(32)
         println("hashOfPic-----"+imgPath.absolutePath)
         println("hashOfPic-----"+imgPath.exists())
-
-
         val hash = hasher.hash(imgPath)
         println("hashOfPic-----"+hash.toString())
 
@@ -62,6 +60,7 @@ class GnemesApplicationTests {
     @Test
     fun serviceGetTest() {
         val findAllMemePost = postService.findAllMemePost()
+        findAllMemePost.map { println(it.toString()) }.doOnError { println("eeeeeeeeeeeee"+it) }.subscribe()
     }
 
     @Test

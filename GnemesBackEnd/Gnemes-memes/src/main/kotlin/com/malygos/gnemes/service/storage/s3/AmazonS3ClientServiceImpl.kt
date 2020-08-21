@@ -7,8 +7,10 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder
 import com.amazonaws.services.s3.model.CannedAccessControlList
 import com.amazonaws.services.s3.model.DeleteObjectRequest
 import com.amazonaws.services.s3.model.PutObjectRequest
+import com.github.kilianB.hashAlgorithms.PerceptiveHash
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.context.annotation.Bean
 import org.springframework.http.codec.multipart.FilePart
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
@@ -31,6 +33,9 @@ class AmazonS3ClientServiceImpl @Autowired constructor(val awsCredentialsProvide
     @Value("\${amazonProperties.region}")
     private val awsRegion: String? = null
 
+    @Autowired
+    lateinit var hasher: PerceptiveHash
+
     private lateinit var amazonS3: AmazonS3
 
     @PostConstruct
@@ -39,6 +44,11 @@ class AmazonS3ClientServiceImpl @Autowired constructor(val awsCredentialsProvide
                 .withCredentials(awsCredentialsProvider)
                 .withRegion(awsRegion)
                 .build()
+
+    }
+    @Bean
+    fun getPicHasher():PerceptiveHash{
+        return  PerceptiveHash(32)
     }
 
     override fun uploadFileToS3Bucket(multipartFile: MultipartFile, enablePublicReadAccess: Boolean): String {
@@ -54,17 +64,15 @@ class AmazonS3ClientServiceImpl @Autowired constructor(val awsCredentialsProvide
         return amazonS3.getUrl(bucketName, multipartFile.originalFilename).toString()
     }
 
-    override fun uploadFileToS3Bucket(multipartFile: FilePart, enablePublicReadAccess: Boolean): String {
+    override fun uploadFileToS3Bucket(multipartFile: FilePart, enablePublicReadAccess: Boolean): S3File {
         val tmpFile = convertFilePartToFile(multipartFile)
         val putObjectRequest = PutObjectRequest(bucketName, multipartFile.filename(), tmpFile)
         putObjectRequest.withCannedAcl(CannedAccessControlList.PublicRead);
-        try {
             amazonS3.putObject(putObjectRequest)
-        } catch (e: Exception) {
-            return e.toString()
-        }
+        val hash = hasher.hash(tmpFile).toString()
         tmpFile?.delete()
-        return amazonS3.getUrl(bucketName, multipartFile.filename()).toString()
+        return S3File(hash,amazonS3.getUrl(bucketName, multipartFile.filename()).toString())
+
     }
 
 

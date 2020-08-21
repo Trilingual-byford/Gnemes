@@ -49,5 +49,11 @@ class PostController @Autowired constructor(val memePostService: MemePostService
     fun getMemePost(): Flux<MemePost> {
         return memePostService.findAllMemePost()
     }
+    @ResponseBody
+    @GetMapping(value = ["/refactory"])
+    fun refactoryMemePost(): Flux<MemePost> {
+
+        return memePostService.findAllMemePost()
+    }
 
 }

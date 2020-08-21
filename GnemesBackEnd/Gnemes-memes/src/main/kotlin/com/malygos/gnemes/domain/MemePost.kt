@@ -27,6 +27,7 @@ data class MemePost(
         var dir: String,
         var likes: Long,
         var viewer: Long,
+        var picHash: String,
         var tag: List<String>?,
         //Original Language Sentences
         @JsonRawValue
