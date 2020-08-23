@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+        fragment_container.isNestedScrollingEnabled=true
         bottom_navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_item_one -> {

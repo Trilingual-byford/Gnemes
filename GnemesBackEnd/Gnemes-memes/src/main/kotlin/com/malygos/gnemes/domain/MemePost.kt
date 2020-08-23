@@ -30,10 +30,8 @@ data class MemePost(
         var picHash: String,
         var tag: List<String>?,
         //Original Language Sentences
-        @JsonRawValue
         var oLSentences: List<String>?,
         //Second Language Sentences
-        @JsonRawValue
         var sLSentences: List<String>?,
         var phrase: List<String>?
 )

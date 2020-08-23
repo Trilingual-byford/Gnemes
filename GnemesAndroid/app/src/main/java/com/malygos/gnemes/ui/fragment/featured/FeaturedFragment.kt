@@ -45,6 +45,7 @@ class FeaturedFragment : Fragment() {
                 return tabFragments.size
             }
         }
+//        feature_view_pager.set
         TabLayoutMediator(tab_layout, feature_view_pager, true,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when (position) {
