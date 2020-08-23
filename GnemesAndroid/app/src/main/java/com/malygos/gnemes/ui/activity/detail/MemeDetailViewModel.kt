@@ -10,5 +10,5 @@ import kotlinx.coroutines.launch
 class MemeDetailViewModel(
     val memePostRepository: MemePostRepository
 ) : ViewModel() {
-    fun getMemePostById(id:Long)=memePostRepository.getMemePostById(id)
+    fun getMemePostById(id:String)=memePostRepository.getMemePostById(id)
 }

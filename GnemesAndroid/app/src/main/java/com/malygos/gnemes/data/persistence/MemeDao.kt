@@ -12,7 +12,7 @@ interface MemeDao {
         fun insertMemePostList(posters: List<MemePost>)
 
         @Query("SELECT * FROM memes WHERE id = :id_")
-        fun getMemePost(id_: Long): MemePost
+        fun getMemePost(id_: String): MemePost
 
         @Query("SELECT * FROM memes")
         fun getAllMemePost(): List<MemePost>

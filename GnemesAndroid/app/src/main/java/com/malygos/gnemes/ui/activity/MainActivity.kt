@@ -2,17 +2,21 @@ package com.malygos.gnemes.ui.activity
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_IDLE
 import com.malygos.gnemes.R
 import com.malygos.gnemes.ui.fragment.featured.FeaturedFragment
 import com.malygos.gnemes.ui.fragment.liked.LikedFragment
 import com.malygos.gnemes.ui.fragment.search.SearchFragment
 import com.malygos.gnemes.ui.fragment.user.UserFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,36 +25,75 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val tabFragments = getTabFragments()
 
-        fragment_container.adapter=object : FragmentStateAdapter(this) {
+        fragment_container.adapter = object : FragmentStateAdapter(this) {
             override fun createFragment(position: Int): Fragment {
                 return tabFragments[position]
             }
+
             override fun getItemCount(): Int {
                 return tabFragments.size
             }
         }
+        fragment_container.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                Timber.d("registerOnPageChangeCallbackPosition:%s", position)
+                Timber.d("selectedItemId:%s", bottom_navigation.selectedItemId)
+                when (position) {
+                    0 -> {
+                        bottom_navigation.selectedItemId = R.id.nav_item_one
+                    }
+                    1 -> {
+                        bottom_navigation.selectedItemId = R.id.nav_item_two
+                    }
+                    2 -> {
+                        bottom_navigation.selectedItemId = R.id.nav_item_three
+                    }
+                    3 -> {
+                        bottom_navigation.selectedItemId = R.id.nav_item_four
+                    }
+                }
+            }
+        })
         bottom_navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_item_one -> {
-                    fragment_container.setCurrentItem(0,true)
+                    if (fragment_container.scrollState == SCROLL_STATE_IDLE) {
+                        fragment_container.setCurrentItem(0, false)
+                    } else {
+                        fragment_container.setCurrentItem(0, true)
+                    }
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.nav_item_two -> {
-                    fragment_container.setCurrentItem(1,true)
+                    if (fragment_container.scrollState == SCROLL_STATE_IDLE) {
+                        fragment_container.setCurrentItem(1, false)
+                    } else {
+                        fragment_container.setCurrentItem(1, true)
+                    }
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.nav_item_three -> {
-                    fragment_container.setCurrentItem(2,true)
+                    if (fragment_container.scrollState == SCROLL_STATE_IDLE) {
+                        fragment_container.setCurrentItem(2, false)
+                    } else {
+                        fragment_container.setCurrentItem(2, true)
+                    }
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.nav_item_four -> {
-                    fragment_container.setCurrentItem(3,true)
+                    if (fragment_container.scrollState == SCROLL_STATE_IDLE) {
+                        fragment_container.setCurrentItem(3, false)
+                    } else {
+                        fragment_container.setCurrentItem(3, true)
+                    }
                     return@setOnNavigationItemSelectedListener true
                 }
-                else ->  return@setOnNavigationItemSelectedListener true
+                else -> return@setOnNavigationItemSelectedListener true
             }
         }
     }
+
     private fun getTabFragments(): ArrayList<Fragment> {
         val fragments = ArrayList<Fragment>(3)
         val featuredFragment = FeaturedFragment.newInstance()
@@ -90,7 +133,7 @@ class MainActivity : AppCompatActivity() {
     public fun showBottomNavigation() {
         // bottom_navigation is BottomNavigationView
         with(bottom_navigation) {
-            if(!isVisible){
+            if (!isVisible) {
                 visibility = View.VISIBLE
                 animate()
                     .translationY((0).toFloat())

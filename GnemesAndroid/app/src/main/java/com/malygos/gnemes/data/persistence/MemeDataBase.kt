@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.malygos.gnemes.data.entity.MemePost
 
-@Database(entities = [MemePost::class], version = 2, exportSchema = true)
+@Database(entities = [MemePost::class], version = 3, exportSchema = true)
 abstract class MemeDataBase : RoomDatabase() {
     abstract fun posterDao(): MemeDao
 

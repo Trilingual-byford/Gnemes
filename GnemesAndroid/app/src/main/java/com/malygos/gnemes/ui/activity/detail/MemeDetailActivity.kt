@@ -5,11 +5,12 @@ import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,19 +26,20 @@ import com.malygos.gnemes.data.network.GnemesApiService
 import com.malygos.gnemes.data.persistence.MemeDataBase
 import com.malygos.gnemes.data.repository.MemePostRepository
 import com.malygos.gnemes.databinding.ActivityMemeDetailBinding
-import com.malygos.gnemes.ui.fragment.post.NewPostViewModel
 import com.malygos.gnemes.ui.fragment.post.NewPostViewModelFactory
 import kotlinx.android.synthetic.main.activity_meme_detail.*
+
 
 class MemeDetailActivity : AppCompatActivity() {
 
     lateinit var memePost: MemePost
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val activityMemeDetailBinding: ActivityMemeDetailBinding = DataBindingUtil.setContentView(
             this, R.layout.activity_meme_detail
         )
-        val postId = intent.getLongExtra("postId", 0)
+        val postId = intent.getStringExtra("postId")
         val repository = MemePostRepository(
             GnemesApiService.gnemesApiService,
             MemeDataBase.getMemeDataBase()
@@ -51,9 +53,14 @@ class MemeDetailActivity : AppCompatActivity() {
             LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
         recycler_memePostDetail.adapter = MemePostDetailAdapter(
             this.supportFragmentManager,
-            memePost.olsentences,
-            memePost.slsentences
+            memePost.oLSentences,
+            memePost.sLSentences
         )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.sharedElementEnterTransition.duration = 100
+            window.sharedElementReturnTransition.setDuration(100).interpolator =
+                DecelerateInterpolator()
+        }
         activityMemeDetailBinding.toolBarDetail.setNavigationOnClickListener {
             onBackPressed()
         }
@@ -94,7 +101,7 @@ class MemeDetailActivity : AppCompatActivity() {
         fun startActivityModel(
             context: Context?,
             startView: View,
-            postId: Long
+            postId: String
         ) {
             if (context is Activity) {
                 val intent = Intent(context, MemeDetailActivity::class.java)

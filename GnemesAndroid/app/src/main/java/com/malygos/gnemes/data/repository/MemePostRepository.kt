@@ -27,6 +27,6 @@ class MemePostRepository(
         }
         memeResult
     }
-    fun getMemePostById(id:Long)=memeDataBase.posterDao().getMemePost(id)
+    fun getMemePostById(id:String)=memeDataBase.posterDao().getMemePost(id)
 
 }

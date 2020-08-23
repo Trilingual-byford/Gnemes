@@ -1,5 +1,6 @@
 <resources>
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:statusBarColor">@color/shrine_pink_100</item>
     </style>
 </resources>
