@@ -19,6 +19,8 @@ class MemePostsAdapter(
     val activity: FragmentActivity?
 ) : RecyclerView.Adapter<MemePostsAdapter.MemePostHolder>() {
     private lateinit var parent:ViewGroup
+//    private var previousTime = System.currentTimeMillis()
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -33,9 +35,7 @@ class MemePostsAdapter(
                 parent,
                 false
             )
-        ).apply {
-            ViewCompat.setTransitionName(this.itemView,"meme_post_img")
-        }
+        )
     }
 
     override fun getItemCount(): Int {
@@ -47,7 +47,7 @@ class MemePostsAdapter(
         holder.binding.memeImg.setOnClickListener {
             if(activity is MainActivity){
                 activity.hideBottomNavigation{
-                    MemeDetailActivity.startActivityModel(parent.context,it,memePosts[position].id)
+                        MemeDetailActivity.startActivityModel(parent.context,holder.binding.itemPosterLineTransformationLayout,memePosts[position].id)
                 }
             }
         }

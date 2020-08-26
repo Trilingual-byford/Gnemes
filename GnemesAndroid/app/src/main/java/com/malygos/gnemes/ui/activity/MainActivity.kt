@@ -15,12 +15,14 @@ import com.malygos.gnemes.ui.fragment.featured.FeaturedFragment
 import com.malygos.gnemes.ui.fragment.liked.LikedFragment
 import com.malygos.gnemes.ui.fragment.search.SearchFragment
 import com.malygos.gnemes.ui.fragment.user.UserFragment
+import com.skydoves.transformationlayout.onTransformationStartContainer
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        onTransformationStartContainer()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val tabFragments = getTabFragments()
@@ -117,7 +119,7 @@ class MainActivity : AppCompatActivity() {
         showBottomNavigation()
     }
 
-    public fun hideBottomNavigation(afterAnimation: () -> Unit) {
+     fun hideBottomNavigation(afterAnimation: () -> Unit) {
         with(bottom_navigation) {
             if (visibility == View.VISIBLE) {
                 animate()
@@ -126,19 +128,19 @@ class MainActivity : AppCompatActivity() {
                         visibility = View.GONE
                         afterAnimation()
                     }
-                    .duration = 200
+                    .duration = 10
             }
         }
     }
 
-    public fun showBottomNavigation() {
+     fun showBottomNavigation() {
         // bottom_navigation is BottomNavigationView
         with(bottom_navigation) {
             if (!isVisible) {
                 visibility = View.VISIBLE
                 animate()
                     .translationY((0).toFloat())
-                    .duration = 200
+                    .duration = 10
             }
 
         }

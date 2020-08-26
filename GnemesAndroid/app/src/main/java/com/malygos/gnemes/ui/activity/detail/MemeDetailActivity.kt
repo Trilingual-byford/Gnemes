@@ -27,10 +27,13 @@ import com.malygos.gnemes.data.persistence.MemeDataBase
 import com.malygos.gnemes.data.repository.MemePostRepository
 import com.malygos.gnemes.databinding.ActivityMemeDetailBinding
 import com.malygos.gnemes.ui.fragment.post.NewPostViewModelFactory
+import com.skydoves.transformationlayout.TransformationAppCompatActivity
+import com.skydoves.transformationlayout.TransformationCompat
+import com.skydoves.transformationlayout.TransformationLayout
 import kotlinx.android.synthetic.main.activity_meme_detail.*
 
 
-class MemeDetailActivity : AppCompatActivity() {
+class MemeDetailActivity : TransformationAppCompatActivity() {
 
     lateinit var memePost: MemePost
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +51,14 @@ class MemeDetailActivity : AppCompatActivity() {
             .get(MemeDetailViewModel::class.java)
         val memePost = viewModel.getMemePostById(postId)
         activityMemeDetailBinding.memePost = memePost
-        memePost.dir?.let { bindDetailLoadImage(activityMemeDetailBinding.imgMemeDetail, it) }
+        memePost.dir?.let {
+//            bindDetailLoadImage(activityMemeDetailBinding.imgMemeDetail, it)
+            Glide.with(this)
+                .load(it)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .dontTransform()
+                .into(activityMemeDetailBinding.imgMemeDetail)
+        }
         recycler_memePostDetail.layoutManager =
             LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
 //        Log.d("MemeDetailActivity","memePost.o")
@@ -57,18 +67,18 @@ class MemeDetailActivity : AppCompatActivity() {
             memePost.olsentences,
             memePost.slsentences
         )
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.sharedElementEnterTransition.duration = 100
-            window.sharedElementReturnTransition.setDuration(100).interpolator =
-                DecelerateInterpolator()
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            window.sharedElementEnterTransition.duration = 100
+//            window.sharedElementReturnTransition.setDuration(100).interpolator =
+//                DecelerateInterpolator()
+//        }
         activityMemeDetailBinding.toolBarDetail.setNavigationOnClickListener {
             onBackPressed()
         }
     }
 
     private fun bindDetailLoadImage(view: ImageView, url: String) {
-        supportPostponeEnterTransition()
+//        supportPostponeEnterTransition()
         Glide.with(view.context)
             .load(url)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -80,7 +90,7 @@ class MemeDetailActivity : AppCompatActivity() {
                     target: Target<Drawable>?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    supportStartPostponedEnterTransition();
+//                    supportStartPostponedEnterTransition();
                     return false;
                 }
 
@@ -91,7 +101,7 @@ class MemeDetailActivity : AppCompatActivity() {
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    supportStartPostponedEnterTransition();
+//                    supportStartPostponedEnterTransition();
                     return false;
                 }
             })
@@ -101,17 +111,18 @@ class MemeDetailActivity : AppCompatActivity() {
     companion object {
         fun startActivityModel(
             context: Context?,
-            startView: View,
+            transformationLayout: TransformationLayout,
             postId: String
         ) {
             if (context is Activity) {
                 val intent = Intent(context, MemeDetailActivity::class.java)
-                val options = ActivityOptions.makeSceneTransitionAnimation(
-                    context,
-                    startView, "meme_post_img"
-                )
+//                val options = ActivityOptions.makeSceneTransitionAnimation(
+//                    context,
+//                    startView, "meme_post_img"
+//                )
                 intent.putExtra("postId", postId)
-                context.startActivity(intent, options.toBundle())
+                TransformationCompat.startActivity(transformationLayout, intent)
+//                context.startActivity(intent, options.toBundle())
             }
         }
     }

@@ -26,9 +26,9 @@ class NewPostFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val parentFragmentManager = getParentFragmentManager()
+        val parentFragmentManager = parentFragmentManager
         binding = NewPostFragmentBinding.inflate(inflater, container, false)
-        if (InternetUtils.hasNetworkAvailable(context)) {
+        if (InternetUtils.isNetworkAvailable(context)) {
             val repository = MemePostRepository(gnemesApiService,getMemeDataBase())
             viewModel = ViewModelProviders.of(this, NewPostViewModelFactory(repository))
                 .get(NewPostViewModel::class.java)
