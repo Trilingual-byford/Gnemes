@@ -57,7 +57,6 @@
                 android:animateLayoutChanges="true"
                 app:cardBackgroundColor="@color/cardview_gray"
                 app:cardCornerRadius="7dp">
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -84,14 +83,14 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_memePostDetail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="60dp"
-                    android:paddingBottom="16dp"/>
             </androidx.cardview.widget.CardView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:background="@color/colorBlack"
+                android:layout_marginHorizontal="15dp"
+                android:id="@+id/recycler_memePostDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

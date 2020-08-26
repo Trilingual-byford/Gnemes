@@ -18,8 +18,8 @@ data class MemePost(
     var dir: String?,
     var likes: Int?,
     var phrase: List<String>?,
-    var oLSentences: List<String>?,
-    var sLSentences: List<String>?,
+    var olsentences: List<String>?,
+    var slsentences: List<String>?,
     var tag: List<String>?,
     var viewer: Int?
 ) : Parcelable{

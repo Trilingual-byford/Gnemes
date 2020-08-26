@@ -51,10 +51,11 @@ class MemeDetailActivity : AppCompatActivity() {
         memePost.dir?.let { bindDetailLoadImage(activityMemeDetailBinding.imgMemeDetail, it) }
         recycler_memePostDetail.layoutManager =
             LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
+//        Log.d("MemeDetailActivity","memePost.o")
         recycler_memePostDetail.adapter = MemePostDetailAdapter(
             this.supportFragmentManager,
-            memePost.oLSentences,
-            memePost.sLSentences
+            memePost.olsentences,
+            memePost.slsentences
         )
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.sharedElementEnterTransition.duration = 100
