@@ -1,6 +1,7 @@
-# GNEMES (Chinese 梗(GENG) Japanese ネタ（ネタ）English（Memes）)
+# GNEMES 
 
 ### Gnemes is a application of sharing and learning funny pic of Memes・ネタ・梗
+#### (Chinese 梗(GENG) Japanese ネタ（ネタ）English（Memes）)
 ## Project structure
 - GnemesAndroid - android native project
 <img width="200" height="400" src="https://github.com/Trilingual-byford/GNEMES/blob/master/Document/31598533502_.pic_hd.jpg?raw=true" />
