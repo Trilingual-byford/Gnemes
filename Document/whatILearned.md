@@ -21,7 +21,7 @@ https://codelabs.developers.google.com/codelabs/kotlin-android-training-view-mod
 ### Differences between CustomException and Exception 
  - 自定义异常（可预知的异常 可预知的异常通常自己定义）- 不可预知的异常 Throw runtime Exception(won't need change function code) 
  - consume Exception - @ControllerAdvice @ExceptionHandler @ResponseBody (convert response to Json)
-### template engine
+### Template engine
  - jsp
  - Freemarker
  - Thymeleaf
