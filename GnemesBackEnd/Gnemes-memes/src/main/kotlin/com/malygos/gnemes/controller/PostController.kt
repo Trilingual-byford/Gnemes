@@ -18,7 +18,6 @@ import javax.validation.constraints.NotBlank
 
 @RestController
 @CrossOrigin()
-// @CrossOrigin(origins = {"http://localhost:9000", "null"})
 @RequestMapping("/api/v1/gnemes/post")
 class PostController @Autowired constructor(val memePostService: MemePostService) {
     var logger: Logger = LoggerFactory.getLogger(PostController::class.java)

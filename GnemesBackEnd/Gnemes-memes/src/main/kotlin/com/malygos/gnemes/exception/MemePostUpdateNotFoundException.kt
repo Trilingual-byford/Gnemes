@@ -1,8 +1,6 @@
-package exception
+package com.malygos.gnemes.exception
 
-class StorageFileNotFoundException : StorageException {
-
+class MemePostUpdateNotFoundException : RuntimeException {
     constructor(message: String) : super(message) {}
-
     constructor(message: String, cause: Throwable) : super(message, cause) {}
 }

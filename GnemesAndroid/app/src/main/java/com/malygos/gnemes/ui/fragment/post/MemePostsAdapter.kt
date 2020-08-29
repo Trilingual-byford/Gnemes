@@ -46,9 +46,9 @@ class MemePostsAdapter(
         holder.binding.memePost = memePosts[position]
         holder.binding.memeImg.setOnClickListener {
             if(activity is MainActivity){
-                activity.hideBottomNavigation{
+//                activity.hideBottomNavigation{
                         MemeDetailActivity.startActivityModel(parent.context,holder.binding.itemPosterLineTransformationLayout,memePosts[position].id)
-                }
+//                }
             }
         }
     }

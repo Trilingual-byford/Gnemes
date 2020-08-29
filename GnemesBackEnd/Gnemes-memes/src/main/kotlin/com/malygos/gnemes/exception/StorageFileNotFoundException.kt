@@ -1,6 +1,6 @@
-package exception
+package com.malygos.gnemes.exception
 
-open class StorageException : RuntimeException {
+class StorageFileNotFoundException : StorageException {
 
     constructor(message: String) : super(message) {}
 

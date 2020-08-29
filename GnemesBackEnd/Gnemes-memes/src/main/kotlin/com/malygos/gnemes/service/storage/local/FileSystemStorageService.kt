@@ -1,7 +1,7 @@
 package com.byford.daas.service.storage
 
-import exception.StorageException
-import exception.StorageFileNotFoundException
+import com.malygos.gnemes.exception.StorageException
+import com.malygos.gnemes.exception.StorageFileNotFoundException
 import java.io.IOException
 import java.net.MalformedURLException
 import java.nio.file.Files

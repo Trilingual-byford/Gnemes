@@ -1,10 +1,9 @@
 package com.malygos.gnemes.service.memePost
 
 import com.github.kilianB.hashAlgorithms.PerceptiveHash
-import com.malygos.gnemes.controller.PostController
 import com.malygos.gnemes.domain.MemePost
 import com.malygos.gnemes.dto.MemePostCreationDto
-import com.malygos.gnemes.exception.exception.MemePostUpdateNotFoundException
+import com.malygos.gnemes.exception.MemePostUpdateNotFoundException
 import com.malygos.gnemes.repository.MemeRepository
 import com.malygos.gnemes.service.storage.s3.AmazonS3ClientService
 import com.malygos.gnemes.utils.StringUtils
@@ -16,9 +15,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import java.net.URL
 import java.util.*
-import javax.imageio.ImageIO
 
 @Service
 class MemePostServiceImpl @Autowired constructor() : MemePostService {
