@@ -1,13 +1,14 @@
-# GNEMES
-This is going to be an application of spreading and help people understand interesting idea
-## Coming soon!
+# GNEMES 
 
-## What is GNEMES
-### Chinese 梗(GENG) Japanese ネタ（ネタ）English（Memes）
-#### This app is going to be a bridge to help people in China Japan and the coutry which official language is English understand each other.
-### Hibernate Guide
-####  https://docs.jboss.org/hibernate/orm/5.3/userguide/html_single/Hibernate_User_Guide.html#entity
-### What is Dto
-#### Data transfer Object that carries data between process.
-#### branch master and branch navi of using navigation view.
+### Gnemes is a application of sharing and learning funny pic of Memes・ネタ・梗
+#### (Chinese 梗(GENG) Japanese ネタ（ネタ）English（Memes）)
+## Project structure
+- GnemesAndroid - android native project
+<img width="200" height="400" src="https://github.com/Trilingual-byford/GNEMES/blob/master/Document/31598533502_.pic_hd.jpg?raw=true" />
 
+- GnemesBackEnd - BackEnd of Gnemes in charge of API service,resource management,User managerment powered by SpringBoot
+
+- GnemesManager - Gnemes FrontEnd management project powered by React(Material design)
+<img width="500" height="300" src="https://github.com/Trilingual-byford/GNEMES/blob/master/Document/Screen%20Shot%202020-08-27%20at%2022.03.57.png?raw=true" />
+
+# Next goal might be GnemesIos
