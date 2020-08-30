@@ -7,7 +7,7 @@ import org.springframework.web.reactive.config.EnableWebFlux
 
 @SpringBootApplication
 @EnableWebFlux
-@EnableDiscoveryClient(autoRegister = false)
+@EnableDiscoveryClient(autoRegister = true)
 class GnemesUserApplication
 
 fun main(args: Array<String>) {

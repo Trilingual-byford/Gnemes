@@ -101,12 +101,12 @@ class GnemesUserAuthHandlerRouter {
     @Bean
     fun root(handler: GnemesUserAuthHandlerRouter): RouterFunction<ServerResponse> {
         return RouterFunctions.route()
-                .POST("/api/v1/gnemes/auth/token", handler::getToken)
-                .POST("/api/v1/gnemes/auth", handler::registerUser)
-                .GET("/api/v1/gnemes/administration/{email}", handler::findUserByEmail)
-                .GET("/api/v1/gnemes/administration", handler::findAllUser)
-                .PATCH("/api/v1/gnemes/collection/like", handler::likeCollection)
-                .PATCH("/api/v1/gnemes/collection/save", handler::saveCollection)
+                .POST("/user/v1/token", handler::getToken)
+                .POST("/user/v1/register", handler::registerUser)
+                .GET("/user/v1/administration/{email}", handler::findUserByEmail)
+                .GET("/user/v1/administration/users", handler::findAllUser)
+                .PATCH("/user/v1/collection/like", handler::likeCollection)
+                .PATCH("/user/v1/collection/save", handler::saveCollection)
                 .build()
     }
 }

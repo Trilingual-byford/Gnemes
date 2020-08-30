@@ -18,7 +18,7 @@ import javax.validation.constraints.NotBlank
 
 @RestController
 @CrossOrigin()
-@RequestMapping("/api/v1/gnemes/post")
+@RequestMapping("/post/v1")
 class PostController @Autowired constructor(val memePostService: MemePostService) {
     var logger: Logger = LoggerFactory.getLogger(PostController::class.java)
 
@@ -46,12 +46,6 @@ class PostController @Autowired constructor(val memePostService: MemePostService
     @ResponseBody
     @GetMapping(value = ["/"])
     fun getMemePost(): Flux<MemePost> {
-        return memePostService.findAllMemePost()
-    }
-    @ResponseBody
-    @GetMapping(value = ["/refactory"])
-    fun refactoryMemePost(): Flux<MemePost> {
-
         return memePostService.findAllMemePost()
     }
 
