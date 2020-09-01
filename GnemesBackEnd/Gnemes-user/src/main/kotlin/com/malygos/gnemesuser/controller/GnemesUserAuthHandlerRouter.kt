@@ -2,9 +2,11 @@ package com.malygos.gnemesuser.controller
 
 import com.malygos.gnemesuser.domin.GnemesUser
 import com.malygos.gnemesuser.dto.UserLoginDto
+import com.malygos.gnemesuser.dto.UserLogoutDto
 import com.malygos.gnemesuser.dto.UserRegisterDto
 import com.malygos.gnemesuser.security.jwt.JWTUtil
 import com.malygos.gnemesuser.services.GnemesUserService
+import com.malygos.gnemesuser.services.RedisTokenService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.http.HttpStatus
@@ -18,6 +20,8 @@ import reactor.kotlin.core.publisher.toMono
 class GnemesUserAuthHandlerRouter {
     @Autowired
     lateinit var gnemesUserService: GnemesUserService
+    @Autowired
+    lateinit var redisTokenService: RedisTokenService
 
     @Autowired
     lateinit var jwtUtil: JWTUtil
@@ -52,7 +56,7 @@ class GnemesUserAuthHandlerRouter {
     }
 
     @PreAuthorize("permitAll()")
-    fun getToken(serverRequest: ServerRequest): Mono<ServerResponse> {
+    fun logIn(serverRequest: ServerRequest): Mono<ServerResponse> {
         val userMono = serverRequest.bodyToMono(UserLoginDto::class.java)
         var userPwd = ""
         return userMono.flatMap { user ->
@@ -61,13 +65,24 @@ class GnemesUserAuthHandlerRouter {
         }
                 .flatMap { userDetail ->
                     if (userDetail.password.equals(userPwd)) {
-                        return@flatMap ServerResponse.ok().bodyValue(jwtUtil.generateToken(userDetail))
+                        val generateToken = jwtUtil.generateToken(userDetail)
+                        redisTokenService.cacheToken(generateToken,userDetail.email)
+                        return@flatMap ServerResponse.ok().bodyValue(generateToken)
                     } else {
                         return@flatMap ServerResponse.badRequest().build()
                     }
                 }
                 .switchIfEmpty(ServerResponse.notFound().build())
     }
+//    @PreAuthorize("permitAll()")
+//    fun logOut(serverRequest: ServerRequest): Mono<ServerResponse> {
+//        val userMono = serverRequest.bodyToMono(UserLogoutDto::class.java)
+//        return userMono.map {
+//            redisTokenService.deleteToken(it.email)
+//        }
+//
+////                .switchIfEmpty(ServerResponse.notFound().build())
+//    }
 
     //    @PreAuthorize("hasAnyRole('ROLE_GOD','ROLE_USER')")
 //    fun addCollection(serverRequest: ServerRequest): Mono<ServerResponse> {
@@ -101,7 +116,8 @@ class GnemesUserAuthHandlerRouter {
     @Bean
     fun root(handler: GnemesUserAuthHandlerRouter): RouterFunction<ServerResponse> {
         return RouterFunctions.route()
-                .POST("/user/v1/token", handler::getToken)
+                .POST("/user/v1/login", handler::logIn)
+//                .POST("/user/v1/logout", handler::logOut)
                 .POST("/user/v1/register", handler::registerUser)
                 .GET("/user/v1/administration/{email}", handler::findUserByEmail)
                 .GET("/user/v1/administration/users", handler::findAllUser)

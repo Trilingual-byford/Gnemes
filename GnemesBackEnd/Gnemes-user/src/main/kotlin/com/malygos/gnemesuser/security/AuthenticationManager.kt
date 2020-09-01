@@ -20,7 +20,6 @@ class AuthenticationManager : ReactiveAuthenticationManager {
     lateinit var gnemesUserRepository: GnemesUserRepository
     override fun authenticate(authentication: Authentication): Mono<Authentication> {
         val token = authentication.credentials.toString()
-
         val email = if (token.isEmpty()) "" else jwtUtil.getUserEmailFromToken(token)
         return gnemesUserRepository.findByEmail(email)
                 .flatMap { gnemesUser ->
