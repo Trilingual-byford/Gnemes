@@ -19,6 +19,8 @@ extra["springCloudVersion"] = "Hoxton.SR8"
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
 	implementation("org.springframework.boot:spring-boot-starter")
+	implementation("com.google.code.gson:gson:2.8.5")
+
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-zuul")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
