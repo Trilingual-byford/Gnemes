@@ -74,15 +74,19 @@ class GnemesUserAuthHandlerRouter {
                 }
                 .switchIfEmpty(ServerResponse.notFound().build())
     }
-//    @PreAuthorize("permitAll()")
-//    fun logOut(serverRequest: ServerRequest): Mono<ServerResponse> {
-//        val userMono = serverRequest.bodyToMono(UserLogoutDto::class.java)
-//        return userMono.map {
-//            redisTokenService.deleteToken(it.email)
-//        }
-//
-////                .switchIfEmpty(ServerResponse.notFound().build())
-//    }
+        @PreAuthorize("permitAll()")
+        fun logOut(serverRequest: ServerRequest): Mono<ServerResponse> {
+            val userMono = serverRequest.bodyToMono(UserLogoutDto::class.java)
+            return userMono.flatMap {
+                Mono.justOrEmpty(redisTokenService.deleteToken(it.email))
+            }.flatMap {
+                if(it){
+                    return@flatMap ServerResponse.ok().bodyValue("LogOut succesfully")
+                }else{
+                    return@flatMap ServerResponse.badRequest().bodyValue("You sure you wana LogOut?")
+                }
+            }
+        }
 
     //    @PreAuthorize("hasAnyRole('ROLE_GOD','ROLE_USER')")
 //    fun addCollection(serverRequest: ServerRequest): Mono<ServerResponse> {
@@ -117,7 +121,7 @@ class GnemesUserAuthHandlerRouter {
     fun root(handler: GnemesUserAuthHandlerRouter): RouterFunction<ServerResponse> {
         return RouterFunctions.route()
                 .POST("/user/v1/login", handler::logIn)
-//                .POST("/user/v1/logout", handler::logOut)
+                .POST("/user/v1/logout", handler::logOut)
                 .POST("/user/v1/register", handler::registerUser)
                 .GET("/user/v1/administration/{email}", handler::findUserByEmail)
                 .GET("/user/v1/administration/users", handler::findAllUser)

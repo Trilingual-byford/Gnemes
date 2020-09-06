@@ -20,15 +20,28 @@ class LoginFilter:ZuulFilter() {
         const val TYPE_PRE="pre"
         const val GNEMES_SERVICE="Gnemes"
         const val GNEMES_USER_SERVICE="GnemesUser"
+        const val USER_TOKEN_URL="/user/v1/token"
+        const val USER_LOGIN_URL="/user/v1/login"
+        const val USER_REGISTER_URL="/user/v1/register"
     }
     override fun run(): Any? {
         val currentContext = RequestContext.getCurrentContext()
         val request = currentContext.request
         val serviceId = currentContext.get(SERVICE_ID_KEY)
-        //requestURI -> /user/v1/token
         val requestURI = currentContext.get("requestURI")
         val token = request.getHeader("Authorization")
         val email = request.getHeader("Email")
+        if(serviceId!=null){
+            if (serviceId == GNEMES_SERVICE){
+                return null
+            }
+            if(serviceId == GNEMES_USER_SERVICE){
+                if(requestURI==USER_TOKEN_URL||requestURI==USER_LOGIN_URL||requestURI==USER_REGISTER_URL){
+                    return null
+                }
+            }
+
+        }
 
          if (token.isNullOrEmpty()||email.isNullOrEmpty()){
             denyAccess()
