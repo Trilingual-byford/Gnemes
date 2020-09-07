@@ -4,6 +4,7 @@ orbs:
  android: circleci/android@0.2.1
 
 jobs:
+  working_directory: ~/zds-site
   build:
     executor: android/android
         
