@@ -9,6 +9,7 @@ jobs:
     executor: android/android
         
     steps:
-      - checkout
+      - checkout:
+          command: pwd
       - run:
           command: ./gradlew build
