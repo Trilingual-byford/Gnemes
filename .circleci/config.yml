@@ -12,8 +12,8 @@ jobs:
       - run:
           name: CheckWorkDir
           command: ls ./*    
-      - run:
-          command: cd ./GnemesAndroid&&./gradlew build
+#      - run:
+#          command: cd ./GnemesAndroid&&./gradlew build
       - run:
           command: cd ./GnemesAndroid&&./gradlew assembleDebug
 
