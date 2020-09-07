@@ -13,4 +13,4 @@ jobs:
           name: CheckWorkDir
           command: ls ./*    
       - run:
-          command: ./gradlew build
+          command: cd ./GnemesBackEnd&&./gradlew build
