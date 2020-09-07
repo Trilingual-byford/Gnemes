@@ -14,3 +14,6 @@ jobs:
           command: ls ./*    
       - run:
           command: cd ./GnemesBackEnd&&./gradlew build
+      - run:
+          command: cd ./GnemesBackEnd&&./gradlew assembleDebug
+
