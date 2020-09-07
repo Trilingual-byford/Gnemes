@@ -58,3 +58,5 @@ Watched season 2 episo2 of hanzawa_naoki
 Build frontEnd for data insert
 ### 2020 Aug11
 !50%
+### 2020 Sep8
+Next goal:Finish the design and functionity of android application 
