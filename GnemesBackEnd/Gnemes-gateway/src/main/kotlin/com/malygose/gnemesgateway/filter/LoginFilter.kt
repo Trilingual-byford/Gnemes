@@ -23,6 +23,7 @@ class LoginFilter:ZuulFilter() {
         const val USER_TOKEN_URL="/user/v1/token"
         const val USER_LOGIN_URL="/user/v1/login"
         const val USER_REGISTER_URL="/user/v1/register"
+        val authFreePoint= mutableListOf(USER_TOKEN_URL,USER_LOGIN_URL,USER_REGISTER_URL)
     }
     override fun run(): Any? {
         val currentContext = RequestContext.getCurrentContext()
@@ -36,9 +37,15 @@ class LoginFilter:ZuulFilter() {
                 return null
             }
             if(serviceId == GNEMES_USER_SERVICE){
-                if(requestURI==USER_TOKEN_URL||requestURI==USER_LOGIN_URL||requestURI==USER_REGISTER_URL){
-                    return null
+//                var isAuthFree=false
+                authFreePoint.forEach {
+                    if (requestURI==it){
+                        return null
+                    }
                 }
+//                if(requestURI==USER_TOKEN_URL||requestURI==USER_LOGIN_URL||requestURI==USER_REGISTER_URL){
+//                    return null
+//                }
             }
 
         }

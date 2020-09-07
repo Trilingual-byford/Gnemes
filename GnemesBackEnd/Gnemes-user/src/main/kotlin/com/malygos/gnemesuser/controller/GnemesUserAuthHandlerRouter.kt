@@ -88,12 +88,7 @@ class GnemesUserAuthHandlerRouter {
             }
         }
 
-    //    @PreAuthorize("hasAnyRole('ROLE_GOD','ROLE_USER')")
-//    fun addCollection(serverRequest: ServerRequest): Mono<ServerResponse> {
-//        val id = serverRequest.pathVariable("gnemesId")
-//        return Mono.just(id).flatMap {
-////            gnemesUserService
-//        }
+
     @PreAuthorize("permitAll()")
     fun likeCollection(serverRequest: ServerRequest): Mono<ServerResponse> {
         val PATH_VARIABLE_EMAIL = "email"
