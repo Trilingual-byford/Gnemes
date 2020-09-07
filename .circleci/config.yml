@@ -14,5 +14,5 @@ jobs:
 #           name: Print current dir
 #           command: pwd
       - run:
-#           command: ./gradlew build
-          command: ls
+          command: ls&&./gradlew build
+#           command: ls
