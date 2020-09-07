@@ -15,4 +15,4 @@ jobs:
 #           command: pwd
       - run:
 #           command: ./gradlew build
-          command: ls&&pwd
+          command: ls
