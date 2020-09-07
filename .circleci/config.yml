@@ -16,4 +16,4 @@ jobs:
 #           command: pwd
       - run:
 #           command: ./gradlew build
-          command: pwd
+          command: pwd&&ls
