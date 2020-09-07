@@ -10,10 +10,9 @@ jobs:
         
     steps:
       - checkout:
-          path: ~/GnemesAndroid
 #       - run:
 #           name: Print current dir
 #           command: pwd
       - run:
 #           command: ./gradlew build
-          command: pwd&&ls
+          command: ls&&pwd
