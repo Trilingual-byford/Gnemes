@@ -10,6 +10,8 @@ jobs:
         
     steps:
       - checkout:
+      - run:
+          name: Print current dir
           command: pwd
       - run:
           command: ./gradlew build
