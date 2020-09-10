@@ -44,7 +44,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:background="@mipmap/ic_launcher"
                 android:scaleType="fitStart"
                 android:src="@drawable/img_standard_size"
                 android:transitionName="meme_post_img" />

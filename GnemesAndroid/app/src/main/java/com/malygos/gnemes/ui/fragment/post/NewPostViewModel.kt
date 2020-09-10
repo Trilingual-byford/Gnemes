@@ -23,7 +23,7 @@ class NewPostViewModel(
         }
     }
 
-    suspend fun getAllMemePosts() {
+    private suspend fun getAllMemePosts() {
         runBlocking {
             try {
                 println("Unconfined            : I'm working in thread ${Thread.currentThread().name}")
