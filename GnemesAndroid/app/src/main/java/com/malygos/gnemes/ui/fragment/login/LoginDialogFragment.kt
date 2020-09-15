@@ -12,6 +12,7 @@ class LoginDialogFragment:DialogFragment() {
     companion object{
         fun startLoginFragment(fragmentManager: FragmentManager,msg:String){
             val loginDialogFragment = LoginDialogFragment()
+//            loginDialogFragment
             loginDialogFragment.show(fragmentManager,msg)
         }
     }

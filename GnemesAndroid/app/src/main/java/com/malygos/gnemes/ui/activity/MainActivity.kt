@@ -87,12 +87,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_item_four -> {
                     LoginDialogFragment.startLoginFragment(supportFragmentManager,"login")
-                    if (fragment_container.scrollState == SCROLL_STATE_IDLE) {
-                        fragment_container.setCurrentItem(3, false)
-                    } else {
-                        fragment_container.setCurrentItem(3, true)
-                    }
-                    return@setOnNavigationItemSelectedListener true
+//                    if (fragment_container.scrollState == SCROLL_STATE_IDLE) {
+//                        fragment_container.setCurrentItem(3, false)
+//                    } else {
+//                        fragment_container.setCurrentItem(3, true)
+//                    }
+                    return@setOnNavigationItemSelectedListener false
                 }
                 else -> return@setOnNavigationItemSelectedListener true
             }
