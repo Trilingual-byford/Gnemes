@@ -13,6 +13,7 @@ import androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_IDLE
 import com.malygos.gnemes.R
 import com.malygos.gnemes.ui.fragment.featured.FeaturedFragment
 import com.malygos.gnemes.ui.fragment.liked.LikedFragment
+import com.malygos.gnemes.ui.fragment.login.LoginDialogFragment
 import com.malygos.gnemes.ui.fragment.search.SearchFragment
 import com.malygos.gnemes.ui.fragment.user.UserFragment
 import com.skydoves.transformationlayout.onTransformationStartContainer
@@ -85,6 +86,7 @@ class MainActivity : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.nav_item_four -> {
+                    LoginDialogFragment.startLoginFragment(supportFragmentManager,"login")
                     if (fragment_container.scrollState == SCROLL_STATE_IDLE) {
                         fragment_container.setCurrentItem(3, false)
                     } else {

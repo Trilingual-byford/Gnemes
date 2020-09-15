@@ -15,6 +15,5 @@ class MarginItemDecoration:RecyclerView.ItemDecoration() {
 //            right = spaceHeight
 //            bottom = spaceHeight
 //        }
-        outRect
     }
 }

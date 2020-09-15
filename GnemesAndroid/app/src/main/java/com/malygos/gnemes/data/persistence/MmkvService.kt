@@ -3,12 +3,13 @@ package com.malygos.gnemes.data.persistence
 import com.google.gson.Gson
 import com.malygos.gnemes.data.entity.UserAuthInfo
 import com.tencent.mmkv.MMKV
+import javax.security.auth.callback.Callback
 
-internal class MmkvService (
+class MmkvService (
     private val mmkv:MMKV,
     private val gson: Gson
 ) {
-    companion object Constant{
+    companion object{
         private const val LOGIN_INFO="user login info"
     }
     suspend fun saveLoginInfo(userInfo:UserAuthInfo): Boolean{
@@ -21,6 +22,7 @@ internal class MmkvService (
     }
     suspend fun clearLoginInfo():Boolean{
         mmkv.removeValueForKey(LOGIN_INFO)
+
         return true
     }
 
