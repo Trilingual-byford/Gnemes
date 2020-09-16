@@ -16,6 +16,7 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_meme_detail">MemeDetailActivity</string>
+    <string name="title_activity_meme_login">GnemesLoginActivity</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.

@@ -1,22 +1,39 @@
 package com.malygos.gnemes.data.network
 
+import android.util.Log
 import com.malygos.gnemes.data.entity.MemePost
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import java.io.File
 
 interface GnemesApiService {
     @GET(END_POINT_URL)
     suspend fun getMemePostsAsync():Response<List<MemePost>>
 
     companion object{
-        const val DOMAIN_INTERNET:String="http:/192.168.100.32:9090"
-        const val END_POINT_URL:String="api/v1/gnemes/post/"
+        val DOMAIN_INTERNET:String by lazy {
+            if (checkPipes()) "http://10.0.2.2:9091/" else "http://127.0.0.1:9091/"
+        }
+
+        const val END_POINT_URL:String ="gnemes/api/post/v1/"
+        private val known_pipes = arrayOf("/dev/socket/qemud", "/dev/qemu_pipe")
+        fun checkPipes(): Boolean {
+            for (i in known_pipes.indices) {
+                val pipes = known_pipes[i]
+                val qemu_socket = File(pipes)
+                if (qemu_socket.exists()) {
+                    Log.v("Result:", "Find pipes!")
+                    return true
+                }
+            }
+            Log.i("Result:", "Not Find pipes!")
+            return false
+        }
 
         private val mInterceptor by lazy {
             Interceptor { chain ->

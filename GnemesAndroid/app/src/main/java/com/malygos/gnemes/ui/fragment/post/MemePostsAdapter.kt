@@ -2,7 +2,6 @@ package com.malygos.gnemes.ui.fragment.post
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
@@ -47,7 +46,7 @@ class MemePostsAdapter(
         holder.binding.memeImg.setOnClickListener {
             if(activity is MainActivity){
 //                activity.hideBottomNavigation{
-                        MemeDetailActivity.startActivityModel(parent.context,holder.binding.itemPosterLineTransformationLayout,memePosts[position].id)
+                        MemeDetailActivity.startMemeDetailActivity(parent.context,holder.binding.itemPosterLineTransformationLayout,memePosts[position].id)
 //                }
             }
         }

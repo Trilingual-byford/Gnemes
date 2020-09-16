@@ -52,7 +52,6 @@ class MemeDetailActivity : TransformationAppCompatActivity() {
         val memePost = viewModel.getMemePostById(postId)
         activityMemeDetailBinding.memePost = memePost
         memePost.dir?.let {
-//            bindDetailLoadImage(activityMemeDetailBinding.imgMemeDetail, it)
             Glide.with(this)
                 .load(it)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -61,24 +60,18 @@ class MemeDetailActivity : TransformationAppCompatActivity() {
         }
         recycler_memePostDetail.layoutManager =
             LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
-//        Log.d("MemeDetailActivity","memePost.o")
         recycler_memePostDetail.adapter = MemePostDetailAdapter(
             this.supportFragmentManager,
             memePost.olsentences,
             memePost.slsentences
         )
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            window.sharedElementEnterTransition.duration = 100
-//            window.sharedElementReturnTransition.setDuration(100).interpolator =
-//                DecelerateInterpolator()
-//        }
+
         activityMemeDetailBinding.toolBarDetail.setNavigationOnClickListener {
             onBackPressed()
         }
     }
 
     private fun bindDetailLoadImage(view: ImageView, url: String) {
-//        supportPostponeEnterTransition()
         Glide.with(view.context)
             .load(url)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -90,7 +83,6 @@ class MemeDetailActivity : TransformationAppCompatActivity() {
                     target: Target<Drawable>?,
                     isFirstResource: Boolean
                 ): Boolean {
-//                    supportStartPostponedEnterTransition();
                     return false;
                 }
 
@@ -101,7 +93,6 @@ class MemeDetailActivity : TransformationAppCompatActivity() {
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
-//                    supportStartPostponedEnterTransition();
                     return false;
                 }
             })
@@ -109,20 +100,15 @@ class MemeDetailActivity : TransformationAppCompatActivity() {
     }
 
     companion object {
-        fun startActivityModel(
+        fun startMemeDetailActivity(
             context: Context?,
             transformationLayout: TransformationLayout,
             postId: String
         ) {
             if (context is Activity) {
                 val intent = Intent(context, MemeDetailActivity::class.java)
-//                val options = ActivityOptions.makeSceneTransitionAnimation(
-//                    context,
-//                    startView, "meme_post_img"
-//                )
                 intent.putExtra("postId", postId)
                 TransformationCompat.startActivity(transformationLayout, intent)
-//                context.startActivity(intent, options.toBundle())
             }
         }
     }

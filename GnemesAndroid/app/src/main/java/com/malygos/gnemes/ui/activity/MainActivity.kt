@@ -1,8 +1,6 @@
 package com.malygos.gnemes.ui.activity
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -13,7 +11,7 @@ import androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_IDLE
 import com.malygos.gnemes.R
 import com.malygos.gnemes.ui.fragment.featured.FeaturedFragment
 import com.malygos.gnemes.ui.fragment.liked.LikedFragment
-import com.malygos.gnemes.ui.fragment.login.LoginDialogFragment
+import com.malygos.gnemes.ui.fragment.login.LoginActivity
 import com.malygos.gnemes.ui.fragment.search.SearchFragment
 import com.malygos.gnemes.ui.fragment.user.UserFragment
 import com.skydoves.transformationlayout.onTransformationStartContainer
@@ -86,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.nav_item_four -> {
-                    LoginDialogFragment.startLoginFragment(supportFragmentManager,"login")
+                    LoginActivity.startLoginActivity(this,"login")
 //                    if (fragment_container.scrollState == SCROLL_STATE_IDLE) {
 //                        fragment_container.setCurrentItem(3, false)
 //                    } else {
@@ -112,10 +110,6 @@ class MainActivity : AppCompatActivity() {
         return fragments
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
-
     override fun onResume() {
         super.onResume()
         showBottomNavigation()
@@ -135,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-     fun showBottomNavigation() {
+     private fun showBottomNavigation() {
         // bottom_navigation is BottomNavigationView
         with(bottom_navigation) {
             if (!isVisible) {
