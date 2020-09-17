@@ -9,9 +9,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_IDLE
 import com.malygos.gnemes.R
+import com.malygos.gnemes.ui.activity.login.ui.login.LoginActivity
 import com.malygos.gnemes.ui.fragment.featured.FeaturedFragment
 import com.malygos.gnemes.ui.fragment.liked.LikedFragment
-import com.malygos.gnemes.ui.fragment.login.LoginActivity
 import com.malygos.gnemes.ui.fragment.search.SearchFragment
 import com.malygos.gnemes.ui.fragment.user.UserFragment
 import com.skydoves.transformationlayout.onTransformationStartContainer
@@ -51,7 +51,9 @@ class MainActivity : AppCompatActivity() {
                         bottom_navigation.selectedItemId = R.id.nav_item_three
                     }
                     3 -> {
-                        bottom_navigation.selectedItemId = R.id.nav_item_four
+                        if(bottom_navigation.selectedItemId==R.id.nav_item_four){
+                            bottom_navigation.selectedItemId = R.id.nav_item_four
+                        }
                     }
                 }
             }
@@ -84,7 +86,10 @@ class MainActivity : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.nav_item_four -> {
+
                     LoginActivity.startLoginActivity(this,"login")
+
+//                    overridePendingTransition(R.anim.animation_enter)
 //                    if (fragment_container.scrollState == SCROLL_STATE_IDLE) {
 //                        fragment_container.setCurrentItem(3, false)
 //                    } else {
@@ -110,6 +115,9 @@ class MainActivity : AppCompatActivity() {
         return fragments
     }
 
+    override fun onPause() {
+        super.onPause()
+    }
     override fun onResume() {
         super.onResume()
         showBottomNavigation()

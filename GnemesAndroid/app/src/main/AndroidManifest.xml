@@ -17,17 +17,20 @@
 
         <activity
             android:name=".ui.activity.detail.MemeDetailActivity"
-            android:label="@string/title_activity_meme_detail">
-        </activity>
-        <activity
-            android:name=".ui.fragment.login.LoginActivity"
-            android:label="@string/title_activity_meme_login">
-        </activity>
-        <activity android:name=".ui.activity.MainActivity"
+            android:label="@string/title_activity_meme_detail"
             android:theme="@style/AppTheme"
-            >
+            />
+        <activity
+            android:name=".ui.activity.login.ui.login.LoginActivity"
+            android:label="@string/title_activity_meme_login"
+            android:theme="@style/AppTheme"
+            />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
