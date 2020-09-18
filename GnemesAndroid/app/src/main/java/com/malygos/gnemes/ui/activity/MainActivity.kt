@@ -1,6 +1,11 @@
 package com.malygos.gnemes.ui.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -20,6 +25,7 @@ import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         onTransformationStartContainer()
         super.onCreate(savedInstanceState)
@@ -88,13 +94,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_item_four -> {
 
                     LoginActivity.startLoginActivity(this,"login")
-
-//                    overridePendingTransition(R.anim.animation_enter)
-//                    if (fragment_container.scrollState == SCROLL_STATE_IDLE) {
-//                        fragment_container.setCurrentItem(3, false)
-//                    } else {
-//                        fragment_container.setCurrentItem(3, true)
-//                    }
                     return@setOnNavigationItemSelectedListener false
                 }
                 else -> return@setOnNavigationItemSelectedListener true
@@ -115,8 +114,13 @@ class MainActivity : AppCompatActivity() {
         return fragments
     }
 
-    override fun onPause() {
-        super.onPause()
+
+
+
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        Log.i("onSaveInstanceState","Ative!")
     }
     override fun onResume() {
         super.onResume()

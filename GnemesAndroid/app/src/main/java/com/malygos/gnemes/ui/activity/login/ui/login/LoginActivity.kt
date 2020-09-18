@@ -17,6 +17,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import com.malygos.gnemes.R
+import com.malygos.gnemes.ui.activity.MainActivity
 
 
 class LoginActivity : AppCompatActivity() {
@@ -28,7 +29,6 @@ class LoginActivity : AppCompatActivity() {
             if(context is Activity){
                 val intent= Intent(context, LoginActivity::class.java)
                 context.startActivity(intent)
-
             }
         }
     }
@@ -103,10 +103,20 @@ class LoginActivity : AppCompatActivity() {
 
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString())
+//                loginViewModel.login(username.text.toString(), password.text.toString())
+
             }
         }
     }
+//
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+////        val intent= Intent(this, MainActivity::class.java)
+////        this.startActivity(intent)
+////        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+////        finish()
+//
+//    }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)

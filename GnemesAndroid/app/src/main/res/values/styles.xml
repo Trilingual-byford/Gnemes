@@ -1,19 +1,8 @@
 <resources>
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:statusBarColor">@color/shrine_pink_100</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
-    </style>
-
-    <style name="FullscreenDialogTheme"
-        parent="Theme.MaterialComponents.Dialog">
-        <item name="android:windowIsFloating">false</item>
-        <item name="android:windowBackground">@color/colorWhite</item>
-        <item name="android:windowAnimationStyle">@style/MyAnimation.Window</item>
-    </style>
-    <style name="MyAnimation.Window" parent="Theme.MaterialComponents.Dialog">
-        <item name="android:windowEnterAnimation">@anim/animation_enter</item>
-        <item name="android:windowExitAnimation">@anim/animation_leave</item>
     </style>
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
