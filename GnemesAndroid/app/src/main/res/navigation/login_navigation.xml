@@ -3,17 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_navigation"
-    app:startDestination="@layout/fragment_login_guide">
+    app:startDestination="@id/loginGuideFragment">
     <fragment
         android:id="@+id/loginGuideFragment"
         android:name="com.malygos.gnemes.ui.fragment.login.guide.LoginGuideFragment"
         android:label="LoginGuide"
-        tools:layout="@layout/fragment_login_guide"
-        />
+        tools:layout="@layout/fragment_login_guide">
+        <action
+            android:id="@+id/action_loginGuideFragment_to_loginFragment"
+            app:destination="@id/loginFragment"/>
+    </fragment>
     <fragment
-        android:id="@+id/loginGuide"
+        android:id="@+id/loginFragment"
         android:name="com.malygos.gnemes.ui.fragment.login.login.LoginFragment"
-        />
+        android:label="fragment_login_fragment"
+        tools:layout="@layout/fragment_login"
+        >
+    </fragment>
 
 
-</navigation>
+
+    </navigation>

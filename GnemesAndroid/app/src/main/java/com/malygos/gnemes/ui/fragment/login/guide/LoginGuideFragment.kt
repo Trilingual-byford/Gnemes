@@ -5,7 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import com.malygos.gnemes.R
+import kotlinx.android.synthetic.main.fragment_login_guide.*
+import kotlinx.android.synthetic.main.fragment_login_guide.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,7 +40,12 @@ class LoginGuideFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login_guide, container, false)
+        val findNavController = findNavController()
+        val inflate = inflater.inflate(R.layout.fragment_login_guide, container, false)
+//        inflate..setOnClickListener { v->
+//            findNavController.navigate(R.id.action_loginGuideFragment_to_loginFragment)
+//        }
+        return  inflate
     }
 
     companion object {
