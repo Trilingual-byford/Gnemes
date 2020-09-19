@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_navigation"
+    app:startDestination="@layout/fragment_login_guide">
+    <fragment
+        android:id="@+id/loginGuideFragment"
+        android:name="com.malygos.gnemes.ui.fragment.login.guide.LoginGuideFragment"
+        android:label="LoginGuide"
+        tools:layout="@layout/fragment_login_guide"
+        />
+    <fragment
+        android:id="@+id/loginGuide"
+        android:name="com.malygos.gnemes.ui.fragment.login.login.LoginFragment"
+        />
+
+
+</navigation>
