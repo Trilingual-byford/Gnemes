@@ -32,4 +32,6 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="gnemes">Gnemes</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="log_in">Log In</string>
 </resources>
