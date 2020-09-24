@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
+import com.malygos.gnemes.R
 import com.malygos.gnemes.ui.fragment.login.register.data.LoginRepository
 import com.malygos.gnemes.ui.fragment.login.register.data.Result
 
-import com.malygos.gnemes.ui.fragment.login.register.R
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 

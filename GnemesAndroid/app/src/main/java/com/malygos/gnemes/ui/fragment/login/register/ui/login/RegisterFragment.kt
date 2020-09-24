@@ -15,8 +15,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.malygos.gnemes.R
 
-import com.malygos.gnemes.ui.fragment.login.register.R
 
 class RegisterFragment : Fragment() {
 
@@ -40,7 +40,7 @@ class RegisterFragment : Fragment() {
         val loginButton = view.findViewById<Button>(R.id.login)
         val loadingProgressBar = view.findViewById<ProgressBar>(R.id.loading)
 
-        loginViewModel.loginFormState.observe(this,
+        loginViewModel.loginFormState.observe(viewLifecycleOwner,
             Observer { loginFormState ->
                 if (loginFormState == null) {
                     return@Observer
@@ -54,7 +54,7 @@ class RegisterFragment : Fragment() {
                 }
             })
 
-        loginViewModel.loginResult.observe(this,
+        loginViewModel.loginResult.observe(viewLifecycleOwner,
             Observer { loginResult ->
                 loginResult ?: return@Observer
                 loadingProgressBar.visibility = View.GONE

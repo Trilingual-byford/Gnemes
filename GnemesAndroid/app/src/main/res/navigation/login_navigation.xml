@@ -11,7 +11,19 @@
         tools:layout="@layout/fragment_login_guide">
         <action
             android:id="@+id/action_loginGuideFragment_to_loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/loginFragment"/>
+        <action
+            android:id="@+id/action_loginGuideFragment_to_registerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/registerFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -19,6 +31,13 @@
         android:label="fragment_login_fragment"
         tools:layout="@layout/fragment_login"
         >
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.malygos.gnemes.ui.fragment.login.register.ui.login.RegisterFragment"
+        tools:layout="@layout/fragment_register"
+        >
+
     </fragment>
 
 
