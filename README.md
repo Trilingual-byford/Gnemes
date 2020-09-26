@@ -13,4 +13,4 @@
 - GnemesManager - Gnemes FrontEnd management project powered by React(Material design)
 <img width="500" height="300" src="https://github.com/Trilingual-byford/GNEMES/blob/master/Document/Screen%20Shot%202020-08-27%20at%2022.03.57.png?raw=true" />
 
-# Next goal might be GnemesIos!!...!.
+# Next goal might be GnemesIos!!...!.，
