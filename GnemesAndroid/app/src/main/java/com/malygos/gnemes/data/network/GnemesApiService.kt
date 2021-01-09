@@ -15,18 +15,20 @@ interface GnemesApiService {
     @GET(END_POINT_URL)
     suspend fun getMemePostsAsync():Response<List<MemePost>>
 
-    companion object{
-        val DOMAIN_INTERNET:String by lazy {
-            if (checkPipes()) "http://10.0.2.2:9091/" else "http://127.0.0.1:9091/"
-        }
 
-        const val END_POINT_URL:String ="gnemes/api/post/v1/"
+    
+    companion object{
+        private val DOMAIN_INTERNET:String by lazy {
+            if (isUsingSimulator()) "http://10.0.2.2:8080/" else "http://192.168.1.96:8080"
+        }
+        //http://localhost:8080/api/v1/gnemes/memes
+        const val END_POINT_URL:String ="/api/v1/gnemes/memes"
         private val known_pipes = arrayOf("/dev/socket/qemud", "/dev/qemu_pipe")
-        fun checkPipes(): Boolean {
+        private fun isUsingSimulator(): Boolean {
             for (i in known_pipes.indices) {
                 val pipes = known_pipes[i]
-                val qemu_socket = File(pipes)
-                if (qemu_socket.exists()) {
+                val qemuSocket = File(pipes)
+                if (qemuSocket.exists()) {
                     Log.v("Result:", "Find pipes!")
                     return true
                 }
@@ -53,7 +55,7 @@ interface GnemesApiService {
                 .addInterceptor(logging)
                 .build()
         }
-        public val gnemesApiService by lazy{
+        public val gnemesApiService: GnemesApiService by lazy{
              Retrofit.Builder()
                 .client(mClient)
                 .baseUrl(DOMAIN_INTERNET)

@@ -18,13 +18,13 @@ class MemePostRepository(
         println("getAllMemePost            : I'm working in thread ${Thread.currentThread().name}")
         var memeResult=ApiResponse<List<MemePost>>()
         val allMemePost = memeDataBase.posterDao().getAllMemePost()
-        if (allMemePost.isEmpty()) {
+//        if (allMemePost.isEmpty()) {
             val response = gnemesApiService.getMemePostsAsync()
-                response.body()?.let { memeDataBase.posterDao().insertMemePostList(it) }
+//                response.body()?.let { memeDataBase.posterDao().insertMemePostList(it) }
                 memeResult=ApiResponse<List<MemePost>>(response)
-        }else{
-            memeResult=ApiResponse<List<MemePost>>(allMemePost)
-        }
+//        }else{
+//            memeResult=ApiResponse<List<MemePost>>(allMemePost)
+//        }
         memeResult
     }
     fun getMemePostById(id:String)=memeDataBase.posterDao().getMemePost(id)

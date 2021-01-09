@@ -17,9 +17,9 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/shrine_pink_100"
+            android:background="@color/colorBlack"
             app:tabGravity="center"
-            app:tabTextColor="@color/colorBlack" />
+            app:tabTextColor="@color/colorWhite" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.malygos.gnemes.view.NestedScrollableHost

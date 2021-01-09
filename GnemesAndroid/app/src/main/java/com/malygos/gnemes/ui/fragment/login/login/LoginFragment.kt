@@ -39,7 +39,7 @@ class LoginFragment : Fragment() {
 //        val passwordEditText = view.findViewById<EditText>(R.id.password)
 //        val loginButton = view.findViewById<Button>(R.id.login)
 //        val loadingProgressBar = view.findViewById<ProgressBar>(R.id.loading)
-//
+//--++
 //        loginViewModel.loginFormState.observe(this,
 //            Observer { loginFormState ->
 //                if (loginFormState == null) {
@@ -102,6 +102,7 @@ class LoginFragment : Fragment() {
 //            )
 //        }
     }
+
 
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome) + model.displayName

@@ -1,16 +1,11 @@
 package com.malygos.gnemes.ui.activity.detail
 
 import android.app.Activity
-import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.view.animation.DecelerateInterpolator
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,7 +46,7 @@ class MemeDetailActivity : TransformationAppCompatActivity() {
             .get(MemeDetailViewModel::class.java)
         val memePost = viewModel.getMemePostById(postId)
         activityMemeDetailBinding.memePost = memePost
-        memePost.dir?.let {
+        memePost.Dir?.let {
             Glide.with(this)
                 .load(it)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -62,8 +57,8 @@ class MemeDetailActivity : TransformationAppCompatActivity() {
             LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
         recycler_memePostDetail.adapter = MemePostDetailAdapter(
             this.supportFragmentManager,
-            memePost.olsentences,
-            memePost.slsentences
+            memePost.OLSentences,
+            memePost.SLSentences
         )
 
         activityMemeDetailBinding.toolBarDetail.setNavigationOnClickListener {
